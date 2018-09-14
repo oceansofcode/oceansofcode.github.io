@@ -1,5 +1,16 @@
 phpmyadmin/
 DonariusPages/
 cgi-bin/
+images/
+practice/
+/.vscode
+
+/ch*
+/Ex*
+
+footer2.html
+menu2.htm
 
 phpinfo.php
+phpunit.xml
+menu2.html
