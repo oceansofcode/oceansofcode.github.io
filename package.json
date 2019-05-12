@@ -26,6 +26,9 @@
   "homepage": "https://github.com/adamdji/adamdji.github.io#readme",
   "devDependencies": {
     "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlhint": "^2.2.1",
+    "gulp-minify-css": "^1.2.4",
     "gulp-sass": "^4.0.2",
     "gulp-typescript": "^5.0.1",
     "gulp-uglify-es": "^1.0.4",
