@@ -1,3 +1,8 @@
+/*
+ * This module dynamically inserts the header and footer from their respective HTML files.
+ * This allows the header and footer to be changed only once per file despite this being a front-end only application.
+ * TODO: hide the rest of the page until everything is loaded.
+ */
 export default function() {
     const header = document.createElement('header');
     const footer = document.createElement('footer');
@@ -14,10 +19,8 @@ export default function() {
         }
     }
     footerReq.send();
-
-    onload = () => {
-        const body = document.querySelector('body');
-        body.parentElement.insertBefore(header, body);
-        body.parentElement.appendChild(footer);
-    }
+    
+    const body = document.querySelector('body');
+    body.parentElement.insertBefore(header, body);
+    body.parentElement.appendChild(footer);
 }

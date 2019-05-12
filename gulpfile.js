@@ -1,8 +1,8 @@
 const gulp = require('gulp')
-const sass = require('gulp-sass');
 const ts = require('gulp-typescript');
 const tsProject = ts.createProject('./src/scripts/tsconfig.json');
-
+const uglify = require('gulp-uglify-es').default;
+const sass = require('gulp-sass');
 sass.compiler = require('node-sass');
 
 gulp.task('sass', () => {
@@ -14,5 +14,8 @@ gulp.task('sass', () => {
 gulp.task('typescript', () => {
     return gulp.src('./src/scripts/*.ts')
     .pipe(tsProject())
+    .pipe(uglify())
     .pipe(gulp.dest('./build/scripts'));
 });
+
+gulp.task('default', gulp.parallel('sass', 'typescript'));
