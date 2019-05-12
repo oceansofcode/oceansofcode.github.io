@@ -1,0 +1,35 @@
+{
+  "name": "adamdji.github.io",
+  "version": "1.0.0",
+  "description": "Portfolio website source code",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamdji/adamdji.github.io.git"
+  },
+  "keywords": [
+    "portfolio",
+    "front-end",
+    "serverless"
+  ],
+  "author": "Adam Adjindji",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamdji/adamdji.github.io/issues"
+  },
+  "homepage": "https://github.com/adamdji/adamdji.github.io#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
+    "gulp-typescript": "^5.0.1",
+    "http-server": "^0.11.1",
+    "node-sass": "^4.12.0",
+    "typescript": "^3.4.5"
+  }
+}
