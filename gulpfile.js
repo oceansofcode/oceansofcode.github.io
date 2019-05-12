@@ -10,15 +10,22 @@ const sass = require('gulp-sass');
 const minifiy = require('gulp-minify-css');
 const concat = require('gulp-concat');
 sass.compiler = require('node-sass');
-let defaultTasks = ['validateHtml', 'sass', 'typescript'];
 
-gulp.task('validateHtml', () => {
+const defaultTasks = ['html', 'sass', 'typescript'];
+
+/*
+ * Validates html outputting the errors to the console log.
+ */
+gulp.task('html', () => {
     const exclude = ['!node_modules/**', '!src/**']
     return gulp.src(['**/*.html', ...exclude])
     .pipe(htmlhint())
     .pipe(htmlhint.reporter());
 });
 
+/*
+ * Converts all the sass files to a single, minfied main css file.
+ */
 gulp.task('sass', () => {
     return gulp.src('./src/styles/**/*.scss')
     .pipe(sass().on('error', sass.logError))
@@ -27,6 +34,9 @@ gulp.task('sass', () => {
     .pipe(gulp.dest('./build/styles'));
 });
 
+/*
+ * Converts all typescript files to their respective, uglified js file.
+ */
 gulp.task('typescript', () => {
     return gulp.src('./src/scripts/**/*.ts')
     .pipe(tsProject())
@@ -34,4 +44,7 @@ gulp.task('typescript', () => {
     .pipe(gulp.dest('./build/scripts'));
 });
 
+/*
+ * Runs each task in paralell.
+ */
 gulp.task('default', gulp.parallel(...defaultTasks));
