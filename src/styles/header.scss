@@ -1,0 +1,21 @@
+header {
+    nav {
+        ul {
+            width: 100%;
+            display: inline-block;
+            li {
+                display: inline-block;
+                width: 5%;
+                border: {
+                    style: dotted;
+                    color: black;
+                }
+                &.dropDown {
+                    li {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
