@@ -1,0 +1,1 @@
+export default()=>{let e=document.querySelector("#themeSwitch"),t=document.querySelector("body");e.addEventListener("click",function(){t.classList.contains("lightTheme")?(t.classList.add("darkTheme"),t.classList.remove("lightTheme")):(t.classList.add("lightTheme"),t.classList.remove("darkTheme"))},!1)};

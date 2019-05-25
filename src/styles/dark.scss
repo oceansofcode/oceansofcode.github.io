@@ -1,0 +1,29 @@
+// Dark mode colors
+@import '_colors.scss';
+
+body.darkTheme {
+    background: $darkBody;
+    h1, h2, h3, h4, h5, h6, p {
+        color: $darkText;
+    }
+    header {
+        nav {
+            color: $darkText;
+            background: $darkBody;
+            a {
+                color: red;
+                &:hover {
+                    color: $darkLinkHover;
+                }
+            }
+        }
+    }
+
+    div#main {
+
+    }
+
+    footer {
+    
+    }
+}

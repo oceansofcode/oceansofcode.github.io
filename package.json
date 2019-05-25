@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/adamdji/adamdji.github.io#readme",
   "devDependencies": {
+    "browser-sync": "^2.26.5",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-htmlhint": "^2.2.1",

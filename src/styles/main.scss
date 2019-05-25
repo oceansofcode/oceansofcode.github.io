@@ -1,0 +1,32 @@
+body {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 1s linear;
+}
+
+#main {
+    margin: 1em;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr 10fr 1fr;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+    &:hover {
+        color: black;
+    }
+}
+
+header {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+
+footer {
+    grid-column: span 12;
+}

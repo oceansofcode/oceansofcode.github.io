@@ -1,19 +1,35 @@
 header {
+    display: flex;
+    margin: 1em;
+    border: {
+        color: red;
+        width: 5px;
+        style: solid;
+    }
+
     nav {
+        margin-left: auto;
         ul {
-            width: 100%;
-            display: inline-block;
+            list-style: none;
+    
             li {
                 display: inline-block;
-                width: 5%;
+    
                 border: {
-                    style: dotted;
-                    color: black;
+                    style: solid;
+                    color: red;
+                    width: 2px;
                 }
-                &.dropDown {
-                    li {
-                        display: none;
+    
+                ul.dropDown {
+                    display: none;
+                    &:hover {
+                        display: inline-block;
                     }
+                }
+    
+                &:hover ul.dropDown {
+                    display: block;
                 }
             }
         }

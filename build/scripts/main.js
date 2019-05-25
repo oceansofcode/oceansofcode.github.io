@@ -1,1 +1,1 @@
-import headerfooter from"./headerfooter.js";headerfooter();
+import headerFooter from"./header-footer.js";headerFooter();
