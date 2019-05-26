@@ -1,15 +1,25 @@
 body {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s, opacity 1s linear;
+    position: relative;
+    z-index: 9999;
+
+    &.color-theme-in-transition,
+    &.color-theme-in-transition *,
+    &.color-theme-in-transition *:before,
+    &.color-theme-in-transition *:after {
+    transition: all 750ms !important;
+    transition-delay: 0 !important;
+    }
 }
 
 #main {
-    margin: 1em;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 1fr 10fr 1fr;
+
     text-decoration: none;
+    margin: 1em;
 }
 
 a {
@@ -25,7 +35,6 @@ header {
     position: sticky;
     top: 0;
 }
-
 
 footer {
     grid-column: span 12;

@@ -1,10 +1,10 @@
 // Color definitions for both light and dark themes
 
-$lightBody: white;
-$darkBody: #181e24;
+$body-dark: hsl(210, 20%, 12%);
+$body-light: hsl(210, 20%, 100%);
 
-$lightText: black;
-$darkText: white;
+$text-light: #181e24;
+$text-dark: white;
 
-$lightLinkHover: black;
+$lightLinkHover: #181e24;
 $darkLinkHover: white;

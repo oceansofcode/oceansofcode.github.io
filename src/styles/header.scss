@@ -7,7 +7,11 @@ header {
         style: solid;
     }
 
+    h1 {
+        z-index: 1;
+    }
     nav {
+        z-index: 1;
         margin-left: auto;
         ul {
             list-style: none;

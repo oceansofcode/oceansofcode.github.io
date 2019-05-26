@@ -1,0 +1,63 @@
+@import '_colors.scss';
+
+body {
+    &.color-theme-in-transition,
+    &.color-theme-in-transition *,
+    &.color-theme-in-transition *:before,
+    &.color-theme-in-transition *:after {
+    transition: all 750ms !important;
+    transition-delay: 0 !important;
+    }
+}
+
+body.light-theme {
+    background: $body-light;
+    h1, h2, h3, h4, h5, h6, p {
+        color: $text-light;
+    }
+
+    header {
+        background: $body-light;
+        color: $text-light;
+
+        a {
+            color: red;
+            &:hover {
+                color: $lightLinkHover;
+            }
+        }
+    }
+    div#main {
+
+    }
+
+    footer {
+    
+    }
+}
+
+body.dark-theme {
+    background: $body-dark;
+    h1, h2, h3, h4, h5, h6, p {
+        color: $text-dark;
+    }
+
+    header {
+        background: $body-dark;
+        color: $text-dark;
+        
+        a {
+            color: red;
+            &:hover {
+                color: $lightLinkHover;
+            }
+        }
+    }
+    div#main {
+
+    }
+
+    footer {
+    
+    }
+}
