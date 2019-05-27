@@ -1,5 +1,8 @@
 header {
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
     margin: 1em;
     border: {
         color: red;
@@ -8,33 +11,44 @@ header {
     }
 
     h1 {
-        z-index: 1;
+        margin-right: auto;
     }
-    nav {
-        z-index: 1;
-        margin-left: auto;
-        ul {
-            list-style: none;
-    
-            li {
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+
+        > li {
+            display: inline-block;
+			flex: 0 1 auto;
+			position: relative;
+            > a {
                 display: inline-block;
-    
-                border: {
-                    style: solid;
-                    color: red;
-                    width: 2px;
-                }
-    
-                ul.dropDown {
-                    display: none;
-                    &:hover {
-                        display: inline-block;
+                padding: 20px;
+                background-color: red;
+            }
+        }
+
+        li.dropDown {
+            ul.dropDown {
+                transition: all 5s ease-in;
+                display: none;
+                opacity: 0;
+                visibility: hidden;
+                li {
+                    width: 100%;
+                    a {
+                        width: 100%;
                     }
                 }
-    
-                &:hover ul.dropDown {
-                    display: block;
-                }
+            }
+            &:hover ul.dropDown {
+                display: block;
+                visibility: visible;
+                opacity: 1;
+                position: absolute;
+                z-index: 1;
             }
         }
     }

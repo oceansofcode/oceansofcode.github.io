@@ -17,13 +17,16 @@ body.light-theme {
     }
 
     header {
+        //TODO Add transition on hover for background color of link
         background: $body-light;
         color: $text-light;
-
+        li {
+            background-color: red;
+        }
         a {
-            color: red;
+            color: black;
             &:hover {
-                color: $lightLinkHover;
+                color: $link-hover-dark;
             }
         }
     }
@@ -46,10 +49,13 @@ body.dark-theme {
         background: $body-dark;
         color: $text-dark;
         
+        li {
+            background-color: red;
+        }
         a {
-            color: red;
+            color: black;
             &:hover {
-                color: $lightLinkHover;
+                color: $link-hover-light;
             }
         }
     }
