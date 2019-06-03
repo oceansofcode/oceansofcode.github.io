@@ -17,7 +17,7 @@ body {
 #main {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 1fr 10fr 1fr;
+  grid-template-rows: 10fr 1fr;
 
   text-decoration: none;
   margin: 1em;
