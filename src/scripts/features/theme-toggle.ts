@@ -19,8 +19,8 @@ export default () => {
     const body: HTMLElement = document.querySelector('body');
     const transition: string = "color-theme-in-transition";
 
-    const light: ThemeToggle = Theme('light-theme', 'fa-moon', 'Toggle Light Mode');
-    const dark: ThemeToggle = Theme('dark-theme', 'fa-sun', 'Toggle Dark Mode');
+    const light: ThemeToggle = Theme('light-theme', 'fa-moon', 'Toggle Dark Mode');
+    const dark: ThemeToggle = Theme('dark-theme', 'fa-sun', 'Toggle Light Mode');
 
     function changeTheme() {
 
@@ -41,6 +41,8 @@ export default () => {
 
         themeButton.classList.add(add.icon);
         themeButton.classList.remove(remove.icon);
+        
+        themeButton.title = add.toolTip;
     }
 
     themeButton.addEventListener('click', changeTheme, false);
