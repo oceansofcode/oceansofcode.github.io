@@ -1,17 +1,23 @@
 header {
     display: flex;
-    margin: 0;
     justify-content: flex-end;
     align-items: center;
-    flex-wrap: wrap;
-    border: {
-        color: red;
-        width: 5px;
-        style: solid;
+
+    i#themeSwitch {
+        margin-right: 1rem;
+        font-size: 1.5rem;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    a {
+        text-decoration: none;
+        display: inline-block;
     }
 
-    h1 {
+    > h1 {
         margin-right: auto;
+        margin-left: 1rem;
     }
 
     ul {
@@ -24,22 +30,21 @@ header {
 			flex: 0 1 auto;
 			position: relative;
             > a {
-                display: inline-block;
                 padding: 20px;
-                background-color: red;
             }
         }
 
         > li.dropDown {
-            ul.dropDown {
+           > ul.dropDown {
                 transition: all 5s ease-in;
                 display: none;
                 opacity: 0;
                 visibility: hidden;
-                li {
+                > li.dropDownItem {
                     width: 100%;
-                    a {
+                    > a {
                         width: 100%;
+                        text-align: center;
                     }
                 }
             }

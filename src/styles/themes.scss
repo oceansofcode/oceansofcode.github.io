@@ -1,5 +1,12 @@
 @import '_colors.scss';
+@import 'https://use.fontawesome.com/releases/v5.7.0/css/all.css';
 
+/*
+ * This file encapsulates all color logic for both the light and dark theme of the page.
+ * No other files should define colors as that will override this file due to CSS selectors.
+ */
+
+// Transition rules when switching from light to dark mode.
 body {
     &.color-theme-in-transition,
     &.color-theme-in-transition *,
@@ -10,60 +17,36 @@ body {
     }
 }
 
+body.dark-theme {
+    background-color: $body-dark;
+    h1, h2, h3, h4, h5, h6, p {
+        color: $text-dark;
+    }
+    li.dropDownItem {
+        background: $body-dark;
+    }
+    header {
+        background-color: $body-dark;
+        color: $text-dark;
+        a {
+            color: white;
+        }
+    }
+}
+
 body.light-theme {
-    background: $body-light;
+    background-color: $body-light;
     h1, h2, h3, h4, h5, h6, p {
         color: $text-light;
     }
 
     header {
         //TODO Add transition on hover for background color of link
-        background: $body-light;
+        background-color: $body-light;
         color: $text-light;
-        li {
-            background-color: red;
-        }
         a {
             color: black;
-            &:hover {
-                color: $link-hover-dark;
-            }
         }
-    }
-    div#main {
-
-    }
-
-    footer {
-    
     }
 }
 
-body.dark-theme {
-    background: $body-dark;
-    h1, h2, h3, h4, h5, h6, p {
-        color: $text-dark;
-    }
-
-    header {
-        background: $body-dark;
-        color: $text-dark;
-        
-        li {
-            background-color: red;
-        }
-        a {
-            color: black;
-            &:hover {
-                color: $link-hover-light;
-            }
-        }
-    }
-    div#main {
-
-    }
-
-    footer {
-    
-    }
-}
