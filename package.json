@@ -26,6 +26,12 @@
   "homepage": "https://github.com/adamdji/adamdji.github.io#readme",
   "devDependencies": {
     "browser-sync": "^2.26.7",
+    "eslint": "^6.0.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-htmlhint": "^2.2.1",
@@ -36,6 +42,7 @@
     "http-server": "^0.11.1",
     "node-sass": "^4.12.0",
     "tar": "^4.4.9",
+    "ts-lint": "^4.5.1",
     "typescript": "^3.5.1"
   }
 }
