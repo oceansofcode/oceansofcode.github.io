@@ -1,7 +1,7 @@
 // Color definitions for both light and dark themes
 
-$body-dark: hsl(210, 20%, 12%);
-$body-light: hsl(210, 20%, 75%);
+$body-dark: hsla(210, 20%, 12%, 0.75);
+$body-light: hsla(210, 20%, 75%, 0.75);
 
 $text-light: #181e24;
 $text-dark: white;
