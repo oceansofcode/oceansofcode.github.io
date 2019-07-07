@@ -12,7 +12,7 @@ export const getHeaderFooter = async () => {
     const footer: HTMLElement = document.createElement('footer');
     const headerSrc: string = './src/html/header.html'
     const footerSrc: string = './src/html/footer.html'
-    insertBackground();
+    //insertBackground();
     await Promise.all([
         fetch(headerSrc).then(headerRes => headerRes.text()).then(headerText => header.innerHTML = headerText),
         fetch(footerSrc).then(footerRes => footerRes.text()).then(footerText => footer.innerHTML = footerText)
