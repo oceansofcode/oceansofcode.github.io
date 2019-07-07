@@ -71,7 +71,11 @@ header {
     }
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 736px) {
+=======
+@media screen and (max-width: 925px) {
+>>>>>>> 9385c41bfa820d372e4c9d63297229a180352845
     header {
         height: 50px;
         nav {
@@ -79,7 +83,10 @@ header {
         }
 
         h1#title {
+<<<<<<< HEAD
             font-size: 1.5em;
+=======
+>>>>>>> 9385c41bfa820d372e4c9d63297229a180352845
             justify-self: center;
             margin-left: auto;
             margin-right: auto;
