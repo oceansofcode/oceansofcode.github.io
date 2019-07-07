@@ -71,7 +71,23 @@ header {
     }
 }
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 1200px) {
+    header {
+        height: 50px;
+        nav {
+            display: none;
+        }
+
+        h1#title {
+            font-size: 1.5em;
+            justify-self: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+@media screen and (max-width: 736px) {
     header {
         height: 50px;
         nav {
