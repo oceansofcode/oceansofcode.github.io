@@ -7,12 +7,12 @@
  * Creates a header and footer element, and then asynchronously retrieves their data and inserts
  * the data into them. Returns the header and footer as an object.
  */
-export var getHeaderFooter = async () => {
+export const getHeaderFooter = async () => {
     const header: HTMLElement = document.createElement('header');
     const footer: HTMLElement = document.createElement('footer');
     const headerSrc: string = './src/html/header.html'
     const footerSrc: string = './src/html/footer.html'
-
+    insertBackground();
     await Promise.all([
         fetch(headerSrc).then(headerRes => headerRes.text()).then(headerText => header.innerHTML = headerText),
         fetch(footerSrc).then(footerRes => footerRes.text()).then(footerText => footer.innerHTML = footerText)
@@ -29,4 +29,13 @@ export function insertHeaderFooter(header: HTMLElement, footer: HTMLElement) {
 
     main.parentNode.insertBefore(header, main);
     main.appendChild(footer);
+}
+
+function insertBackground() {
+    const image: HTMLImageElement = new Image();
+    image.onload = () => {
+        document.querySelector('body').appendChild(image);
+    }
+    image.id = 'background';
+    image.src = './build/images/light-under-ocean.png';
 }
