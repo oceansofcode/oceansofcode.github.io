@@ -23,7 +23,7 @@ export default () => {
     const dark: ThemeToggle = Theme('dark-theme', 'fa-sun', 'Toggle Light Mode');
 
     function changeTheme() {
-
+        themeButton.removeEventListener('click', changeTheme, false);
         body.classList.add(transition);
         if (body.classList.contains(light.themeName)) {
             addRemove({ add: dark, remove: light });
@@ -33,6 +33,9 @@ export default () => {
         setTimeout(() => {
             body.classList.remove(transition);
         }, 1500);
+        setTimeout(() => {
+            themeButton.addEventListener('click', changeTheme, false);
+        }, 750);
     }
 
     function addRemove({ add, remove }: { add: ThemeToggle; remove: ThemeToggle; }) {
