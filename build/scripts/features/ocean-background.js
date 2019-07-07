@@ -1,0 +1,1 @@
+export default()=>{const e=new Image;e.onload=(()=>{document.querySelector("body").appendChild(e)}),e.id="background",e.src="./build/images/light-under-ocean.png"};

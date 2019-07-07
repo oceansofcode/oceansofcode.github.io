@@ -7,7 +7,6 @@ import themeToggle from './features/theme-toggle.js';
 */
 (async function init() {
     const headerFooter: {header: HTMLElement, footer: HTMLElement} = await getHeaderFooter();
-
     insertHeaderFooter(headerFooter.header, headerFooter.footer);
     themeToggle();
     showBody();

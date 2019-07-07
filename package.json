@@ -35,6 +35,7 @@
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-htmlhint": "^2.2.1",
+    "gulp-imagemin": "^6.0.0",
     "gulp-minify-css": "^1.2.4",
     "gulp-sass": "^4.0.2",
     "gulp-typescript": "^5.0.1",
@@ -44,5 +45,6 @@
     "tar": "^4.4.9",
     "ts-lint": "^4.5.1",
     "typescript": "^3.5.1"
-  }
+  },
+  "dependencies": {}
 }

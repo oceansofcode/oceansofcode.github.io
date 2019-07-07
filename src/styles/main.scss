@@ -14,8 +14,8 @@ body {
   opacity: 0;
   //position: relative;
   z-index: -1;
-  background: url("../images/light-under-ocean.png") no-repeat center fixed;
-  background-size: cover;
+  //background: url("../images/light-under-ocean.png") no-repeat center fixed;
+  //background-size: cover;
 }
 
 #main {
@@ -34,4 +34,12 @@ header {
 
 footer {
   grid-column: span 12;
+}
+
+img#background {
+  z-index: -9999;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
