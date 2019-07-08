@@ -1,4 +1,6 @@
-/*Encapsulate global styles, css reset, and logic for grid.*/
+/* Encapsulate global styles, css reset, and logic for grid. 
+ * This file should be included in every page.
+ */
 * {
   margin: 0;
   padding: 0;
@@ -14,29 +16,6 @@ body {
   opacity: 0;
 }
 
-#main {
-  z-index: 1;
-  display: grid;
-  grid-template-rows: 70px auto 35px;
-  min-height: 100vh;
-  height: 100%;
-}
-
-header {
-  position: -webkit-sticky; /* Safari */
-  grid-row: 1 / 1;
-  position: sticky;
-  top: 0;
-}
-
-#focus {
-  grid-row: 2 / 2;
-}
-
-footer {
-  grid-row: 3 / 3;
-}
-
 img#background {
   visibility: visible !important;
   z-index: -9999;
@@ -44,4 +23,33 @@ img#background {
   position: absolute;
   height: 100vh;
   width: 100vw;
+}
+
+#main {
+  display: grid;
+  min-height: 100vh;
+  z-index: 1;
+
+  grid:
+    "header" 70px
+    "focus" auto
+    "footer" 35px;
+
+  header {
+    grid-area: header;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+  }
+
+  #focus {
+    align-self: center;
+    justify-self: center;
+    grid-area: focus;
+    margin-top: 25%;
+  }
+
+  footer {
+    grid-area: footer;
+  }
 }
