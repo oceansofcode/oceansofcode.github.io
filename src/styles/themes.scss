@@ -25,7 +25,16 @@ body.dark-theme {
     li.dropDownItem {
         background: $body-dark;
     }
+    
     header {
+        background-color: $body-dark;
+        color: $text-dark;
+        a {
+            color: white;
+        }
+    }
+    
+    footer {
         background-color: $body-dark;
         color: $text-dark;
         a {
@@ -42,6 +51,15 @@ body.light-theme {
 
     header {
         //TODO Add transition on hover for background color of link
+        background-color: $body-light;
+        color: $text-light;
+        a {
+            color: black;
+        }
+    }
+
+    
+    footer {
         background-color: $body-light;
         color: $text-light;
         a {

@@ -26,9 +26,9 @@ export const getHeaderFooter = async () => {
  */
 export function insertHeaderFooter(header: HTMLElement, footer: HTMLElement) {
     const main: HTMLElement = document.querySelector('#main');
-
-    main.parentNode.insertBefore(header, main);
-    main.appendChild(footer);
+    const focus: HTMLElement = document.querySelector('#focus');
+    focus.parentNode.insertBefore(header, focus);
+    focus.parentNode.appendChild(footer);
 }
 
 function insertBackground() {

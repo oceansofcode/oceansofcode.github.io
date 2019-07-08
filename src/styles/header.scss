@@ -1,104 +1,107 @@
 header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 70px; // The header should be 70px, this is important for rendering drop down menus.
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 70px; // The header should be 70px, this is important for rendering drop down menus.
 
-    i#themeSwitch {
-        margin-right: 1rem;
-        margin-left: 1rem;
-        font-size: 1.5rem;
-        &:hover {
-            cursor: pointer;
-        }
+  i {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    &:hover {
+      cursor: pointer;
     }
+  }
 
-    // All links, including site title
-    a {
-        text-decoration: none;
-        display: inline-block;
+  // All links, including site title
+  a {
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  // The site title only
+  > h1#title {
+    font-size: 2em;
+    margin: {
+      left: 1rem;
+      right: auto;
+      top: 1em;
+      bottom: 1em;
     }
-
-    // The site title only
-    > h1#title {
-        font-size: 2em;
-        margin: {
-            left: 1rem;
-            right: auto;
-            top: 1em;
-            bottom: 1em;
-        }
-    }
-
+  }
+  nav {
     // The navigation.
     ul {
-        display: flex;
-        flex-wrap: wrap;
-        list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      list-style-type: none;
 
-        // Each item  in the navigation and it's link.
-        > li {
-            display: inline-block;
-			flex: 0 1 auto;
-			position: relative;
-            > a { // Sizing here is important for the dropdown list to render correctly on different screens.
-                font-size: 1rem;
-                height: 70px;
-                padding: 27px 1rem;
-            }
+      // Each item  in the navigation and it's link.
+      > li {
+        display: inline-block;
+        flex: 0 1 auto;
+        position: relative;
+        > a {
+          // Sizing here is important for the dropdown list to render correctly on different screens.
+          font-size: 1rem;
+          height: 70px;
+          padding: 27px 1rem;
         }
+      }
 
-        // List items that hold another list.
-        > li.dropDown {
-           > ul.dropDown {
-                display: none;
-                position: absolute;
-                top: 70px;
-                z-index: 1;
-                > li.dropDownItem {
-                    width: 100%;
-                    > a {
-                        height: auto;
-                        width: 100%;
-                        text-align: center;
-                    }
-                }
+      // List items that hold another list.
+      > li.dropDown {
+        > ul.dropDown {
+          display: none;
+          position: absolute;
+          top: 70px;
+          z-index: 1;
+          > li.dropDownItem {
+            width: 100%;
+            > a {
+              height: auto;
+              width: 100%;
+              text-align: center;
             }
-            &:hover ul.dropDown {
-                display: block;
-            }
+          }
         }
+        // Display the dropdown list on hover.
+        &:hover ul.dropDown {
+          display: block;
+        }
+      }
     }
+  }
 }
 
 @media screen and (max-width: 1200px) {
-    header {
-        height: 50px;
-        nav {
-            display: none;
-        }
-
-        h1#title {
-            font-size: 1.5em;
-            justify-self: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
+  header {
+    height: 50px;
+    nav {
+      display: none;
     }
+
+    h1#title {
+      font-size: 1.5em;
+      justify-self: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }
 
 @media screen and (max-width: 736px) {
-    header {
-        height: 50px;
-        nav {
-            display: none;
-        }
-
-        h1#title {
-            font-size: 1.5em;
-            justify-self: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
+  header {
+    height: 50px;
+    nav {
+      display: none;
     }
+
+    h1#title {
+      font-size: 1.5em;
+      justify-self: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }
