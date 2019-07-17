@@ -23,7 +23,7 @@ const paths = {
     'dest': './build/scripts'
   },
   styles: {
-    'src': './src/styles/**/*.scss',
+    'src': './src/styles/*.scss',
     'dest': './build/styles'
   },
   images: {
@@ -52,6 +52,13 @@ gulp.task('sass', () => {
     .pipe(gulp.dest(paths.styles.dest))
 })
 
+gulp.task('sassPages', () => {
+  return gulp.src('./src/styles/pages/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(minifiy())
+    .pipe(gulp.dest(`${paths.styles.dest}/pages`))
+})
+
 /*
  * Converts all typescript files to their respective, uglified js file.
  */
@@ -69,7 +76,7 @@ gulp.task('image', () => {
 })
 
 gulp.task('watch', () => {
-  gulp.watch([paths.styles.src, paths.scripts.src], gulp.series('sass', 'typescript'))
+  gulp.watch([paths.styles.src, paths.scripts.src, './src/styles/pages/*.scss'], gulp.series('sass', 'sassPages', 'typescript'))
 })
 
 /*
