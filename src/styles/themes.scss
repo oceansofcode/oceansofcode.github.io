@@ -17,54 +17,33 @@ body {
     }
 }
 
-body.dark-theme {
-    background-color: $body-dark;
-    h1, h2, h3, h4, h5, h6, p {
-        color: $text-dark;
-    }
-    li.dropDownItem {
-        background: $body-dark;
-    }
-    
-    header {
-        background-color: $body-dark;
-        color: $text-dark;
-        a {
-            color: white;
-        }
-    }
-    
-    footer {
-        background-color: $body-dark;
-        color: $text-dark;
-        a {
-            color: white;
-        }
-    }
-}
-
-body.light-theme {
-    background-color: $body-light;
-    h1, h2, h3, h4, h5, h6, p {
-        color: $text-light;
+@mixin theme($mode) {
+    @extend %body-#{$mode};
+    h1, h2, h3, h4, h5, h6, p, a {
+        @extend %text-#{$mode};
     }
 
     header {
         //TODO Add transition on hover for background color of link
-        background-color: $body-light;
-        color: $text-light;
-        a {
-            color: black;
+        
+        @extend %body-#{$mode};
+        @extend %text-#{$mode};
+
+        ul.drop-down {
+            @extend %body-#{$mode};
         }
     }
-
     
     footer {
-        background-color: $body-light;
-        color: $text-light;
-        a {
-            color: black;
-        }
+        @extend %body-#{$mode};
+        @extend %text-#{$mode};
     }
 }
 
+body.light-theme {
+    @include theme("light");
+}
+
+body.dark-theme {
+    @include theme("dark");
+}

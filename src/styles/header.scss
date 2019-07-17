@@ -50,13 +50,13 @@ header {
       }
 
       // List items that hold another list.
-      > li.dropDown {
-        > ul.dropDown {
+      > li.drop-down {
+        > ul.drop-down {
           display: none;
           position: absolute;
           top: 70px;
           z-index: 1;
-          > li.dropDownItem {
+          > li.drop-down-item {
             width: 100%;
             > a {
               height: auto;
@@ -66,7 +66,7 @@ header {
           }
         }
         // Display the dropdown list on hover.
-        &:hover ul.dropDown {
+        &:hover ul.drop-down {
           display: block;
         }
       }
