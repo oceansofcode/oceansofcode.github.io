@@ -24,12 +24,11 @@ export const getHeaderFooter = async () => {
 /*
  * Inserts a header and footer element inside the body before the main container.
  */
-export function insertHeaderFooter(header: HTMLElement, footer: HTMLElement) {
+export const insertHeaderFooter = (header: HTMLElement, footer: HTMLElement) => {
     const main: HTMLElement = document.querySelector('#main');
-    const focus: HTMLElement = document.querySelector('#focus');
-    focus.parentNode.insertBefore(header, focus);
-    focus.parentNode.appendChild(footer);
-}
+    main.insertBefore(header, main.firstChild);
+    main.appendChild(footer);
+};
 
 function insertBackground() {
     const image: HTMLImageElement = new Image();
