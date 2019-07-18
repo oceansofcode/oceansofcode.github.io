@@ -1,1 +1,5 @@
-TODO: Use modules to separate header footer into own module
+# [Oceans of Code](https://oceansofcode.com)
+
+## Repository of my Github Pages portfolio
+
+### See the Wiki for documentation
