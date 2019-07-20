@@ -1,17 +1,20 @@
-const gulp = require('gulp')
-const htmlhint = require('gulp-htmlhint')
+/* eslint @typescript-eslint/indent: 0 */
+/* eslint @typescript-eslint/no-var-requires: 0 */
+/* eslint no-undef: 0*/
+const gulp = require('gulp');
+const htmlhint = require('gulp-htmlhint');
 
-const ts = require('gulp-typescript')
-const tsProject = ts.createProject('./src/scripts/tsconfig.json')
-const uglify = require('gulp-uglify-es').default
+const ts = require('gulp-typescript');
+const tsProject = ts.createProject('./src/scripts/tsconfig.json');
+const uglify = require('gulp-uglify-es').default;
 
-const sass = require('gulp-sass')
-const minifiy = require('gulp-minify-css')
-const concat = require('gulp-concat')
-sass.compiler = require('node-sass')
-const imagemin = require('gulp-imagemin')
+const sass = require('gulp-sass');
+const minifiy = require('gulp-minify-css');
+const concat = require('gulp-concat');
+sass.compiler = require('node-sass');
+const imagemin = require('gulp-imagemin');
 
-const defaultTasks = ['html', 'sass', 'typescript']
+const defaultTasks = ['html', 'sass', 'typescript'];
 
 const paths = {
   html: {
@@ -30,7 +33,7 @@ const paths = {
     'src': './src/images/*',
     'dest': './build/images'
   }
-}
+};
 
 /*
  * Validates html outputting the errors to the console log.
@@ -38,8 +41,8 @@ const paths = {
 gulp.task('html', () => {
   return gulp.src([paths.html.src, ...paths.html.exclude])
     .pipe(htmlhint())
-    .pipe(htmlhint.reporter())
-})
+    .pipe(htmlhint.reporter());
+});
 
 /*
  * Converts all the sass files to a single, minfied main css file.
@@ -49,15 +52,15 @@ gulp.task('sass', () => {
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('main.css'))
     .pipe(minifiy())
-    .pipe(gulp.dest(paths.styles.dest))
-})
+    .pipe(gulp.dest(paths.styles.dest));
+});
 
 gulp.task('sassPages', () => {
   return gulp.src('./src/styles/pages/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(minifiy())
-    .pipe(gulp.dest(`${paths.styles.dest}/pages`))
-})
+    .pipe(gulp.dest(`${paths.styles.dest}/pages`));
+});
 
 /*
  * Converts all typescript files to their respective, uglified js file.
@@ -66,20 +69,20 @@ gulp.task('typescript', () => {
   return gulp.src(paths.scripts.src)
     .pipe(tsProject())
     .pipe(uglify())
-    .pipe(gulp.dest(paths.scripts.dest))
-})
+    .pipe(gulp.dest(paths.scripts.dest));
+});
 
 gulp.task('image', () => {
   return gulp.src(paths.images.src)
     .pipe(imagemin())
-    .pipe(gulp.dest(paths.images.dest))
-})
+    .pipe(gulp.dest(paths.images.dest));
+});
 
 gulp.task('watch', () => {
-  gulp.watch([paths.styles.src, paths.scripts.src, './src/styles/pages/*.scss'], gulp.series('sass', 'sassPages', 'typescript'))
-})
+  gulp.watch([paths.styles.src, paths.scripts.src, './src/styles/pages/*.scss'], gulp.series('sass', 'sassPages', 'typescript'));
+});
 
 /*
  * Runs each task in paralell.
  */
-gulp.task('default', gulp.parallel(...defaultTasks))
+gulp.task('default', gulp.parallel(...defaultTasks));
