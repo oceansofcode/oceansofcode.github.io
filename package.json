@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/adamdji/adamdji.github.io#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
     "browser-sync": "^2.26.7",
     "eslint": "^6.0.1",
     "eslint-config-standard": "^12.0.0",

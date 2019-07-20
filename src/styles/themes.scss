@@ -37,12 +37,6 @@ body {
         @extend %body-#{$mode};
         @extend %text-#{$mode};
     }
-
-    @if $mode == 'light' {
-        section {
-            @extend %body-#{$mode};
-        }
-    } 
 }
 
 body.light-theme {

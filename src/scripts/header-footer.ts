@@ -1,40 +1,30 @@
-/*
- * This module dynamically inserts the header and footer from their respective HTML files.
- * This allows the header and footer to be changed only once per file despite this being a front-end only application.
+/**
+ * Creates a header and footer element and injects fetched html into them.
+ * @returns a promise that will return an object consisting of a header and footer.
  */
-
-/*
- * Creates a header and footer element, and then asynchronously retrieves their data and inserts
- * the data into them. Returns the header and footer as an object.
- */
-export const getHeaderFooter = async () => {
+export const getHeaderFooter = async (): Promise<{header: HTMLElement; footer: HTMLElement}> => {
     const header: HTMLElement = document.createElement('header');
     const footer: HTMLElement = document.createElement('footer');
-    const headerSrc: string = './src/html/header.html'
-    const footerSrc: string = './src/html/footer.html'
-    //insertBackground();
+    const headerSrc = './src/html/header.html';
+    const footerSrc = './src/html/footer.html';
+    
+    // Performance gain by having the header and footer html promises executing in 'paralell'.
     await Promise.all([
         fetch(headerSrc).then(headerRes => headerRes.text()).then(headerText => header.innerHTML = headerText),
         fetch(footerSrc).then(footerRes => footerRes.text()).then(footerText => footer.innerHTML = footerText)
     ]);
     
     return {header, footer};
-}
+};
 
-/*
- * Inserts a header and footer element inside the body before the main container.
+/**
+ * Inserts a header and footer. Parameters are taken separately so that the caller
+ * does not accidentially insert them into the wrong location in the DOM.
+ * @param {HTMLElement} header
+ * @param {HTMLElement} footer
  */
-export const insertHeaderFooter = (header: HTMLElement, footer: HTMLElement) => {
+export const insertHeaderFooter = (header: HTMLElement, footer: HTMLElement): void => {
     const main: HTMLElement = document.querySelector('#main');
     main.insertBefore(header, main.firstChild);
     main.appendChild(footer);
 };
-
-function insertBackground() {
-    const image: HTMLImageElement = new Image();
-    image.onload = () => {
-        document.querySelector('body').appendChild(image);
-    }
-    image.id = 'background';
-    image.src = './build/images/light-under-ocean.png';
-}

@@ -11,12 +11,13 @@ img#background {
   align-self: center;
   justify-self: center;
   grid-row: row2-start;
-  grid-column: 1 / span 3;
+  grid-column: 1 / span 4;
   text-align: center;
   vertical-align: middle;
   line-height: 100%;
 
   h1 {
+      font-family: "Lobster Two", Helvetica, sans-serif;
       font-size: 2em;
   }
 }
