@@ -1,3 +1,4 @@
+
 header {
   display: flex;
   justify-content: flex-end;
@@ -20,7 +21,7 @@ header {
   }
 
   // The site title only
-  > h1#title {
+  h1#title {
     font-size: 2em;
     margin: {
       left: 1rem;

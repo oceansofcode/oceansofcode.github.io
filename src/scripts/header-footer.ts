@@ -1,9 +1,9 @@
-/*
+/**
  * This module dynamically inserts the header and footer from their respective HTML files.
  * This allows the header and footer to be changed only once per file despite this being a front-end only application.
  */
 
-/*
+/**
  * Creates a header and footer element, and then asynchronously retrieves their data and inserts
  * the data into them. Returns the header and footer as an object.
  */
@@ -12,7 +12,7 @@ export const getHeaderFooter = async () => {
     const footer: HTMLElement = document.createElement('footer');
     const headerSrc: string = './src/html/header.html'
     const footerSrc: string = './src/html/footer.html'
-    //insertBackground();
+    
     await Promise.all([
         fetch(headerSrc).then(headerRes => headerRes.text()).then(headerText => header.innerHTML = headerText),
         fetch(footerSrc).then(footerRes => footerRes.text()).then(footerText => footer.innerHTML = footerText)
@@ -21,20 +21,13 @@ export const getHeaderFooter = async () => {
     return {header, footer};
 }
 
-/*
- * Inserts a header and footer element inside the body before the main container.
+/**
+ * Inserts a header and footer 
+ * @param {HTMLElement} header a header HTML element.
+ * @param {HTMLElement} footer a footer HTML element.
  */
 export const insertHeaderFooter = (header: HTMLElement, footer: HTMLElement) => {
     const main: HTMLElement = document.querySelector('#main');
     main.insertBefore(header, main.firstChild);
     main.appendChild(footer);
 };
-
-function insertBackground() {
-    const image: HTMLImageElement = new Image();
-    image.onload = () => {
-        document.querySelector('body').appendChild(image);
-    }
-    image.id = 'background';
-    image.src = './build/images/light-under-ocean.png';
-}
