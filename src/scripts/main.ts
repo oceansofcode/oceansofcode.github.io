@@ -1,16 +1,32 @@
 import { getHeaderFooter, insertHeaderFooter } from './header-footer.js';
 import showBody from './showBody.js';
-import enableThemeToggle from './theme-toggle.js';
-import enableMenuToggle from './mobile-menu.js';
+import addThemeToggle from './theme-toggle.js';
+import addMenuToggle from './mobile-menu.js';
 
-/** 
- * Initializes the page by retrieving the header and footer, inserting them, and then finally makes the page visible.
-*/
+/**
+ * Adds common elements to the page by injecting it into the DOM.
+ * Demonstrates use of async to return a promise.
+ */
+const prepareDOM = async(): Promise<void> => {
+    return getHeaderFooter().then(result => insertHeaderFooter(result.header, result.footer));
+};
+
+
+/**
+ * Functions that add event listeners for common elements should be called in here.
+ * Every function in here will run asynchronously.
+ */
+const addEvents = (): void => {
+    addThemeToggle();
+    addMenuToggle();
+};
+
+/**
+ * Initializes the page by preparing the dom, adding events and making the body visible with
+ * a transition.
+ */
 (async function init() {
-    const headerFooter: {header: HTMLElement; footer: HTMLElement} = await getHeaderFooter();
-    insertHeaderFooter(headerFooter.header, headerFooter.footer);
-    enableThemeToggle();
-    enableMenuToggle();
+    await prepareDOM();
+    addEvents();
     showBody();
 })();
-
