@@ -2,18 +2,20 @@
  * I believe this module could be written 'better', but I used it to try out creating, and
  * passing objects using different methods
  */
-export default () => {
-    interface ThemeToggle {
-        themeName: string;
-        icon: string;
-        toolTip: string;
-    };
 
-    const Theme = (theme: string, icon: string, toolTip: string): ThemeToggle => ({
-        themeName: theme,
-        icon: icon,
-        toolTip: toolTip,
-    });
+interface ThemeToggle {
+    name: string;
+    icon: string;
+    toolTip: string;
+};
+
+const Theme = (name: string, icon: string, toolTip: string): ThemeToggle => ({
+    name,
+    icon,
+    toolTip,
+});
+
+export default () => {
 
     const themeButton: HTMLElement = document.querySelector('#themeSwitch');
     const body: HTMLElement = document.querySelector('body');
@@ -25,7 +27,7 @@ export default () => {
     function changeTheme() {
         themeButton.removeEventListener('click', changeTheme, false);
         body.classList.add(transition);
-        if (body.classList.contains(light.themeName)) {
+        if (body.classList.contains(light.name)) {
             addRemove({ add: dark, remove: light });
         } else {
             addRemove({ add: light, remove: dark });
@@ -39,8 +41,8 @@ export default () => {
     }
 
     function addRemove({ add, remove }: { add: ThemeToggle; remove: ThemeToggle; }) {
-        body.classList.add(add.themeName);
-        body.classList.remove(remove.themeName);
+        body.classList.add(add.name);
+        body.classList.remove(remove.name);
 
         themeButton.classList.add(add.icon);
         themeButton.classList.remove(remove.icon);

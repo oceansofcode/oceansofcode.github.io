@@ -10,8 +10,8 @@
 export const getHeaderFooter = async () => {
     const header: HTMLElement = document.createElement('header');
     const footer: HTMLElement = document.createElement('footer');
-    const headerSrc: string = './src/html/header.html'
-    const footerSrc: string = './src/html/footer.html'
+    const headerSrc = './src/html/header.html';
+    const footerSrc = './src/html/footer.html';
     
     await Promise.all([
         fetch(headerSrc).then(headerRes => headerRes.text()).then(headerText => header.innerHTML = headerText),
@@ -19,7 +19,7 @@ export const getHeaderFooter = async () => {
     ]);
     
     return {header, footer};
-}
+};
 
 /**
  * Inserts a header and footer 
