@@ -1,1 +1,1 @@
-import{getHeaderFooter,insertHeaderFooter}from"./header-footer.js";import showBody from"./showBody.js";import themeToggle from"./theme-toggle.js";!async function(){const e=await getHeaderFooter();insertHeaderFooter(e.header,e.footer),themeToggle(),showBody()}();
+import{getHeaderFooter,insertHeaderFooter}from"./header-footer.js";import showBody from"./showBody.js";import enableThemeToggle from"./theme-toggle.js";!async function(){const e=await getHeaderFooter();insertHeaderFooter(e.header,e.footer),enableThemeToggle(),showBody()}();
