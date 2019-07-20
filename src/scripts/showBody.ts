@@ -5,7 +5,7 @@
  */
 export default () => {
     const body: HTMLElement = document.querySelector('body');
-    const fadeLength = 1;
+    const fadeLength = 0.75;
     const bodyFadeIn = `visibility 0s, opacity ${fadeLength}s ease-in`;
 
     body.style.transition = bodyFadeIn;

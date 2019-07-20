@@ -28,7 +28,7 @@ body {
         @extend %body-#{$mode};
         @extend %text-#{$mode};
 
-        ul.drop-down {
+        ul {
             @extend %body-#{$mode};
         }
     }
@@ -37,6 +37,8 @@ body {
         @extend %body-#{$mode};
         @extend %text-#{$mode};
     }
+
+   
 }
 
 body.light-theme {
