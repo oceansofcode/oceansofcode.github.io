@@ -15,7 +15,7 @@ const dark: Theme = createTheme('dark-theme', 'fa-sun');
 
 export default () => {
     const body: HTMLElement = document.querySelector('body');
-    const themeButton: HTMLElement = document.querySelector('#themeSwitch');
+    const themeButton: HTMLElement = document.querySelector('#theme-switch');
 
     const switchThemes = ({ newTheme, oldTheme }: { newTheme: Theme; oldTheme: Theme }) => {
         body.classList.add(newTheme.name);
