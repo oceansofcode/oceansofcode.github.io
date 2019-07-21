@@ -22,5 +22,5 @@ These design decisions were made because:
 2. **Performance**: ESnext code is smaller and (usually) will run faster than code compiled down to ES5 or even ES6.
 3. **Audience**: The target audience of this portfolio (Recruiters, Job Interviewers, Clients) will more than likely be using a modern browser at the latest version.
 4. **Preferences**: I prefer CSS Grid / Flexbox to BootStrap for CSS layout and responsive design; to me the code is cleaner and separates layout from the HTML.
-5. **TypeScript and Sass**: Being supersets, there is no penalty for using them as opposed to writing in JavaScript and CSS. Both technologies result in cleaner code that is easier to follow and debug. TypeScript also enables richer intellisense while coding improving productivity both when writing and reading code.
+5. **TypeScript and Sass**: Being supersets, there is no penalty for using them as opposed to writing in JavaScript and CSS. I find that both technologies provide cleaner code that is easier to follow and debug. TypeScript also enables richer intellisense while coding, a feature I find invaluable.
 6. **The Name**: Oceans of Code comes from an inside joke :)
