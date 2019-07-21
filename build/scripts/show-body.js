@@ -1,0 +1,1 @@
+export default()=>{const i=document.querySelector("body");i.style.transition="visibility 0s, opacity 0.75s ease-in",i.style.visibility="visible",i.style.opacity="1"};
