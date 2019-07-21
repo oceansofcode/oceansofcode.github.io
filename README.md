@@ -6,7 +6,7 @@
 The goal of this portfolio is to showcase my skills as a web developer, my projects, and who I am.
 
 ### Design
-#### *Structure*:
+#### *Architecture*:
 The JavaScript and CSS are initially written in TypeScript and Sass (SCSS) respectively. A modular approach for both are taken, splitting functionality into different files.
 
 Gulp is used to build the app by minifying both the compiled JavaScript and CSS for performance. The JavaScript remains modular using the type="module" attribute, whereas the Sass is compiled into one large main.css file.
