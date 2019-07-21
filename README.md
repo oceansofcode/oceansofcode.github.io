@@ -3,7 +3,7 @@
 ## My Github Pages portfolio
 
 ### Requirements
-The goal of this portfolio is to showcase who I am, my web projects, and my skills as a web developer.
+The goal of this portfolio is to showcase my skills as a web developer, my projects, and who I am.
 
 ### Design
 #### *Structure*:
