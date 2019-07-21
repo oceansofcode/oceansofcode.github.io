@@ -14,7 +14,7 @@ Gulp is used to build the app by minifying both the compiled JavaScript and CSS 
 There are folders for TypeScript and Sass files unique to each page, where page dependant logic and styles are placed respectively. This helps reduce the chance that styles and behaviours intended for one page do not affect another.
 
 #### *Decisions*:
-This portfolio uses the latest CSS and JavaScript (ESnext) features without any fallback for older browsers. There are no libraries or frameworks used in the overall impementation of the website except for icons and web-fonts. Any projects made with a framework or library will be noted as such.
+This portfolio uses the latest CSS and JavaScript (ESnext) features without any fallback for older browsers. There are no libraries or frameworks used in the overall implementation of the website (except for icons and web-fonts). Any projects made with a framework or library will be noted as such.
 
 These design decisions were made because: 
 
