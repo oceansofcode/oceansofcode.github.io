@@ -1,0 +1,1 @@
+section#about-areas{display:flex;flex-wrap:wrap;grid-column:1/span 4}section#about-areas article,section#about-areas aside{flex:0 1 50%;min-height:75vh}

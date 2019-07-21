@@ -1,5 +1,4 @@
 import { getHeaderFooter, insertHeaderFooter } from './header-footer.js';
-import showBody from './showBody.js';
 import addThemeToggle, { setTheme } from './theme-toggle.js';
 import addMenuToggle from './mobile-menu.js';
 
@@ -29,5 +28,4 @@ const addEvents = (): void => {
     await prepareDOM();
     setTheme();
     addEvents();
-    showBody();
 })();
