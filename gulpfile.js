@@ -9,7 +9,7 @@ const tsProject = ts.createProject('./src/scripts/tsconfig.json');
 const uglify = require('gulp-uglify-es').default;
 
 const sass = require('gulp-sass');
-const minifiy = require('gulp-minify-css');
+const minifiy = require('gulp-clean-css');
 const concat = require('gulp-concat');
 sass.compiler = require('node-sass');
 const imagemin = require('gulp-imagemin');
