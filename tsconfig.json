@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "removeComments": true,
+        "sourceMap": true,
+        "outDir": "dist/scripts"
+    },
+    "include": [
+        "src/scripts/**/*"
+    ]
+}

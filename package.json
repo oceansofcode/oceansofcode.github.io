@@ -1,0 +1,56 @@
+{
+  "name": "oceansofcode.github.io",
+  "version": "1.0.0",
+  "description": "Portfolio website source code",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "clean": "rm -rf ./dist && mkdir dist",
+    "build": "echo build",
+    "dev-deploy": "echo dev-deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oceansofcode/oceansofcode.github.io.git"
+  },
+  "keywords": [
+    "portfolio",
+    "front-end",
+    "serverless"
+  ],
+  "author": "Adam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oceansofcode/oceansofcode.github.io/issues"
+  },
+  "homepage": "https://github.com/oceansofcode/oceansofcode.github.io#readme",
+  "devDependencies": {
+    "@types/clean-css": "^4.2.1",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
+    "browser-sync": "^2.26.7",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-immutable": "^1.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlhint": "^3.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-uglify-es": "^2.0.0",
+    "http-server": "^0.12.3",
+    "node-sass": "^4.13.1",
+    "tar": "^6.0.1",
+    "ts-lint": "^4.5.1",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {}
+}

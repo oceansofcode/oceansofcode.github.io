@@ -1,0 +1,30 @@
+// Transition rules when switching from light to dark mode.
+@mixin theme($mode) {
+  @extend %body-#{$mode};
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a {
+    @extend %text-#{$mode};
+  }
+
+  header {
+    //TODO Add transition on hover for background color of link
+
+    @extend %body-#{$mode};
+    @extend %text-#{$mode};
+
+    ul {
+      @extend %body-#{$mode};
+    }
+  }
+
+  footer {
+    @extend %body-#{$mode};
+    @extend %text-#{$mode};
+  }
+}
