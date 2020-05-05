@@ -57,7 +57,7 @@ gulp.task('htmlComponents', () => {
 });
 
 /*
- * Converts all the sass files to a single, minfied main css file.
+ * Converts all the sass files to a single, minified main css file.
  */
 gulp.task('sass', () => {
   return gulp.src(paths.styles.src)
@@ -87,6 +87,6 @@ gulp.task('watch', () => {
 });
 
 /*
- * Runs each task in paralell.
+ * Runs each task in parallel.
  */
 gulp.task('default', gulp.parallel(...defaultTasks));
