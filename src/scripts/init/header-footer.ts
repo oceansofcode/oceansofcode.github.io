@@ -12,8 +12,8 @@ const createElementText = (elementName: string) => {
 };
 
 const getHeaderFooter = async (): Promise<HeaderFooter> => {
-    const headerSrc = './build/html/header.html';
-    const footerSrc = './build/html/footer.html';
+    const headerSrc = './dist/html/header.html';
+    const footerSrc = './dist/html/footer.html';
 
     const setHeaderText = text => createElementText('header')(text);
     const setFooterText = text => createElementText('footer')(text);
