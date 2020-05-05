@@ -18,6 +18,7 @@
     "watch:ts": "onchange \"src/scripts/**/*.ts\" -- npm run build:ts",
     "watch": "parallelshell \"npm run serve\" \"npm run watch:sass\" \"npm run watch:ts\"",
     "serve": "browser-sync start --server --files \"dist/styles/**/*.css, dist/scripts/**/*.js\"",
+    "deploy:dev": "npm run build && npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
