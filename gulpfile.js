@@ -1,6 +1,9 @@
 /* eslint @typescript-eslint/indent: 0 */
 /* eslint @typescript-eslint/no-var-requires: 0 */
 /* eslint no-undef: 0*/
+
+// NOTE: Gulp has been replaced by npm scripts in this project. This file is retained for informational and presentational purposes.
+
 const gulp = require('gulp');
 const htmlhint = require('gulp-htmlhint');
 
