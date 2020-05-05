@@ -7,13 +7,13 @@
     "test": "tests"
   },
   "scripts": {
-    "clean": "rm -rf ./dist && mkdir dist",
-    "clean:build": "npm run clean && npm run build && npm run build:images",
     "build:html": "cp -r src/html dist/html",
     "build:images": "imagemin src/images --out-dir dist/images",
     "build:sass": "node-sass --output-style compressed --source-map true --source-map-contents src/styles --output dist/styles",
     "build:ts": "tsc",
-    "build": "npm run build:html && npm run build:ts && npm run build:sass",
+    "build": "parallelshell \"npm run build:html\" \"npm run build:sass\" \"npm run build:ts\"",
+    "clean": "rm -rf ./dist && mkdir dist",
+    "clean:build": "npm run clean && parallelshell \"npm run build:html\" \"npm run build:sass\" \"npm run build:ts\" \"npm run build:images\"",
     "watch:sass": "onchange \"src/styles/**/*.scss\" -- npm run build:sass",
     "watch:ts": "onchange \"src/scripts/**/*.ts\" -- npm run build:ts",
     "watch": "parallelshell \"npm run serve\" \"npm run watch:sass\" \"npm run watch:ts\"",
