@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "build:html": "cp -r src/html dist/html",
+    "build:html": "rm -rf dist/html && cp -r src/html dist/html",
     "build:images": "imagemin src/images --out-dir dist/images",
     "build:sass": "node-sass --output-style compressed --source-map true --source-map-contents src/styles --output dist/styles",
     "build:ts": "tsc",
