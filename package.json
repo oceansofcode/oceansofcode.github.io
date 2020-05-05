@@ -9,13 +9,15 @@
   "scripts": {
     "clean": "rm -rf ./dist && mkdir dist",
     "clean:build": "npm run clean && npm run build && npm run build:images",
-    "build": "npm run build:html && npm run build:js && npm run build:sass",
     "build:html": "cp -r src/html dist/html",
     "build:images": "imagemin src/images --out-dir dist/images",
     "build:sass": "node-sass --output-style compressed --source-map true --source-map-contents src/styles --output dist/styles",
-    "build:js": "tsc",
-    "watch:sass": "onchange 'src/styles/*.scss' -- npm run build:sass",
-    "deploy:dev": "http-server",
+    "build:ts": "tsc",
+    "build": "npm run build:html && npm run build:ts && npm run build:sass",
+    "watch:sass": "onchange \"src/styles/**/*.scss\" -- npm run build:sass",
+    "watch:ts": "onchange \"src/scripts/**/*.ts\" -- npm run build:ts",
+    "watch": "parallelshell \"npm run serve\" \"npm run watch:sass\" \"npm run watch:ts\"",
+    "serve": "browser-sync start --server --files \"dist/styles/**/*.css, dist/scripts/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -49,7 +51,7 @@
     "imagemin": "^7.0.1",
     "node-sass": "^4.13.1",
     "onchange": "^7.0.2",
-    "parallelshell": "^3.0.2",
+    "parallelshell": "^3.0.1",
     "tar": "^6.0.2",
     "ts-lint": "^4.5.1",
     "typescript": "^3.8.3"
