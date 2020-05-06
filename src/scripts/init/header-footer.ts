@@ -29,10 +29,10 @@ const getHeaderFooter = async (): Promise<HeaderFooter> => {
 };
 
 const insertHeaderFooter = (headerFooter: HeaderFooter) => {
-    const main: HTMLElement = document.querySelector('#main');
+    const body: HTMLElement = document.querySelector('body');
 
-    main.insertBefore(headerFooter.header, main.firstChild);
-    main.appendChild(headerFooter.footer);
+    body.insertBefore(headerFooter.header, body.firstChild);
+    body.appendChild(headerFooter.footer);
 };
 
 export default () => getHeaderFooter().then(insertHeaderFooter);

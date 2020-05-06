@@ -18,9 +18,9 @@ const getHeaderFooter = async () => {
     return { header, footer };
 };
 const insertHeaderFooter = (headerFooter) => {
-    const main = document.querySelector('#main');
-    main.insertBefore(headerFooter.header, main.firstChild);
-    main.appendChild(headerFooter.footer);
+    const body = document.querySelector('body');
+    body.insertBefore(headerFooter.header, body.firstChild);
+    body.appendChild(headerFooter.footer);
 };
 export default () => getHeaderFooter().then(insertHeaderFooter);
 //# sourceMappingURL=header-footer.js.map

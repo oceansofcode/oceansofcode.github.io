@@ -17,8 +17,8 @@
     "watch:sass": "onchange \"src/styles/**/*.scss\" -- npm run build:sass",
     "watch:ts": "onchange \"src/scripts/**/*.ts\" -- npm run build:ts",
     "watch": "parallelshell \"npm run serve\" \"npm run watch:sass\" \"npm run watch:ts\"",
-    "serve": "browser-sync start --server --files \"dist/styles/**/*.css, dist/scripts/**/*.js\"",
-    "deploy:dev": "npm run build && npm run serve",
+    "serve": "browser-sync start --server --browser \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" --files \"dist/styles/**/*.css, dist/scripts/**/*.js\"",
+    "deploy:local": "npm run build && npm run watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -37,9 +37,12 @@
   },
   "homepage": "https://github.com/oceansofcode/oceansofcode.github.io#readme",
   "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
     "browser-sync": "^2.26.7",
+    "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-immutable": "^1.0.0",
@@ -48,6 +51,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "imagemin": "^7.0.1",
+    "mocha": "^7.1.2",
     "node-sass": "^4.14.1",
     "onchange": "^7.0.2",
     "parallelshell": "3.0.1",
