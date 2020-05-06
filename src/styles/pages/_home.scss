@@ -1,10 +1,10 @@
-img#background {
+img#intro-background {
   visibility: visible !important;
   z-index: -9999;
   top: 0;
   position: absolute;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 }
 
 @keyframes title-appear {
@@ -17,20 +17,25 @@ img#background {
   }
 }
 
-#focus {
-  align-self: center;
-  justify-self: center;
+main {
+  min-height: 100vh;
   grid-row: row2-start;
   grid-column: 1 / span 4;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 100%;
 
-  h1 {
+  section#intro {
+    min-height: 100vh;
+    display: grid;
+    text-align: center;
+    line-height: 100%;
+
+    > h1#welcome-callout {
+      align-self: center;
+      justify-self: center;
       font-family: "Lobster Two", Helvetica, sans-serif;
       font-size: 2em;
       animation: title-appear;
       animation-duration: 1s;
       animation-timing-function: ease-in-out;
+    }
   }
 }

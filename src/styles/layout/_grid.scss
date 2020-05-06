@@ -1,23 +1,22 @@
-// This is for the layout / grid of the page.
-main {
-    display: grid;
-    min-height: 100vh;
-    z-index: 1;
-  
-    grid:
-      [row1-start] "header header header header" 70px [row1-end]
-      [row2-start] "left center-left center-right right" auto [row2-end]
-      [row3-start] "footer footer footer footer" 35px [row3-end]
-      / 1fr 1fr 1fr 1fr;
-  
-    header {
-      grid-area: header;
-      position: sticky;
-      top: 0;
-    }
-  
-    footer {
-      grid-area: footer;
-    }
+// This is for the layout / grid of each body.
+body {
+  display: grid;
+  min-height: 100vh;
+  z-index: 1;
+
+  grid:
+    [row1-start] "header header header header" 70px [row1-end]
+    [row2-start] "left center-left center-right right" auto [row2-end]
+    [row3-start] "footer footer footer footer" 35px [row3-end]
+    / 1fr 1fr 1fr 1fr;
+
+  header {
+    grid-area: header;
+    position: sticky;
+    top: 0;
   }
-  
+
+  footer {
+    grid-area: footer;
+  }
+}

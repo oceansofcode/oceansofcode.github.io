@@ -1,3 +1,8 @@
 body.light-theme {
   @include theme("light");
+  .dark-background {
+    background-color: $light-background;
+    padding: 1rem;
+    border-radius: 25px;
+  }
 }
