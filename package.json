@@ -14,10 +14,11 @@
     "build": "parallelshell \"npm run build:html\" \"npm run build:sass\" \"npm run build:ts\"",
     "clean": "rm -rf ./dist && mkdir dist",
     "clean:build": "npm run clean && parallelshell \"npm run build:html\" \"npm run build:sass\" \"npm run build:ts\" \"npm run build:images\"",
+    "watch:html": "onchange \"src/html/**/*.html\" \"*.html\" -- npm run build:html",
     "watch:sass": "onchange \"src/styles/**/*.scss\" -- npm run build:sass",
     "watch:ts": "onchange \"src/scripts/**/*.ts\" -- npm run build:ts",
-    "watch": "parallelshell \"npm run serve\" \"npm run watch:sass\" \"npm run watch:ts\"",
-    "serve": "browser-sync start --server --browser \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" --files \"dist/styles/**/*.css, dist/scripts/**/*.js\"",
+    "watch": "parallelshell \"npm run serve\" \"npm run watch:sass\" \"npm run watch:ts\" \"npm run watch:html\"",
+    "serve": "browser-sync start --server --browser \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" --files \"dist/styles/**/*.css, dist/scripts/**/*.js, **/*.html\"",
     "deploy:local": "npm run build && npm run watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
