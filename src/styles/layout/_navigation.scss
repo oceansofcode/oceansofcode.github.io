@@ -1,43 +1,43 @@
 header nav {
-    // The navigation.
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      list-style-type: none;
+  // The navigation.
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
 
-      // Each item  in the navigation and it's link.
-      > li {
-        display: inline-block;
-        flex: 0 1 auto;
-        position: relative;
-        > a {
-          // Sizing here is important for the dropdown list to render correctly on different screens.
-          font-size: 1rem;
-          height: 70px;
-          padding: 27px 1rem;
-        }
+    // Each item  in the navigation and it's link.
+    > li {
+      display: inline-block;
+      flex: 0 1 auto;
+      position: relative;
+      > a {
+        // Sizing here is important for the dropdown list to render correctly on different screens.
+        font-size: 1rem;
+        height: 70px;
+        padding: 27px 1rem;
       }
+    }
 
-      // List items that hold another list.
-      > li.drop-down {
-        > ul.drop-down {
-          display: none;
-          position: absolute;
-          top: 70px;
-          z-index: 1;
-          > li.drop-down-item {
+    // List items that hold another list.
+    > li.drop-down {
+      > ul.drop-down {
+        display: none;
+        position: absolute;
+        top: 70px;
+        z-index: 1;
+        > li.drop-down-item {
+          width: 100%;
+          > a {
+            height: auto;
             width: 100%;
-            > a {
-              height: auto;
-              width: 100%;
-              text-align: center;
-            }
+            text-align: center;
           }
         }
-        // Display the dropdown list on hover.
-        &:hover ul.drop-down {
-          display: block;
-        }
+      }
+      // Display the dropdown list on hover.
+      &:hover ul.drop-down {
+        display: block;
       }
     }
   }
+}
