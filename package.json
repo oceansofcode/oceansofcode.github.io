@@ -18,7 +18,7 @@
     "watch:sass": "onchange \"src/styles/**/*.scss\" -- npm run build:sass",
     "watch:ts": "onchange \"src/scripts/**/*.ts\" -- npm run build:ts",
     "watch": "parallelshell \"npm run serve\" \"npm run watch:sass\" \"npm run watch:ts\" \"npm run watch:html\"",
-    "serve": "browser-sync start --server --browser \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" --files \"dist/styles/**/*.css, dist/scripts/**/*.js, **/*.html\"",
+    "serve": "browser-sync start --server --browser \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" --browser \"chrome\" --files \"dist/styles/**/*.css, dist/scripts/**/*.js, **/*.html\"",
     "deploy:local": "npm run build && npm run watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

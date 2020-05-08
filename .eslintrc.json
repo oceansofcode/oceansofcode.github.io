@@ -28,6 +28,10 @@
         "prefer-const": "warn",
         "immutable/no-let": 1,
     	"immutable/no-this": 1,
-    	"immutable/no-mutation": 1
+    	"immutable/no-mutation": 1,
+        "quotes": [
+            2,
+            "single"
+        ]
     }
 }
