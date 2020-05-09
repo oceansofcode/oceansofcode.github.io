@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -11,21 +11,47 @@
     <title>Portfolio</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="dist/styles/main.css" />
-    <link rel="preload" href="dist/images/light-under-ocean.png" as="image">
-    <script src="dist/scripts/main.js" type="module"></script>
-    <script src="https://kit.fontawesome.com/a2583045b3.js" crossorigin="anonymous"></script>
+    <link rel="preload" href="dist/images/light-under-ocean.webp" as="image">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Cinzel|Roboto|Lobster+Two|Source+Code+Pro&display=swap" as="style">
+    <link rel="modulepreload"  href="dist/scripts/init/mobile-menu.js">
+    <link rel="modulepreload"  href="dist/scripts/theme/theme-switch.js">
+    <script src="dist/scripts/main.js" type="module" async></script>
+    <script src="https://kit.fontawesome.com/a2583045b3.js" async crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <header>
+        <i id="mobile-menu-toggle" class="fas fa-bars"></i>
+        <h1 id="title"><a href="./">Oceans of Code</a></h1>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="./codex">Codex</a></li>
+                <li class="drop-down"><a href="./apps">Web Apps</a>
+                    <ul class="drop-down">
+                        <li class="drop-down-item"><a href="./apps/stocks">GPA Calculator <span
+                                    class="made-in">(Angular)</span></a></li>
+                        <li class="drop-down-item"><a href="./apps/gpa">Stocks <span class="made-in">(React)</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="./wasm">Web Assembly</a></li>
+                <li><a href="./sandbox">Sandbox</a></li>
+            </ul>
+        </nav>
+        <i id="theme-switch" class="fas"></i>
+    </header>
     <main>
         <section id="intro">
-            <img id="intro-background" src="./dist/images/light-under-ocean.png" alt="Oceans of Code">
+            <img id="intro-background" src="./dist/images/light-under-ocean.webp" alt="Oceans of Code">
             <h1 id="welcome-callout" class="dark-background">Welcome to my Portfolio</h1>
         </section>
         <section id="about">
             <h2>About Me</h2>
         </section>
     </main>
+    <footer>
+        <p>&copy; <time id="footer-date" datetime="2020">2020</time> Adam A</p>
+    </footer>
 </body>
 
 </html>

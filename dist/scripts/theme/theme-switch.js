@@ -10,10 +10,10 @@ const cacheDom = () => {
 };
 const setTheme = (themes) => {
     const { body, themeButton } = cachedDom();
-    body.classList.add(themes.newTheme.name);
-    themes.oldTheme ? body.classList.remove(themes.oldTheme.name) : undefined;
-    themeButton.classList.add(themes.newTheme.switchIcon);
-    themes.oldTheme ? themeButton.classList.remove(themes.oldTheme.switchIcon) : undefined;
+    body?.classList.add(themes.newTheme.name);
+    themes.oldTheme ? body?.classList.remove(themes.oldTheme.name) : undefined;
+    themeButton?.classList.add(themes.newTheme.switchIcon);
+    themes.oldTheme ? themeButton?.classList.remove(themes.oldTheme.switchIcon) : undefined;
     setStoredTheme(themes.newTheme);
 };
 export const addThemeSwitchEvent = () => {
@@ -22,11 +22,11 @@ export const addThemeSwitchEvent = () => {
     const darkToLight = { newTheme: lightTheme, oldTheme: darkTheme };
     const transition = { htmlClass: 'color-theme-in-transition', speed: 1500 };
     const themeSwitchToggle = () => {
-        body.classList.add(transition.htmlClass);
-        setTimeout(() => body.classList.remove(transition.htmlClass), transition.speed);
-        body.classList.contains(lightTheme.name) ? setTheme(lightToDark) : setTheme(darkToLight);
+        body?.classList.add(transition.htmlClass);
+        setTimeout(() => body?.classList.remove(transition.htmlClass), transition.speed);
+        body?.classList.contains(lightTheme.name) ? setTheme(lightToDark) : setTheme(darkToLight);
     };
-    themeButton.addEventListener('click', themeSwitchToggle, false);
+    themeButton?.addEventListener('click', themeSwitchToggle, false);
 };
 export const themeInit = () => {
     cachedDom = cacheDom();

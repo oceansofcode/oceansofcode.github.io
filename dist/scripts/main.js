@@ -1,4 +1,6 @@
-import init from './init/init.js';
-import showBody from './init/show-body.js';
-init().then(showBody);
+import { addThemeSwitchEvent, themeInit } from './theme/theme-switch.js';
+import addMenuToggle from './init/mobile-menu.js';
+themeInit();
+addThemeSwitchEvent();
+addMenuToggle();
 //# sourceMappingURL=main.js.map
