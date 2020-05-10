@@ -7,7 +7,7 @@ export default () => {
     const resetMenu = () => {
         window.innerWidth >= 800 ? menuList.style.display = null : undefined;
     };
-    toggleButton.addEventListener('click', toggleMenu, false);
+    toggleButton?.addEventListener('click', toggleMenu, false);
     window.addEventListener('resize', resetMenu, false);
 };
 //# sourceMappingURL=mobile-menu.js.map

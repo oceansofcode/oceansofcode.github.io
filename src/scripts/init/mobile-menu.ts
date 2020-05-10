@@ -20,6 +20,6 @@ export default () => {
         window.innerWidth >= 800 ? menuList.style.display = null : undefined;
     };
 
-    toggleButton.addEventListener('click', toggleMenu, false);
+    toggleButton?.addEventListener('click', toggleMenu, false);
     window.addEventListener('resize', resetMenu, false);
 };
