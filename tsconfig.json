@@ -1,9 +1,9 @@
 {
     "compilerOptions": {
-        "target": "ESNext",
+        "target": "ES2020",
         "removeComments": true,
         "sourceMap": true,
-        "outDir": "dist/scripts"
+        "outDir": "dist/scripts/es6"
     },
     "include": [
         "src/scripts/**/*"

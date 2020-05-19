@@ -1,0 +1,2 @@
+import terser from 'terser';
+

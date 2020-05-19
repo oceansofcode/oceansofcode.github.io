@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "ES3",
+        "outFile": "build/scripts/es5/index.js",
+        "module": "AMD",
+        "esModuleInterop": true,
+        "sourceMap": true
+    },
+    "include": [
+        "src/scripts/**/*"
+    ]
+}

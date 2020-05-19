@@ -12,6 +12,7 @@
     "build:images": "node \"build scripts/images\"",
     "build:sass": "node-sass --output-style compressed --source-map true --source-map-contents src/styles --output dist/styles",
     "build:ts": "tsc",
+    "build:es5": "tsc -p tsconfig.es5.json && terser build/scripts/es5/index.js --mangle --compress --source-map \"content='build/scripts/es5/index.js.map'\" -o dist/scripts/index.js",
     "build": "parallelshell \"npm run build:html\" \"npm run build:sass\" \"npm run build:ts\"",
     "clean": "rm -rf ./dist && mkdir dist",
     "clean:build": "npm run clean && parallelshell \"npm run build:html\" \"npm run build:sass\" \"npm run build:ts\" \"npm run build:images\"",
