@@ -56,7 +56,7 @@
     "imagemin": "^7.0.1",
     "imagemin-webp": "^5.1.0",
     "mocha": "^7.1.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "onchange": "^7.0.2",
     "parallelshell": "3.0.1",
     "terser": "^4.6.13",
