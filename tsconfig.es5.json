@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "target": "ES3",
-        "outFile": "build/scripts/es5/index.js",
+        "target": "ES5",
+        "outFile": "dist/scripts/es5/index.js",
         "module": "AMD",
         "esModuleInterop": true,
         "sourceMap": true
