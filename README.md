@@ -12,7 +12,9 @@ The goal of this portfolio is to showcase my skills as a web developer, my proje
 
 The JavaScript and CSS are initially written in TypeScript and Sass (SCSS) respectively. A modular approach for both are taken, splitting functionality into different files.
 
-Gulp is used to build the app by minifying both the compiled JavaScript and CSS for performance. The JavaScript remains modular using the type="module" attribute, whereas the Sass is compiled into one large main.css file.
+The JavaScript remains modular using the type="module" attribute, whereas the core Sass is compiled into one large main.css file.
+
+NPM Scripts are used to develop and build. Gulp was initially used and the gulpfile.js remains as a legacy reference.
 
 There are folders for TypeScript and Sass files unique to each page, where page dependant logic and styles are placed respectively. This helps reduce the chance that styles and behaviours intended for one page do not affect another.
 
@@ -22,9 +24,8 @@ This portfolio uses the latest CSS and JavaScript (ESnext) features without any 
 
 These design decisions were made because:
 
-1. **Longevity**: Frameworks and libraries all become outdated at some point. Re-implementing the portfolio with a newer technology will be more difficult than refactoring existing native code when new ECMAScript features are released (i.e. refactoring promises to async/await).
+1. **Longevity**: Frameworks and libraries all become outdated at some point. Re-implementing the portfolio with a newer technology will be more difficult than refactoring existing native code when new ECMAScript features are released (i.e. refactoring promises to async/await). Updating node-packages is far quicker than updating an entire framework over the years.
 2. **Performance**: ESnext code is smaller and (usually) will run faster than code compiled down to ES5 or even ES6.
 3. **Audience**: The target audience of this portfolio (Recruiters, Job Interviewers, Clients) will more than likely be using a modern browser at the latest version.
-4. **Preferences**: I prefer CSS Grid / Flexbox to BootStrap for CSS layout and responsive design; to me the code is cleaner and separates layout from the HTML.
-5. **TypeScript and Sass**: Being supersets, there is no penalty for using them as opposed to writing in JavaScript and CSS. I find that both technologies provide cleaner code that is easier to follow and debug. TypeScript also enables richer intellisense while coding, a feature I find invaluable.
-6. **The Name**: Oceans of Code comes from an inside joke :)
+4. **Preferences**: I prefer CSS Grid / Flexbox to BootStrap for CSS layout and responsive design.
+5. **TypeScript and Sass**: Being supersets, there is no penalty for using them as opposed to writing in JavaScript and CSS. TypeScript also enables richer intellisense while coding.
