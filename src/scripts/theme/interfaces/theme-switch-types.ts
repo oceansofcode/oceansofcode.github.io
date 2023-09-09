@@ -1,4 +1,4 @@
-import { ThemeConstants, ThemeIcons } from "./theme-enums";
+import { ThemeConstants, ThemeIcons } from './theme-enums';
 
 export interface Theme {
     name: Exclude<ThemeConstants, ThemeConstants.THEME>;

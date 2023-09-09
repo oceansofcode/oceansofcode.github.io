@@ -1,5 +1,5 @@
-import { ThemeConstants, ThemeIcons } from "./interfaces/theme-enums";
-import { Theme, ThemeSwitch, ThemeTransition } from "./interfaces/theme-switch-types";
+import { ThemeConstants, ThemeIcons } from './interfaces/theme-enums';
+import { Theme, ThemeSwitch, ThemeTransition } from './interfaces/theme-switch-types';
 
 // eslint-disable-next-line immutable/no-let
 let cachedDom: () => { body: HTMLBodyElement; themeButton: HTMLElement };
@@ -13,7 +13,8 @@ const getStoredTheme = (): Theme => JSON.parse(window.localStorage.getItem(Theme
 const cacheDom = () => {
     const body: HTMLBodyElement = document.querySelector('body');
     const themeButton: HTMLElement = document.querySelector('#theme-switch');
-    return () => { return { body, themeButton }; };
+    const mainImage: HTMLImageElement = document.querySelector('#intro-background');
+    return () => { return { body, themeButton, mainImage }; };
 };
 
 const setTheme = (themes: ThemeSwitch) => {
@@ -47,5 +48,8 @@ export const addThemeSwitchEvent = () => {
 export const themeInit = () => {
     cachedDom = cacheDom();
     const savedTheme: Theme = getStoredTheme();
-    savedTheme ? setTheme({ newTheme: savedTheme }) : setTheme({ newTheme: darkTheme });
+
+    const getUserPreferredTheme = () => window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? lightTheme : darkTheme;
+        
+    savedTheme ? setTheme({ newTheme: savedTheme }) : setTheme({ newTheme: getUserPreferredTheme() });
 };

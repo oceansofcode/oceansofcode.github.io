@@ -2,11 +2,8 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 70px; // The header should be 70px, this is important for rendering drop down menus.
+  height: $header-height; // The header should be 70px, this is important for rendering drop down menus.
 
-  #mobile-menu-toggle {
-    display: none;
-  }
 
   i {
     margin: {
@@ -48,6 +45,10 @@ header {
       }
     }
   }
+
+  #mobile-menu-toggle {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -66,8 +67,8 @@ header {
     nav {
       ul#nav-menu {
         display: none;
+        flex-direction: column;
         justify-content: space-around;
-        width: 100vw;
         position: absolute;
         top: 50px;
         left: 0;

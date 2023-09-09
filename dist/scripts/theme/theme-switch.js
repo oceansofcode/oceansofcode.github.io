@@ -6,7 +6,8 @@ const getStoredTheme = () => JSON.parse(window.localStorage.getItem("theme"));
 const cacheDom = () => {
     const body = document.querySelector('body');
     const themeButton = document.querySelector('#theme-switch');
-    return () => { return { body, themeButton }; };
+    const mainImage = document.querySelector('#intro-background');
+    return () => { return { body, themeButton, mainImage }; };
 };
 const setTheme = (themes) => {
     const { body, themeButton } = cachedDom();
@@ -31,6 +32,7 @@ export const addThemeSwitchEvent = () => {
 export const themeInit = () => {
     cachedDom = cacheDom();
     const savedTheme = getStoredTheme();
-    savedTheme ? setTheme({ newTheme: savedTheme }) : setTheme({ newTheme: darkTheme });
+    const getUserPreferredTheme = () => window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? lightTheme : darkTheme;
+    savedTheme ? setTheme({ newTheme: savedTheme }) : setTheme({ newTheme: getUserPreferredTheme() });
 };
 //# sourceMappingURL=theme-switch.js.map

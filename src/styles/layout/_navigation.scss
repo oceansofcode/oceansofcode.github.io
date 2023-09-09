@@ -13,7 +13,7 @@ header nav {
       > a {
         // Sizing here is important for the dropdown list to render correctly on different screens.
         font-size: 1rem;
-        height: 70px;
+        height: $header-height;
         padding: 27px 1rem;
       }
     }
@@ -23,7 +23,7 @@ header nav {
       > ul.drop-down {
         display: none;
         position: absolute;
-        top: 70px;
+        top: $header-height;
         z-index: 1;
         > li.drop-down-item {
           width: 100%;

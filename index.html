@@ -8,17 +8,18 @@
     <meta name="description" content="Portfolio Page">
     <meta name="author" content="Adam">
     <meta name="keywords" content="portfolio, resume, projects">
+
     <title>Portfolio</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen" href="dist/styles/main.css">
     <link rel="preload" href="dist/images/light-under-ocean.webp" as="image">
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Cinzel|Roboto|Lobster+Two|Source+Code+Pro&display=swap" as="style">
-    <link rel="modulepreload"  href="dist/scripts/init/mobile-menu.js">
-    <link rel="modulepreload"  href="dist/scripts/theme/theme-switch.js">
+    <link rel="modulepreload" href="dist/scripts/init/mobile-menu.js">
+    <link rel="modulepreload" href="dist/scripts/theme/theme-switch.js">
     
     <script src="https://kit.fontawesome.com/a2583045b3.js" async crossorigin="anonymous"></script>
-    <script src="dist/scripts/main.js" type="module" async></script>
+    <script src="dist/scripts/main.js" type="module" defer></script>
 </head>
 
 <body>
@@ -44,10 +45,13 @@
     </header>
     <main id="intro-page">
         <section id="intro">
-            <img id="intro-background" src="./dist/images/light-under-ocean.webp" alt="Oceans of Code">
+            <img fetchpriority="high" id="intro-background" src="./dist/images/light-under-ocean.webp" alt="Oceans of Code">
             <h1 id="welcome-callout" class="dark-background">Welcome to my Portfolio</h1>
         </section>
     </main>
+    <!-- As we scroll down we want the background image to fade and the header / footer to lose opacity. The footer should also not be "sticky"
+        The welcome call out should fade out as well
+    -->
     <footer>
         <p>&copy; <time id="footer-date" datetime="2023">2023</time> Adam A</p>
     </footer>
