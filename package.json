@@ -8,18 +8,16 @@
     "test": "tests"
   },
   "scripts": {
-    "build:html": "rm -rf dist/html && cp -r src/html dist/html",
     "build:images": "node \"build scripts/images\"",
     "build:sass": "node-sass --output-style compressed --source-map true --source-map-contents src/styles --output dist/styles",
     "build:ts": "tsc",
     "build:es5": "tsc -p tsconfig.es5.json && terser build/scripts/es5/index.js --mangle --compress --source-map \"content='build/scripts/es5/index.js.map'\" -o dist/scripts/index.js",
-    "build": "concurrently \"npm run build:html\" \"npm run build:sass\" \"npm run build:ts\"",
+    "build": "concurrently \"npm run build:sass\" \"npm run build:ts\"",
     "clean": "rm -rf ./dist && mkdir dist",
-    "clean:build": "npm run clean && concurrently \"npm run build:html\" \"npm run build:sass\" \"npm run build:ts\" \"npm run build:images\"",
-    "watch:html": "onchange \"src/html/**/*.html\" \"*.html\" -- npm run build:html",
+    "clean:build": "npm run clean && concurrently \"npm run build:sass\" \"npm run build:ts\" \"npm run build:images\"",
     "watch:sass": "onchange \"src/styles/**/*.scss\" -- npm run build:sass",
     "watch:ts": "onchange \"src/scripts/**/*.ts\" -- npm run build:ts",
-    "watch": "concurrently \"npm run serve\" \"npm run watch:sass\" \"npm run watch:ts\" \"npm run watch:html\"",
+    "watch": "concurrently \"npm run serve\" \"npm run watch:sass\" \"npm run watch:ts\" ",
     "serve": "browser-sync start --server --browser \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" --browser \"chrome\" --files \"dist/styles/**/*.css, dist/scripts/**/*.js, **/*.html\"",
     "deploy:local": "npm run build && npm run watch",
     "test": "echo \"Error: no test specified\" && exit 1"

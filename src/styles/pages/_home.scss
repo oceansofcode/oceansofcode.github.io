@@ -29,8 +29,8 @@ main {
     line-height: 100%;
 
     > h1#welcome-callout {
-      position: relative;
-      top: calc(50vh - 70px);
+      position: absolute;
+      top: 50vh;
       align-self: center;
       justify-self: center;
       font-family: "Lobster Two", Helvetica, sans-serif;
