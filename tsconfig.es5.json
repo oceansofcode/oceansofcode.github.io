@@ -1,12 +1,9 @@
 {
+    "extends": "./tsconfig.json",
     "compilerOptions": {
         "target": "ES5",
-        "outFile": "dist/scripts/es5/index.js",
+        "outFile": "build/scripts/es5/index.js",
         "module": "AMD",
         "esModuleInterop": true,
-        "sourceMap": true
     },
-    "include": [
-        "src/scripts/**/*"
-    ]
 }

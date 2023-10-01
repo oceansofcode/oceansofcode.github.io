@@ -128,11 +128,11 @@ export class PortfolioHeader extends HTMLElement {
 }
 
 export class PortfolioFooter extends HTMLElement {
-    #year: string;
+    year: string;
 
     constructor() {
         super();
-        this.#year = new Date().getFullYear().toString();
+        this.year = new Date().getFullYear().toString();
     }
 
     connectedCallback() {
@@ -143,8 +143,8 @@ export class PortfolioFooter extends HTMLElement {
 
         const time = document.createElement('time');
         time.setAttribute('id', 'footer-date');
-        time.setAttribute('datetime', this.#year);
-        time.appendChild(document.createTextNode(this.#year));
+        time.setAttribute('datetime', this.year);
+        time.appendChild(document.createTextNode(this.year));
 
         paragraph.appendChild(time);
         paragraph.appendChild(document.createTextNode(' Adam A'));
