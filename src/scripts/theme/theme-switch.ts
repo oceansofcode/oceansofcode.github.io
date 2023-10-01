@@ -6,6 +6,7 @@ const darkTheme: Theme = { name: ThemeConstants.DARK, switchIcon: ThemeIcons.SUN
 
 export const getStoredTheme = (): Theme => JSON.parse(window.localStorage.getItem(ThemeConstants.THEME));
 const setStoredTheme = (theme: Theme): void => window.localStorage.setItem(ThemeConstants.THEME, JSON.stringify(theme));
+const getUserPreferredTheme = () => window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? lightTheme : darkTheme;
 
 // eslint-disable-next-line immutable/no-let
 export let cachedDom: () => { body: HTMLBodyElement, mainImage: HTMLImageElement };
@@ -18,7 +19,6 @@ const cacheDom = () => {
     return () => { return { body, mainImage }; };
 };
 
-// TODO: Move init of themeButton.classList into header-footer to avoid FOUC of the icon
 const setTheme = (themes: ThemeSwitch, themeButton: HTMLElement) => {
     const { body } = cachedDom();
 
@@ -28,7 +28,7 @@ const setTheme = (themes: ThemeSwitch, themeButton: HTMLElement) => {
     themeButton?.classList.add(themes.newTheme.switchIcon);
     themes.oldTheme ? themeButton?.classList.remove(themes.oldTheme.switchIcon) : undefined;
 
-    setTimeout(() => setStoredTheme(themes.newTheme), 0);
+    setStoredTheme(themes.newTheme);
 };
 
 export const themeSwitchEvent = (themeButton: HTMLElement) => {
@@ -46,11 +46,10 @@ export const themeSwitchEvent = (themeButton: HTMLElement) => {
     };
 };
 
+// TODO: Instead of caching dom in this way, cache it by creating closures around setTheme so body is already in it
 export const themeInit = () => {
     cachedDom = cacheDom();
     const savedTheme: Theme = getStoredTheme();
-
-    const getUserPreferredTheme = () => window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? lightTheme : darkTheme;
         
     savedTheme ? setTheme({ newTheme: savedTheme }, undefined) : setTheme({ newTheme: getUserPreferredTheme() }, undefined);
 };

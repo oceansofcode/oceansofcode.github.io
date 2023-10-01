@@ -1,8 +1,2 @@
-import { themeInit } from './theme/theme-switch.js';
-import { PortfolioHeader, PortfolioFooter } from './init/header-footer.js';
-import addMenuToggle from './init/mobile-menu.js';
-themeInit();
-customElements.define('portfolio-header', PortfolioHeader, { extends: 'header' });
-customElements.define('portfolio-footer', PortfolioFooter, { extends: 'footer' });
-addMenuToggle();
+import{themeInit as e}from"./theme/theme-switch.js";import{PortfolioHeader as o,PortfolioFooter as t}from"./init/header-footer.js";import m from"./init/mobile-menu.js";e(),customElements.define("portfolio-header",o,{extends:"header"}),customElements.define("portfolio-footer",t,{extends:"footer"}),m();
 //# sourceMappingURL=main.js.map

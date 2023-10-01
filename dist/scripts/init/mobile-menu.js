@@ -1,13 +1,2 @@
-export default () => {
-    const toggleButton = document.querySelector('#mobile-menu-toggle');
-    const menuList = document.querySelector('ul#nav-menu');
-    const toggleMenu = () => {
-        menuList.style.display === 'flex' ? menuList.style.display = 'none' : menuList.style.display = 'flex';
-    };
-    const resetMenu = () => {
-        window.innerWidth >= 800 ? menuList.style.display = null : undefined;
-    };
-    toggleButton?.addEventListener('click', toggleMenu, false);
-    window.addEventListener('resize', resetMenu, false);
-};
+export default()=>{const e=document.querySelector("#mobile-menu-toggle"),l=document.querySelector("ul#nav-menu");e?.addEventListener("click",(()=>{"flex"===l.style.display?l.style.display="none":l.style.display="flex"}),!1),window.addEventListener("resize",(()=>{window.innerWidth>=800&&(l.style.display=null)}),!1)};
 //# sourceMappingURL=mobile-menu.js.map

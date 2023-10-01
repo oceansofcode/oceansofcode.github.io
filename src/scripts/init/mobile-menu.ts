@@ -1,6 +1,7 @@
 /**
  * Adds an event listener to the mobile-theme-toggle hamburger button in the header.
  */
+// TODO: toggleButton will fail, this whole code should probably move into header-footer
 export default () => {
     const toggleButton: HTMLElement = document.querySelector('#mobile-menu-toggle');
     const menuList: HTMLElement = document.querySelector('ul#nav-menu');

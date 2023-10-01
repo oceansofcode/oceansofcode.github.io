@@ -6,7 +6,8 @@ imagemin(['src/images/*.{jpg,png}'], {
     plugins: [
         webp({
             quality: 50,
-            method: 6
+            method: 6,
+            resize: { width: 1280, height: 1080 }
         })
     ]
-}).then(() => console.log('Images optimized'));
+});
