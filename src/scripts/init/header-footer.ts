@@ -20,7 +20,7 @@ export class PortfolioHeader extends HTMLElement {
         const title = document.createElement('h1');
         title.setAttribute('id', 'title');
         const titleLink = document.createElement('a');
-        titleLink.setAttribute('href', './');
+        titleLink.setAttribute('href', '/');
         titleLink.appendChild(document.createTextNode('Oceans of Code'));
         title.appendChild(titleLink);
         this.appendChild(title);
