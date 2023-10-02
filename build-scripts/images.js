@@ -1,6 +1,7 @@
 import imagemin from 'imagemin';
 import webp from 'imagemin-webp';
 
+// TODO: Have this spit out multiple image sizes to use as src sets
 imagemin(['src/images/*.{jpg,png}'], {
     destination: 'dist/images',
     plugins: [

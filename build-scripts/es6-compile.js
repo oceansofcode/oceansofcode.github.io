@@ -1,11 +1,15 @@
 /* eslint-disable immutable/no-mutation */
-import { promises as fs } from 'fs';
+import { promises as fs, existsSync, mkdirSync } from 'fs';
 import { minify } from 'terser';
 
 // Assumes tsc has already been run and the compiled TS is in the ./build directory
 const distDir = '../dist/scripts';
 const buildDir = '../build/scripts';
 const es5Path = '/es5';
+
+if (!existsSync(distDir)) {
+    mkdirSync(distDir);
+}
 
 const buildDirFiles = (await fs.readdir(buildDir, { withFileTypes: true, recursive: true }))
     .filter(dir => !dir.isDirectory() && !dir.path.includes(es5Path) && !dir.name.includes('.js.map'))
@@ -25,7 +29,17 @@ const buildDirFiles = (await fs.readdir(buildDir, { withFileTypes: true, recursi
             fileDistPath,
             mapDistPath
         };
-    });
+    }
+);
+
+// TODO: This may fail if there is a nested directory
+buildDirFiles.forEach(buildDirFile => {
+    const buildDir = buildDirFile.fileDistPath.substring(0, buildDirFile.fileDistPath.lastIndexOf('/'));
+
+    if (!existsSync(buildDir)) {
+        mkdirSync(buildDir);
+    }
+});
 
 async function* fileContents(buildFiles) {
     for (const buildFile of buildFiles) {

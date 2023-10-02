@@ -1,2 +1,2 @@
-import{themeInit as e}from"./theme/theme-switch.js";import{PortfolioHeader as o,PortfolioFooter as t}from"./init/header-footer.js";import m from"./init/mobile-menu.js";e(),customElements.define("portfolio-header",o,{extends:"header"}),customElements.define("portfolio-footer",t,{extends:"footer"}),m();
+import{themeInit as e}from"./theme/theme-switch.js";import{PortfolioHeader as o,PortfolioFooter as t}from"./custom-elements/header-footer.js";e(),customElements.define("portfolio-header",o,{extends:"header"}),customElements.define("portfolio-footer",t,{extends:"footer"});
 //# sourceMappingURL=main.js.map

@@ -5,6 +5,9 @@ import { getStoredTheme, themeSwitchEvent } from '../theme/theme-switch.js';
 
 export class PortfolioHeader extends HTMLElement {
 
+    private mobileMenuToggle: HTMLElement;
+    private navMenu: HTMLUListElement;
+
     constructor() {
         super();
     }
@@ -14,6 +17,7 @@ export class PortfolioHeader extends HTMLElement {
         const mobileMenuToggle = document.createElement('i');
         mobileMenuToggle.setAttribute('id', 'mobile-menu-toggle');
         mobileMenuToggle.setAttribute('class', 'fas fa-bars');        
+        this.mobileMenuToggle = mobileMenuToggle;
         this.appendChild(mobileMenuToggle);
 
         // Title
@@ -32,6 +36,7 @@ export class PortfolioHeader extends HTMLElement {
         // Nav Menu
         const navMenu = document.createElement('ul');
         navMenu.setAttribute('id', 'nav-menu');
+        this.navMenu = navMenu;
         nav.appendChild(navMenu);
 
         // Web Apps
@@ -104,6 +109,7 @@ export class PortfolioHeader extends HTMLElement {
         themeSwitch.addEventListener('click', themeSwitchEvent(themeSwitch), false);
         themeSwitch.classList.add(getStoredTheme().switchIcon);
     
+        this.setupMobileMenuEvents();
         /*this.innerHTML = `
             <i id="mobile-menu-toggle" class="fas fa-bars"></i>
             <h1 id="title"><a href="./">Oceans of Code</a></h1>
@@ -123,6 +129,21 @@ export class PortfolioHeader extends HTMLElement {
             <i id="theme-switch" class="fas"></i>
         `;
         */
+    }
+
+    private setupMobileMenuEvents() {
+        const toggleMenu = () => {
+            // eslint-disable-next-line immutable/no-mutation
+            this.navMenu.style.display === 'flex' ? this.navMenu.style.display = 'none' : this.navMenu.style.display = 'flex';
+        };
+
+        const resetMenu = () => {
+            // eslint-disable-next-line immutable/no-mutation
+            window.innerWidth >= 800 ? this.navMenu.style.display = null : undefined;
+        };
+
+        this.mobileMenuToggle.addEventListener('click', toggleMenu, false);
+        window.addEventListener('resize', resetMenu, false);
     }
 
 }
