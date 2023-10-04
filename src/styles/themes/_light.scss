@@ -1,8 +1,6 @@
-body.light-theme {
+body.light {
   @include theme("light");
-  .dark-background {
-    background-color: $light-background;
-    padding: 1rem;
-    border-radius: 15px;
+  #welcome-callout {
+    -webkit-text-stroke: 0.60px white;
   }
 }

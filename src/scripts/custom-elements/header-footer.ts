@@ -1,7 +1,7 @@
 /* eslint-disable immutable/no-mutation */
 /* eslint-disable immutable/no-this */
 
-import { getStoredTheme, themeSwitchEvent } from '../theme/theme-switch.js';
+import { getThemeFromPreference, themeSwitchEvent } from '../theme/theme.js';
 
 export class PortfolioHeader extends HTMLElement {
 
@@ -107,7 +107,7 @@ export class PortfolioHeader extends HTMLElement {
         this.appendChild(themeSwitch);
 
         themeSwitch.addEventListener('click', themeSwitchEvent(themeSwitch), false);
-        themeSwitch.classList.add(getStoredTheme().switchIcon);
+        themeSwitch.classList.add(getThemeFromPreference().switchIcon);
     
         this.setupMobileMenuEvents();
         /*this.innerHTML = `

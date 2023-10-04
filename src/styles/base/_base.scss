@@ -3,7 +3,7 @@ body {
   &.color-theme-in-transition *,
   &.color-theme-in-transition *:before,
   &.color-theme-in-transition *:after {
-    transition: all 750ms !important;
-    transition-delay: 0 !important;
+    transition: all 750ms;
+    transition-delay: 0;
   }
 }

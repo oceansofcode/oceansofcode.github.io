@@ -1,7 +1,7 @@
 export const enum ThemeConstants {
     THEME = 'theme',
-    LIGHT = 'light-theme',
-    DARK = 'dark-theme'
+    LIGHT = 'light',
+    DARK = 'dark'
 }
 
 export const enum ThemeIcons {
