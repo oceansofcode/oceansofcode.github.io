@@ -4,7 +4,6 @@ import { Theme, ThemeSwitch, ThemeTransition } from './interfaces/theme-switch-t
 const lightTheme: Theme = { name: ThemeConstants.LIGHT, switchIcon: ThemeIcons.MOON };
 const darkTheme: Theme = { name: ThemeConstants.DARK, switchIcon: ThemeIcons.SUN };
 
-
 // eslint-disable-next-line immutable/no-let
 let body: HTMLBodyElement;
 
@@ -78,7 +77,6 @@ export const themeSwitchEvent = (themeButton: HTMLElement) => {
 
     return themeSwitch;
 };
-
 
 export const themeInit = async () => {
     body = await cacheDom();
