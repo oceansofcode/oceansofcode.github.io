@@ -4,6 +4,7 @@
         "target": "ES5",
         "outFile": "build/scripts/es5/index.js",
         "module": "AMD",
+        "moduleResolution": "Node",
         "esModuleInterop": true,
     },
 }

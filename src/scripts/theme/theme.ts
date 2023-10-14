@@ -1,5 +1,5 @@
-import { ThemeConstants, ThemeIcons } from './interfaces/theme-enums';
-import { Theme, ThemeSwitch, ThemeTransition } from './interfaces/theme-switch-types';
+import { ThemeConstants, ThemeIcons } from './interfaces/theme-enums.js';
+import { Theme, ThemeSwitch, ThemeTransition } from './interfaces/theme-switch-types.js';
 
 const lightTheme: Theme = { name: ThemeConstants.LIGHT, switchIcon: ThemeIcons.MOON };
 const darkTheme: Theme = { name: ThemeConstants.DARK, switchIcon: ThemeIcons.SUN };
