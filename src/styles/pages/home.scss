@@ -23,21 +23,22 @@ main {
   grid-row: row2-start;
   grid-column: 1 / span 4;
 
-  section#intro {
-    display: grid;
-    text-align: center;
-    line-height: 100%;
+  > section:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 
     > h1#welcome-callout {
-      position: absolute;
-      top: 50vh;
-      align-self: center;
-      justify-self: center;
       font-family: "Lobster Two", Helvetica, sans-serif;
       font-size: 2em;
       animation: title-appear;
       animation-duration: 1s;
       animation-timing-function: ease-in-out;
     }
+  }
+  
+  > section {
+    min-height: 100vh;
   }
 }

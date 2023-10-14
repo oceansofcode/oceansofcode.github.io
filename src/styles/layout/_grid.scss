@@ -2,7 +2,6 @@
 body {
   display: grid;
   min-height: 100vh;
-  z-index: 1;
 
   grid:
     [row1-start] "header header header header" $header-height [row1-end]
