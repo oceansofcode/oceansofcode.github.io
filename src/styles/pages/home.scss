@@ -1,7 +1,6 @@
 @import "../utils/variables";
 
 img#intro-background {
-  
   visibility: visible !important;
   z-index: -9999;
   top: 0;
@@ -28,16 +27,16 @@ main {
   >section {
     height: 100vh;
 
-
     &:first-child {
       background-color: initial;
       height: calc(100vh - $header-height);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
 
       >h1#welcome-callout {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        white-space: nowrap;
         font-family: "Lobster Two", Helvetica, sans-serif;
         font-size: 2rem;
         animation: title-appear;
@@ -61,8 +60,10 @@ main {
   #intro {
     margin: 0;
     padding: 0;
+
     img {
       object-fit: cover;
     }
   }
+
 }
