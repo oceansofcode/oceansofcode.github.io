@@ -4,11 +4,11 @@ header {
   align-items: center;
   height: $header-height; // The header should be 70px, this is important for rendering drop down menus.
 
-
   i {
     margin: {
-      right: 1rem;
+      right: $side-margin; 
       left: 1rem;
+      top: 7px; // Aligns it better with nav text
     }
 
     padding: 5px; // Gives greater area to click on icon.
@@ -29,7 +29,7 @@ header {
   h1#title {
     font-size: 2em;
     margin: {
-      left: 1rem;
+      left: $side-margin;
       right: auto;
       top: 1em;
       bottom: 1em;
@@ -53,36 +53,46 @@ header {
 
 @media screen and (max-width: 800px) {
   header {
-    opacity: 1;
+    justify-content: space-around;
+      opacity: 1;
+    
+      i {
+        margin: 0;
+        padding: 5px;
 
-    #mobile-menu-toggle {
-      display: block;
-      padding: {
-        top: 25px;
-        bottom: 25px;
-      }
-    }
 
-    nav {
-      ul#nav-menu {
-        display: none;
-        flex-direction: column;
-        justify-content: space-around;
-        position: absolute;
-        top: 70px;
-        left: 0;
-
-        li.drop-down:hover ul.drop-down {
-          display: none;
+        &:first-child {
+          margin-left: 5%;
+        }
+    
+        &:last-child {
+          margin-right: 5%;
         }
       }
-    }
-
-    h1#title {
-      font-size: 1.5em;
-      justify-self: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    
+      #mobile-menu-toggle {
+        display: block;
+      } 
+    
+      nav {
+        ul#nav-menu {
+          display: none;
+          flex-direction: column;
+          justify-content: space-around;
+          position: absolute;
+          top: 70px;
+          left: 0;
+    
+          li.drop-down:hover ul.drop-down {
+            display: none;
+          }
+        }
+      }
+    
+      h1#title {
+        font-size: 1.5em;
+        margin-left: auto;
+        margin-right: auto;
+      }
   }
 }

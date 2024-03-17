@@ -9,6 +9,7 @@ img#intro-background {
   width: 100%;
 }
 
+// TODO DO MATH TO SUBTRACT HEADER FROM SECTION
 @keyframes title-appear {
   from {
     opacity: 0;
@@ -21,24 +22,40 @@ img#intro-background {
 
 main {
   grid-row: row2-start;
-  grid-column: 1 / span 4;
-
-  > section:first-child {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-
-    > h1#welcome-callout {
-      font-family: "Lobster Two", Helvetica, sans-serif;
-      font-size: 2em;
-      animation: title-appear;
-      animation-duration: 1s;
-      animation-timing-function: ease-in-out;
-    }
-  }
+    grid-column: 1 / span 4;
   
-  > section {
-    min-height: 100vh;
+    > section {
+      height: 100vh;
+      margin-left: $side-margin;
+      margin-right: $side-margin;
+  
+      &:first-child {
+        height: calc(100vh - $header-height);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        >h1#welcome-callout {
+          font-family: "Lobster Two", Helvetica, sans-serif;
+          font-size: 2rem;
+          animation: title-appear;
+          animation-duration: 1s;
+          animation-timing-function: ease-in-out;
+        }
+      }
+
+      &:last-child {
+        height: calc(100vh - $footer-height);
+      }
+  
+      &:not(:first-child) {
+        display: grid;
+      }
+    }
+}
+
+@media screen and (max-width: 800px) {
+  #intro {
+    margin: 0;
   }
 }
