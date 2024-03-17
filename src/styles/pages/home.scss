@@ -1,6 +1,7 @@
 @import "../utils/variables";
 
 img#intro-background {
+  
   visibility: visible !important;
   z-index: -9999;
   top: 0;
@@ -9,12 +10,12 @@ img#intro-background {
   width: 100%;
 }
 
-// TODO DO MATH TO SUBTRACT HEADER FROM SECTION
 @keyframes title-appear {
   from {
     opacity: 0;
     transform: translate(0px, 5vh);
   }
+
   to {
     opacity: 1;
   }
@@ -22,40 +23,46 @@ img#intro-background {
 
 main {
   grid-row: row2-start;
-    grid-column: 1 / span 4;
-  
-    > section {
-      height: 100vh;
-      margin-left: $side-margin;
-      margin-right: $side-margin;
-  
-      &:first-child {
-        height: calc(100vh - $header-height);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-  
-        >h1#welcome-callout {
-          font-family: "Lobster Two", Helvetica, sans-serif;
-          font-size: 2rem;
-          animation: title-appear;
-          animation-duration: 1s;
-          animation-timing-function: ease-in-out;
-        }
-      }
+  grid-column: 1 / span 4;
 
-      &:last-child {
-        height: calc(100vh - $footer-height);
-      }
-  
-      &:not(:first-child) {
-        display: grid;
+  >section {
+    height: 100vh;
+
+
+    &:first-child {
+      background-color: initial;
+      height: calc(100vh - $header-height);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+      >h1#welcome-callout {
+        font-family: "Lobster Two", Helvetica, sans-serif;
+        font-size: 2rem;
+        animation: title-appear;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
       }
     }
+
+    &:last-child {
+      height: calc(100vh - $footer-height);
+    }
+
+    &:not(:first-child) {
+      display: grid;
+      padding: 1rem $side-gap;
+    }
+  }
 }
 
 @media screen and (max-width: 800px) {
   #intro {
     margin: 0;
+    padding: 0;
+    img {
+      object-fit: cover;
+    }
   }
 }

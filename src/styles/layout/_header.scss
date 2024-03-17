@@ -6,7 +6,7 @@ header {
 
   i {
     margin: {
-      right: $side-margin; 
+      right: $side-gap; 
       left: 1rem;
       top: 7px; // Aligns it better with nav text
     }
@@ -29,7 +29,7 @@ header {
   h1#title {
     font-size: 2em;
     margin: {
-      left: $side-margin;
+      left: $side-gap;
       right: auto;
       top: 1em;
       bottom: 1em;
@@ -71,7 +71,7 @@ header {
       }
     
       #mobile-menu-toggle {
-        display: block;
+        display: none; // TODO: Temporary until nav exists
       } 
     
       nav {

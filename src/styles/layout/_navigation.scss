@@ -1,5 +1,7 @@
 header nav {
   // The navigation.
+  display: none; // TODO: Temporary until other pages exist
+
   ul {
     display: flex;
     flex-wrap: wrap;

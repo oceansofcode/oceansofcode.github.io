@@ -23,6 +23,10 @@
     }
   }
 
+  section {
+    @extend %body-#{$mode};
+  }
+
   footer {
     @extend %body-#{$mode};
     @extend %text-#{$mode};
