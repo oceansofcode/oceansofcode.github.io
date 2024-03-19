@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Cinzel|Roboto|Lobster+Two|Source+Code+Pro&display=swap");
+
+html {
+  font-size: 62.5%; // Easier to scale since this is eq to 10px
+}
+
 body {
   font-family: 'Roboto', Helvetica, sans-serif;
+  font-size: 1.6rem; // Reset to base to 16px
 }

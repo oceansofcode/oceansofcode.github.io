@@ -1,4 +1,4 @@
-header nav {
+portfolio-header nav {
   // The navigation.
   display: none; // TODO: Temporary until other pages exist
 
@@ -14,9 +14,9 @@ header nav {
       position: relative;
       > a {
         // Sizing here is important for the dropdown list to render correctly on different screens.
-        font-size: 1rem;
+        font-size: 1.6rem;
         height: $header-height;
-        padding: 27px 1rem;
+        padding: 27px 1.6rem;
       }
     }
 

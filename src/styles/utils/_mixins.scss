@@ -12,7 +12,7 @@
     @extend %text-#{$mode};
   }
 
-  header {
+  portfolio-header {
     //TODO Add transition on hover for background color of link
 
     @extend %body-#{$mode};
@@ -27,7 +27,7 @@
     @extend %body-#{$mode};
   }
 
-  footer {
+  portfolio-footer {
     @extend %body-#{$mode};
     @extend %text-#{$mode};
   }

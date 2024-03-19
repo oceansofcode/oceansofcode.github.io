@@ -9,14 +9,14 @@ body {
     [row3-start] "footer footer footer footer" $footer-height [row3-end]
     / 1fr 1fr 1fr 1fr;
 
-  > header {
+  > portfolio-header {
     grid-area: header;
     margin: 0;
     position: sticky;
     top: 0;
   }
 
-  > footer {
+  > portfolio-footer {
     grid-area: footer;
   }
 }
