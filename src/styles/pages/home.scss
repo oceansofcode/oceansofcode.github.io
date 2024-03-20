@@ -25,11 +25,11 @@ main {
   grid-column: 1 / span 4;
 
   >section {
-    height: 100vh;
+    // height: 100vh;
 
+    height: calc(100vh - $header-height);
     &:first-child {
       background-color: initial;
-      height: calc(100vh - $header-height);
 
       >h1#welcome-callout {
         position: absolute;
@@ -46,13 +46,28 @@ main {
     }
 
     &:last-child {
-      height: calc(100vh - $footer-height);
+      height: calc(100vh - $header-height - $footer-height);
     }
 
     &:not(:first-child) {
       display: grid;
       padding: 1rem $side-gap;
     }
+  }
+}
+
+#experience {
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas: "primary primary";
+  justify-content: space-evenly;
+  justify-items: center;
+
+  article:first-child {
+    grid-area: primary;
+  }
+  
+  article:not(:first-child) {
+    grid-row-start: 2;
   }
 }
 
@@ -65,5 +80,4 @@ main {
       object-fit: cover;
     }
   }
-
 }
