@@ -12,18 +12,20 @@
     <title>Portfolio</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preload" href="dist/styles/main.css" as="style">
 
     <link rel="stylesheet" type="text/css" media="screen" href="dist/styles/main.css">
     <link rel="stylesheet" type="text/css" media="screen" href="dist/styles/pages/home.css">
 
     <link rel="preload" href="dist/images/light-under-ocean.webp" as="image">
-    <link rel="prefetch" href="https://fonts.googleapis.com/css?family=Cinzel|Roboto|Lobster+Two|Source+Code+Pro&display=swap" as="style">
+    <link rel="prefetch"
+        href="https://fonts.googleapis.com/css?family=Cinzel|Roboto|Lobster+Two|Source+Code+Pro&display=swap"
+        as="style">
 
     <link rel="modulepreload" href="dist/scripts/theme/theme.js">
     <link rel="modulepreload" href="dist/scripts/custom-elements/header-footer.js">
-    
+
     <script src="dist/scripts/custom-elements-polyfill.js" async></script>
     <script src="https://kit.fontawesome.com/a2583045b3.js" async crossorigin="anonymous"></script>
 
@@ -36,35 +38,34 @@
     <header is="portfolio-header"></header>
     <main id="intro-page">
         <section id="intro">
-            <img fetchpriority="high" id="intro-background" src="./dist/images/light-under-ocean.webp" alt="Oceans of Code Background">
+            <img fetchpriority="high" id="intro-background" src="./dist/images/light-under-ocean.webp"
+                alt="Oceans of Code Background">
             <h1 id="welcome-callout" class="dark-background">Welcome to my Portfolio</h1>
         </section>
         <!-- As we scroll down we want the background image to fade and the header / footer to lose opacity. The footer should also not be "sticky"
             The welcome call out should fade out as well
         -->
-        <!--
-            TODO: This should be custom components with shadow dom styling
-        -->
-        <section id="experience"> 
+        <template id="experience-card">
             <article>
                 <hgroup>
-                    <h2>Volkswagen Group of America</h2>
-                    <p><b>Lead Developer</b></p>
+                    <h2><slot name="client"></slot></h2>
+                    <p><b><slot name="title"></slot></b></p>
                 </hgroup>
             </article>
-            <article>
-                <hgroup>
-                    <h2>York University</h2>
-                    <p><b>Web Architect</b></p>
-                </hgroup>
-            </article>           
-            <article>
-                <hgroup>
-                    <h2>Toronto Hydro</h2>
-                    <p><b>Web Developer</b></p>
-                </hgroup>
-            </article>
-            
+        </template>
+        <section id="experience">
+            <experience-card>
+                <span slot="client">Volkswagen Group of America</span>
+                <span slot="title">Lead Developer</span>
+            </experience-card>
+            <experience-card>
+                <span slot="client">York University</span>
+                <span slot="title">Web Architect</span>
+            </experience-card>
+            <experience-card>
+                <span slot="client">Toronto Hydro</span>
+                <span slot="title">Web Developer</span>
+            </experience-card>
         </section>
     </main>
 

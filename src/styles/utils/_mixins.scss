@@ -1,6 +1,7 @@
 // Transition rules when switching from light to dark mode.
 @mixin theme($mode) {
   @extend %body-#{$mode};
+
   h1,
   h2,
   h3,
@@ -10,7 +11,8 @@
   details,
   summary,
   p,
-  a {
+  a,
+  span {
     @extend %text-#{$mode};
   }
 

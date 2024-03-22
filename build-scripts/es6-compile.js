@@ -3,23 +3,24 @@ import { promises as fs, existsSync, mkdirSync } from 'fs';
 import { minify } from 'terser';
 
 // Assumes tsc has already been run and the compiled TS is in the ./build directory
-const distDir = '../dist/scripts';
-const buildDir = '../build/scripts';
+const scriptDistDir = '../dist/scripts';
+const scriptBuildDir = '../build/scripts';
 const es5Path = '/es5';
 
-if (!existsSync(distDir)) {
-    mkdirSync(distDir);
+if (!existsSync(scriptDistDir)) {
+    mkdirSync(scriptDistDir);
 }
 
-const buildDirFiles = (await fs.readdir(buildDir, { withFileTypes: true, recursive: true }))
+// Read the buildDir recursively to get every compiled js file excluding it's map.
+const buildDirFiles = (await fs.readdir(scriptBuildDir, { withFileTypes: true, recursive: true }))
     .filter(dir => !dir.isDirectory() && !dir.path.includes(es5Path) && !dir.name.includes('.js.map'))
     .map(file => {
         const fileName = file.name;
         const filePath = `${file.path}/${fileName}`;
         const mapName = `${fileName}.map`;
         const mapPath = `${filePath}.map`;
-        const fileDistPath = filePath.replace(buildDir, distDir);
-        const mapDistPath = mapPath.replace(buildDir, distDir);
+        const fileDistPath = filePath.replace(scriptBuildDir, scriptDistDir);
+        const mapDistPath = mapPath.replace(scriptBuildDir, scriptDistDir);
 
         return {
             fileName,
@@ -30,17 +31,19 @@ const buildDirFiles = (await fs.readdir(buildDir, { withFileTypes: true, recursi
             mapDistPath
         };
     }
-);
+    );
 
 // TODO: This may fail if there is a nested directory
+// Create the distribution directory for each file if it doesn't exist
 buildDirFiles.forEach(buildDirFile => {
-    const buildDir = buildDirFile.fileDistPath.substring(0, buildDirFile.fileDistPath.lastIndexOf('/'));
+    const distDir = buildDirFile.fileDistPath.substring(0, buildDirFile.fileDistPath.lastIndexOf('/'));
 
-    if (!existsSync(buildDir)) {
-        mkdirSync(buildDir);
+    if (!existsSync(distDir)) {
+        mkdirSync(distDir);
     }
 });
 
+// Generator function to add the contents of the file to the buildFile object
 async function* fileContents(buildFiles) {
     for (const buildFile of buildFiles) {
         buildFile.fileContent = await fs.readFile(buildFile.filePath, { encoding: 'utf8' });
@@ -49,6 +52,7 @@ async function* fileContents(buildFiles) {
     }
 }
 
+// Consumes the fileContents generator to add source maps and minify the JS
 for await (const buildFile of fileContents(buildDirFiles)) {
     const minifyOptions = {
         module: true,
@@ -64,7 +68,8 @@ for await (const buildFile of fileContents(buildDirFiles)) {
         fs.writeFile(buildFile.fileDistPath, minifiedContent.code),
         fs.writeFile(buildFile.mapDistPath, minifiedContent.map)
     ]);
-    
+
+    // Outputs the compression ratio
     const stats = await Promise.all([
         fs.stat(buildFile.filePath),
         fs.stat(buildFile.fileDistPath)

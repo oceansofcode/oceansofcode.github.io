@@ -63,11 +63,11 @@ main {
   grid-auto-flow: column;
   justify-items: center;
 
-  article:first-child {
+  > :first-child {
     grid-area: primary;
   }
 
-  article:not(:first-child) {
+  > :not(:first-child) {
     grid-row-start: 2;
   }
 }
