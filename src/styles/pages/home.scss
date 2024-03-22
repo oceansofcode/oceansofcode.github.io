@@ -28,6 +28,7 @@ main {
     // height: 100vh;
 
     height: calc(100vh - $header-height);
+
     &:first-child {
       background-color: initial;
 
@@ -49,7 +50,7 @@ main {
       height: calc(100vh - $header-height - $footer-height);
     }
 
-    &:not(:first-child) {
+    &~section {
       display: grid;
       padding: 1rem $side-gap;
     }
@@ -59,13 +60,13 @@ main {
 #experience {
   grid-template-rows: repeat(2, 1fr);
   grid-template-areas: "primary primary";
-  justify-content: space-evenly;
+  grid-auto-flow: column;
   justify-items: center;
 
   article:first-child {
     grid-area: primary;
   }
-  
+
   article:not(:first-child) {
     grid-row-start: 2;
   }

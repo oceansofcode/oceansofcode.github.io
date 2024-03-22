@@ -24,13 +24,15 @@
     <link rel="modulepreload" href="dist/scripts/theme/theme.js">
     <link rel="modulepreload" href="dist/scripts/custom-elements/header-footer.js">
     
+    <script src="dist/scripts/custom-elements-polyfill.js" async></script>
     <script src="https://kit.fontawesome.com/a2583045b3.js" async crossorigin="anonymous"></script>
     <script src="dist/scripts/main.js" type="module" defer></script>
+    <script src="dist/scripts/pages/home.js" type="module" defer></script>
 </head>
 
 <body>
     <!-- Can add a page title here as a template/slot -->
-    <portfolio-header></portfolio-header>
+    <header is="portfolio-header"></header>
     <main id="intro-page">
         <section id="intro">
             <img fetchpriority="high" id="intro-background" src="./dist/images/light-under-ocean.webp" alt="Oceans of Code Background">
@@ -46,29 +48,26 @@
             <article>
                 <hgroup>
                     <h2>Volkswagen Group of America</h2>
-                    <h3>Lead Developer</h3>
-                </hgroup>
-                <details>
-                    <summary>Test</summary>
-                    Test
-                </details>
-            </article>            
-            <article>
-                <hgroup>
-                    <h2>Toronto Hydro</h2>
-                    <h3>Web Developer</h3>
+                    <p><b>Lead Developer</b></p>
                 </hgroup>
             </article>
             <article>
                 <hgroup>
                     <h2>York University</h2>
-                    <h3>Web Architect</h3>
+                    <p><b>Web Architect</b></p>
+                </hgroup>
+            </article>           
+            <article>
+                <hgroup>
+                    <h2>Toronto Hydro</h2>
+                    <p><b>Web Developer</b></p>
                 </hgroup>
             </article>
+            
         </section>
     </main>
 
-    <portfolio-footer></portfolio-footer>
+    <footer is="portfolio-footer"></footer>
     <script nomodule="dist/scripts/index.js"></script>
 </body>
 

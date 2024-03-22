@@ -5,6 +5,7 @@
         "outFile": "build/scripts/es5/index.js",
         "module": "AMD",
         "moduleResolution": "Node",
+        "allowJs": true,
         "esModuleInterop": true,
     },
 }

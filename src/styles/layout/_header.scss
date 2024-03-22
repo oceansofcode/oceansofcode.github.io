@@ -1,4 +1,4 @@
-portfolio-header {
+header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -38,7 +38,7 @@ portfolio-header {
 }
 
 @media screen and (min-width: 800px) {
-  portfolio-header {
+  header {
     nav {
       ul#nav-menu {
         background-color: transparent !important;
@@ -52,7 +52,7 @@ portfolio-header {
 }
 
 @media screen and (max-width: 800px) {
-  portfolio-header {
+  header {
     justify-content: space-around;
       opacity: 1;
     
