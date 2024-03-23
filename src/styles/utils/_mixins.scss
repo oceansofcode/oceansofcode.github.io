@@ -4,7 +4,8 @@
 // Transition rules when switching from light to dark mode.
 @mixin theme($mode) {
   @extend %body-#{$mode};
-  $texts: h1, h2, h3, h4, h5, h6, details, summary, p, a, span;
+  $texts: [h1 h2 h3 h4 h5 h6 details summary p a span];
+  $boxes: [header section footer];
 
   @each $textItem in $texts {
     #{$textItem} {
@@ -12,23 +13,14 @@
     }
   }
 
-  header {
-    //TODO Add transition on hover for background color of link
-
-    @extend %body-#{$mode};
-    @extend %text-#{$mode};
-
-    ul {
+  @each $box in $boxes {
+    #{$box} {
       @extend %body-#{$mode};
+      @extend %text-#{$mode};
     }
   }
 
-  section {
+  header ul {
     @extend %body-#{$mode};
-  }
-
-  footer {
-    @extend %body-#{$mode};
-    @extend %text-#{$mode};
   }
 }

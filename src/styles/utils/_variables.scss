@@ -1,9 +1,17 @@
-$dark-background: hsla(210, 22%, 4%, 0.75);
-$light-background: white;
-
-$dark-text: #313441;
-$light-text: white;
+@use "sass:map";
+@use "sass:math";
 
 $header-height: 70px;
-$footer-height: 35px;
+$footer-height: math.div($header-height, 2);
 $side-gap: 15%; // Keeps site aligned better
+
+$themes: (
+    "dark": (
+        "primary-background": hsla(210, 22%, 4%, 0.75),
+        "text": #fff
+    ),
+    "light": (
+        "primary-background": #fff,
+        "text": #313441
+    )
+);

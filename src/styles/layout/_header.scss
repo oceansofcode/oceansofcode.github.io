@@ -8,15 +8,15 @@ header {
   z-index: 2; // Stops welcome text from going over
 
   i {
+    padding: 5px; // Gives greater area to click on icon.
+    font-size: 2.4rem;
+
     margin: {
-      right: $side-gap; 
+      right: $side-gap;
       left: 1.6rem;
       top: 7px; // Aligns it better with nav text
     }
 
-    padding: 5px; // Gives greater area to click on icon.
-
-    font-size: 2.4rem;
     &:hover {
       cursor: pointer;
     }
@@ -29,8 +29,9 @@ header {
   }
 
   // The site title only
-  h1#title {
+  h1 {
     font-size: 3.2rem;
+
     margin: {
       left: $side-gap;
       right: auto;
@@ -38,64 +39,60 @@ header {
       bottom: 1.6rem;
     }
   }
-}
 
-@media screen and (min-width: 800px) {
-  header {
+  @media screen and (min-width: 800px) {
     nav {
       ul#nav-menu {
         background-color: transparent !important;
       }
     }
+
+    #mobile-menu-toggle {
+      display: none;
+    }
   }
 
-  #mobile-menu-toggle {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  header {
+  @media screen and (max-width: 800px) {
     justify-content: space-around;
-      opacity: 1;
-    
-      i {
-        margin: 0;
-        padding: 5px;
+    opacity: 1;
 
+    > :not(.hidden):first-child,
+    .hidden + :not(.hidden) {
+      margin-left: 5%;
+    }
 
-        &:first-child {
-          margin-left: 5%;
-        }
-    
-        &:last-child {
-          margin-right: 5%;
-        }
-      }
-    
-      #mobile-menu-toggle {
-        display: none; // TODO: Temporary until nav exists
-      } 
-    
-      nav {
-        ul#nav-menu {
+    > :last-child {
+      margin-right: 5%;
+    }
+
+    i {
+      margin: 0;
+      padding: 5px;
+    }
+
+    #mobile-menu-toggle {
+      display: none; // TODO: Temporary until nav exists
+    }
+
+    nav {
+      ul#nav-menu {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        position: absolute;
+        top: $header-height;
+        left: 0;
+
+        li.drop-down:hover ul.drop-down {
           display: none;
-          flex-direction: column;
-          justify-content: space-around;
-          position: absolute;
-          top: 70px;
-          left: 0;
-    
-          li.drop-down:hover ul.drop-down {
-            display: none;
-          }
         }
       }
-    
-      h1#title {
-        font-size: 2.4rem;
-        margin-left: auto;
-        margin-right: auto;
-      }
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-right: auto;
+      margin-left: auto;
+    }
   }
 }

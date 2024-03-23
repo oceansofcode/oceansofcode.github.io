@@ -16,7 +16,7 @@ export class PortfolioHeader extends HTMLElement {
         // Mobile menu
         const mobileMenuToggle = document.createElement('i');
         mobileMenuToggle.setAttribute('id', 'mobile-menu-toggle');
-        mobileMenuToggle.setAttribute('class', 'fas fa-bars');        
+        mobileMenuToggle.setAttribute('class', 'fas fa-bars hidden'); // Hidden for now        
         this.mobileMenuToggle = mobileMenuToggle;
         this.appendChild(mobileMenuToggle);
 

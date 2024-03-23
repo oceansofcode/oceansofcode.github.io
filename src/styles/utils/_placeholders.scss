@@ -1,17 +1,13 @@
+@use "sass:map";
 @use 'variables' as *;
 
-%body-dark {
-  background-color: $dark-background;
-}
+// Create a placeholder for each theme to be used by the theme mixin
+@each $theme, $values in $themes {
+  %body-#{$theme} {
+    background-color: map-get($themes, $theme, 'primary-background');
+  }
 
-%body-light {
-  background-color: $light-background;
-}
-
-%text-light {
-  color: $dark-text;
-}
-
-%text-dark {
-  color: $light-text;
+  %text-#{$theme} {
+    color: map-get($themes, $theme, 'text');
+  }
 }
