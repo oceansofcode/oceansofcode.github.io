@@ -1,8 +1,11 @@
+@use '../utils/variables' as *;
+
 header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: $header-height; // The header should be 70px, this is important for rendering drop down menus.
+  z-index: 2; // Stops welcome text from going over
 
   i {
     margin: {

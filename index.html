@@ -42,19 +42,25 @@
                 alt="Oceans of Code Background">
             <h1 id="welcome-callout" class="dark-background">Welcome to my Portfolio</h1>
         </section>
+
         <!-- As we scroll down we want the background image to fade and the header / footer to lose opacity. The footer should also not be "sticky"
             The welcome call out should fade out as well
         -->
+
+        <!-- Experience Card Template -->
         <template id="experience-card">
+            <link rel="stylesheet" type="text/css" href="dist/styles/pages/components/experience-card.css">
             <article>
                 <hgroup>
-                    <h2><slot name="client"></slot></h2>
+                    <h3><slot name="client"></slot></h3>
                     <p><b><slot name="title"></slot></b></p>
                 </hgroup>
             </article>
         </template>
+
         <section id="experience">
-            <experience-card>
+            <h2 class="section-title">Clients</h2>
+            <experience-card class="experience-highlight">
                 <span slot="client">Volkswagen Group of America</span>
                 <span slot="title">Lead Developer</span>
             </experience-card>
@@ -70,6 +76,7 @@
     </main>
 
     <footer is="portfolio-footer"></footer>
+
     <script nomodule="dist/scripts/index.js"></script>
 </body>
 

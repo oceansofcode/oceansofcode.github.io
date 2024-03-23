@@ -1,4 +1,6 @@
 // This is for the layout / grid of each body.
+@use '../utils/variables' as *;
+
 body {
   display: grid;
   min-height: 100vh;

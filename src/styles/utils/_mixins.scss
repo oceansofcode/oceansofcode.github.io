@@ -1,19 +1,15 @@
+@use 'variables' as *;
+@use 'placeholders' as *;
+
 // Transition rules when switching from light to dark mode.
 @mixin theme($mode) {
   @extend %body-#{$mode};
+  $texts: h1, h2, h3, h4, h5, h6, details, summary, p, a, span;
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  details,
-  summary,
-  p,
-  a,
-  span {
-    @extend %text-#{$mode};
+  @each $textItem in $texts {
+    #{$textItem} {
+      @extend %text-#{$mode};
+    }
   }
 
   header {

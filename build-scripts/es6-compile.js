@@ -3,8 +3,10 @@ import { promises as fs, existsSync, mkdirSync } from 'fs';
 import { minify } from 'terser';
 
 // Assumes tsc has already been run and the compiled TS is in the ./build directory
-const scriptDistDir = '../dist/scripts';
+// TODO: Move JS from src -> dist
+const scriptSrcDir = '../src/scripts';
 const scriptBuildDir = '../build/scripts';
+const scriptDistDir = '../dist/scripts';
 const es5Path = '/es5';
 
 if (!existsSync(scriptDistDir)) {

@@ -1,5 +1,7 @@
+@use '../utils/mixins' as mixin;
+
 body.light {
-  @include theme("light");
+  @include mixin.theme("light");
   #welcome-callout {
     -webkit-text-stroke: 0.60px white;
   }

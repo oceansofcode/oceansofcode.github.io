@@ -1,19 +1,12 @@
-@import "utils/variables";
-@import "utils/placeholders";
-@import "utils/mixins";
-@import "utils/functions";
+@use "base/reset";
+@use "base/typography";
+@use "base/base";
 
-// Vendors here
-
-@import "base/reset";
-@import "base/typography";
-@import "base/base";
-
-@import "layout/grid";
-@import "layout/header";
-@import "layout/navigation";
-@import "layout/footer";
+@use "layout/grid";
+@use "layout/header";
+@use "layout/navigation";
+@use "layout/footer";
 
 // Themes
-@import "themes/dark";
-@import "themes/light";
+@use "themes/dark";
+@use "themes/light";

@@ -1,2 +1,2 @@
-export class ExperienceCard extends HTMLElement{constructor(){super();const e=document.getElementById("experience-card").content;console.log(e);const t=this.attachShadow({mode:"open"}),s=document.createElement("link");s.setAttribute("rel","stylesheet"),s.setAttribute("type","text/css"),s.setAttribute("href","dist/styles/pages/components/experience-card.css"),t.appendChild(s),t.appendChild(e.cloneNode(!0))}}
+export class ExperienceCard extends HTMLElement{constructor(){super();const e=document.getElementById("experience-card").content;this.attachShadow({mode:"open"}).appendChild(e.cloneNode(!0))}}
 //# sourceMappingURL=experience-card.js.map
