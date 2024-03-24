@@ -1,10 +1,10 @@
-import { ThemeConstants, ThemeIcons } from './interfaces/theme-enums.js';
+import { ThemeConstants, ThemeCss, ThemeIcons } from './interfaces/theme-enums.js';
 import { Theme, ThemeSwitch, ThemeTransition } from './interfaces/theme-switch-types.js';
 
 // TODO: Dynamically load theme CSS based on user preference.
 
-const lightTheme: Theme = { name: ThemeConstants.LIGHT, switchIcon: ThemeIcons.MOON };
-const darkTheme: Theme = { name: ThemeConstants.DARK, switchIcon: ThemeIcons.SUN };
+const lightTheme: Theme = { name: ThemeConstants.LIGHT, switchIcon: ThemeIcons.MOON, css: ThemeCss.LIGHT, isLoaded: false };
+const darkTheme: Theme = { name: ThemeConstants.DARK, switchIcon: ThemeIcons.SUN, css:ThemeCss.DARK, isLoaded: false };
 
 // eslint-disable-next-line immutable/no-let
 let body: HTMLBodyElement;
@@ -45,14 +45,20 @@ export const getCurrentTheme = (): Theme => {
 };
 
 const setTheme = (themes: ThemeSwitch, themeButton: HTMLElement) => {
+    const { newTheme, oldTheme } = themes;
+
+    if (!newTheme.isLoaded) {
+       loadTheme(newTheme); 
+    }
+
     if (body) {
-        body.classList.add(themes.newTheme.name);
-        themes.oldTheme ? body.classList.remove(themes.oldTheme.name) : undefined;
+        body.classList.add(newTheme.name);
+        oldTheme ? body.classList.remove(oldTheme.name) : undefined;
     }
 
     if (themeButton) {
-        themeButton.classList.add(themes.newTheme.switchIcon);
-        themes.oldTheme ? themeButton.classList.remove(themes.oldTheme.switchIcon) : undefined;
+        themeButton.classList.add(newTheme.switchIcon);
+        oldTheme ? themeButton.classList.remove(oldTheme.switchIcon) : undefined;
     }
 };
 
@@ -78,6 +84,15 @@ export const themeSwitchEvent = (themeButton: HTMLElement) => {
     prefersColorSchemeLight.addEventListener('change', e => e.matches ? setDarkToLight() : setLightToDark());
 
     return themeSwitch;
+};
+
+// We only want to load the stylesheet of a theme if the theme will be used
+const loadTheme = (theme: Theme) => {
+    const themeCss = document.getElementById(theme.css);
+    themeCss.removeAttribute('disabled');
+
+    // eslint-disable-next-line immutable/no-mutation
+    theme.isLoaded = true;
 };
 
 export const themeInit = async () => {

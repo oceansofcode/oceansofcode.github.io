@@ -1,8 +1,10 @@
-import { ThemeConstants, ThemeIcons } from './theme-enums.js';
+import { ThemeConstants, ThemeCss, ThemeIcons } from './theme-enums.js';
 
 export interface Theme {
     name: Exclude<ThemeConstants, ThemeConstants.THEME>;
+    css: ThemeCss;
     switchIcon: ThemeIcons;
+    isLoaded: boolean;
 }
 
 export interface ThemeSwitch {
