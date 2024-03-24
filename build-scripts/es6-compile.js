@@ -13,8 +13,20 @@ if (!existsSync(scriptDistDir)) {
     mkdirSync(scriptDistDir);
 }
 
+const readScriptDir = async directory => fs.readdir(directory, { withFileTypes: true, recursive: true });
+
+// Manually move any precompiled / minified JS in the src directory. i.e. polyfills.
+(await readScriptDir(scriptSrcDir))
+    .filter(dir => !dir.isDirectory() && dir.name.includes('.js'))
+    .forEach(jsFile => {
+        const filePath = `${jsFile.path}/${jsFile.name}`;
+        fs.readFile(filePath, { encoding: 'utf-8' })
+            .then(readFile => fs.writeFile(filePath.replace(scriptSrcDir, scriptDistDir), readFile));
+    });
+
+
 // Read the buildDir recursively to get every compiled js file excluding it's map.
-const buildDirFiles = (await fs.readdir(scriptBuildDir, { withFileTypes: true, recursive: true }))
+const buildDirFiles = (await readScriptDir(scriptBuildDir))
     .filter(dir => !dir.isDirectory() && !dir.path.includes(es5Path) && !dir.name.includes('.js.map'))
     .map(file => {
         const fileName = file.name;

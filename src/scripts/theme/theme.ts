@@ -1,6 +1,8 @@
 import { ThemeConstants, ThemeIcons } from './interfaces/theme-enums.js';
 import { Theme, ThemeSwitch, ThemeTransition } from './interfaces/theme-switch-types.js';
 
+// TODO: Dynamically load theme CSS based on user preference.
+
 const lightTheme: Theme = { name: ThemeConstants.LIGHT, switchIcon: ThemeIcons.MOON };
 const darkTheme: Theme = { name: ThemeConstants.DARK, switchIcon: ThemeIcons.SUN };
 

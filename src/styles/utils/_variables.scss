@@ -5,6 +5,9 @@ $header-height: 70px;
 $footer-height: math.div($header-height, 2);
 $side-gap: 15%; // Keeps site aligned better
 
+$dark-mode: "body.dark &";
+$light-mode: "body.light &";
+
 $themes: (
     "dark": (
         "primary-background": hsla(210, 22%, 4%, 0.75),
