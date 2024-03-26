@@ -8,8 +8,7 @@
   height: 100vh;
   width: 100%;
 
-  transition: opacity 1s;
-
+  transition: opacity 1.5s ease-in-out;
 }
 
 @media screen and (max-width: 800px) {
@@ -54,7 +53,7 @@ main {
         font-family: "Lobster Two", Helvetica, sans-serif;
         font-size: 3.2rem;
         animation: title-appear;
-        animation-duration: 1s;
+        animation-duration: 1.5s;
         animation-timing-function: ease-in-out;
       }
     }
