@@ -8,6 +8,11 @@
   height: 100vh;
   width: 100%;
 
+  img {
+    height: inherit;
+    width: inherit;
+  }
+
   transition: opacity 1.5s ease-in-out;
 }
 
@@ -16,7 +21,7 @@
     margin: 0;
     padding: 0;
 
-    .intro-background {
+    img {
       object-fit: cover;
     }
   }
