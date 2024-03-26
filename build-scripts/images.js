@@ -67,11 +67,9 @@ for await (const image of imageFileGenerator(imgs)) {
         const imgSizeDistPath = `${imgDistDir}/${size}/${image.name}`.replace(/\.(png|jpg)$/, '.webp');
         console.log(imgSizeDistPath);
 
-        const res = await sharp(image.fullPath)
+        sharp(image.fullPath)
             .resize(width[size])
             .webp()
             .toFile(imgSizeDistPath);
-
-        console.log(res);
     }
 }

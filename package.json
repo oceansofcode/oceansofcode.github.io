@@ -8,7 +8,7 @@
     "test": "tests"
   },
   "scripts": {
-    "build:images": "",
+    "build:images": "cd build-scripts && node \"images.js\"",
     "build:sass": "cd build-scripts && node \"sass-compile.js\"",
     "build:ts": "tsc && cd build-scripts && node \"es6-compile.js\" && npm run build:es5",
     "build:es5": "tsc -p tsconfig.es5.json && terser build/scripts/es5/index.js --mangle --compress --source-map \"content='build/scripts/es5/index.js.map'\" -o dist/scripts/index.js",
