@@ -6,6 +6,12 @@ header {
   align-items: center;
   height: $header-height; // The header should be 70px, this is important for rendering drop down menus.
   z-index: 2; // Stops welcome text from going over
+  opacity: $default-opacity;
+  transition-property: opacity, translate;
+  transition-duration: 400ms;
+  transition-timing-function: ease-out;
+  transition-delay: 200ms;
+  // transition: opacity 400ms ease-out 200ms;
 
   i {
     padding: 5px; // Gives greater area to click on icon.

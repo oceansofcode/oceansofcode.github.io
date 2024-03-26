@@ -1,5 +1,10 @@
+@use "functions" as *;
+
 @use "sass:map";
 @use "sass:math";
+@use "sass:color";
+
+$default-opacity:  0.75;
 
 $header-height: 70px;
 $footer-height: math.div($header-height, 2);
@@ -8,9 +13,12 @@ $side-gap: 15%; // Keeps site aligned better
 $dark-mode: "body.dark &";
 $light-mode: "body.light &";
 
+$dark-primary-background: hsla(210, 22%, 4%, 1);
+$dark-header-background: transparentize($dark-primary-background, 0.25);
+
 $themes: (
     "dark": (
-        "primary-background": hsla(210, 22%, 4%, 0.75),
+        "primary-background": $dark-primary-background,
         "text": #fff
     ),
     "light": (
@@ -18,3 +26,5 @@ $themes: (
         "text": #313441
     )
 );
+
+$super-themes: set-transparent-backgrounds($themes);

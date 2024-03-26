@@ -1,0 +1,13 @@
+@function set-transparent-backgrounds($themes) {
+    $theme-names: map-keys($themes);
+
+    @each $theme-name in $theme-names {
+        $property-keys: map-keys(map-get($themes, $theme-name));
+
+        @each $property-key in $property-keys {
+            @debug $property-key map-get($themes, $theme-name, $property-key);
+        }
+    }
+
+    @return $themes;
+}

@@ -108,7 +108,8 @@ export class PortfolioHeader extends HTMLElement {
 
         themeSwitch.addEventListener('click', themeSwitchEvent(themeSwitch), false);
         themeSwitch.classList.add(getThemeFromPreference().switchIcon);
-    
+
+        this.changeOnScroll();
         this.setupMobileMenuEvents();
         /*this.innerHTML = `
             <i id="mobile-menu-toggle" class="fas fa-bars"></i>
@@ -144,6 +145,21 @@ export class PortfolioHeader extends HTMLElement {
 
         this.mobileMenuToggle.addEventListener('click', toggleMenu, false);
         window.addEventListener('resize', resetMenu, false);
+    }
+
+    private changeOnScroll() {
+        window.addEventListener('scroll', () => this.setVisibility(), false);
+    }
+
+    private setVisibility() {
+        if (window.scrollY > 350) {
+            this.style.opacity = '0';
+            this.style.translate = '0 -70px';
+        } else {
+            this.style.opacity = '0.75';
+            this.style.translate = '0 0';
+        }
+        console.log(getComputedStyle(this).getPropertyValue('background-color'));
     }
 
 }
