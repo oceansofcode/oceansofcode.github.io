@@ -1,4 +1,4 @@
-@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
 
 header {
   display: flex;
@@ -6,7 +6,9 @@ header {
   align-items: center;
   height: $header-height; // The header should be 70px, this is important for rendering drop down menus.
   z-index: 2; // Stops welcome text from going over
-  opacity: $default-opacity;
+
+  @include themeable-property('background-color', 'primary-background-transparent');
+
   transition-property: opacity, translate;
   transition-duration: 400ms;
   transition-timing-function: ease-out;

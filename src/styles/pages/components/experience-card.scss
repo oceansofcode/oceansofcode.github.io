@@ -1,14 +1,8 @@
 @use '../../base/reset';
-@use '../../utils/variables' as *;
+@use '../../utils/mixins' as *;
 
 :host {
-    #{$dark-mode} {
-        border-color: white;
-    }
-
-    #{$light-mode} {
-        border-color: black;
-    }
+    @include themeable-property('border-color', 'text');
 
     border-style: solid;
     border-width: 0.05rem;

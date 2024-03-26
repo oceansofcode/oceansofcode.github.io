@@ -1,26 +1,39 @@
 @use 'variables' as *;
 @use 'placeholders' as *;
 
+@forward 'variables';
+
 // Transition rules when switching from light to dark mode.
-@mixin theme($mode) {
-  @extend %body-#{$mode};
+@mixin theme($theme-name) {
+  @extend %body-#{$theme-name};
 
   $texts: [h1 h2 h3 h4 h5 h6 details summary p a span];
   @each $textItem in $texts {
     #{$textItem} {
-      @extend %text-#{$mode};
+      @extend %text-#{$theme-name};
     }
   }
 
   $boxes: [header section footer];
   @each $box in $boxes {
     #{$box} {
-      @extend %body-#{$mode};
-      @extend %text-#{$mode};
+      @extend %body-#{$theme-name};
+      @extend %text-#{$theme-name};
     }
   }
 
   header ul {
-    @extend %body-#{$mode};
+    @extend %body-#{$theme-name};
+  }
+}
+
+// Provides both light and dark themeing for a property based on the theme-key provided
+@mixin themeable-property($property-name, $theme-key) {
+  #{$light-theme} {
+    #{$property-name}: map-get($themes, 'light', $theme-key);
+  }
+
+  #{$dark-theme} {
+    #{$property-name}: map-get($themes, 'dark', $theme-key);
   }
 }

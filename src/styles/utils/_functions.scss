@@ -1,11 +1,26 @@
-@function set-transparent-backgrounds($themes) {
+@use "sass:string";
+@use "sass:color";
+@use "sass:map";
+
+/**
+ * Function to automatically add a corresponding "transparent" property to the theme maps which avoids duplication
+ * and keeps the main map in variables.scss simple.
+ *
+ * @return - The $themes map with an extra map entry per property with the alpha channel adjusted by 0.25.
+ */
+@function set-transparent-backgrounds($themes, $transparent-ratio: 0.25) {
     $theme-names: map-keys($themes);
 
     @each $theme-name in $theme-names {
-        $property-keys: map-keys(map-get($themes, $theme-name));
+        $keys: map-keys(map-get($themes, $theme-name));
 
-        @each $property-key in $property-keys {
-            @debug $property-key map-get($themes, $theme-name, $property-key);
+        @each $key in $keys {
+            $transparent-key: $key + "-transparent";
+            $transparent-value: transparentize(map-get($themes, $theme-name, $key), $transparent-ratio);
+
+            //@debug $transparent-key $transparent-value;
+            $new-map: map.set($themes, $theme-name, $transparent-key, $transparent-value);
+            $themes: map.merge($themes, $new-map);
         }
     }
 

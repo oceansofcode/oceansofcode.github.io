@@ -1,4 +1,5 @@
 @use "functions" as *;
+@forward "functions";
 
 @use "sass:map";
 @use "sass:math";
@@ -10,15 +11,12 @@ $header-height: 70px;
 $footer-height: math.div($header-height, 2);
 $side-gap: 15%; // Keeps site aligned better
 
-$dark-mode: "body.dark &";
-$light-mode: "body.light &";
-
-$dark-primary-background: hsla(210, 22%, 4%, 1);
-$dark-header-background: transparentize($dark-primary-background, 0.25);
+$dark-theme: "body.dark &";
+$light-theme: "body.light &";
 
 $themes: (
     "dark": (
-        "primary-background": $dark-primary-background,
+        "primary-background": hsl(210, 22%, 4%),
         "text": #fff
     ),
     "light": (
@@ -27,4 +25,5 @@ $themes: (
     )
 );
 
-$super-themes: set-transparent-backgrounds($themes);
+// Adds a new property in every theme ending with '-transparent'
+$themes: set-transparent-backgrounds($themes);

@@ -153,13 +153,11 @@ export class PortfolioHeader extends HTMLElement {
 
     private setVisibility() {
         if (window.scrollY > 350) {
-            this.style.opacity = '0';
             this.style.translate = '0 -70px';
         } else {
-            this.style.opacity = '0.75';
             this.style.translate = '0 0';
         }
-        console.log(getComputedStyle(this).getPropertyValue('background-color'));
+        // console.log(getComputedStyle(this).getPropertyValue('background-color'));
     }
 
 }
