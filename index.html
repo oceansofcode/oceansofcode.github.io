@@ -44,9 +44,12 @@
     <main id="intro-page">
         <section id="intro">
             <picture>
-                <source media="(max-width: 800px)" srcset="./dist/images/small/light-under-ocean.webp">
-                <img fetchpriority="high" id="intro-background" src="./dist/images/large/light-under-ocean.webp"
-                alt="Oceans of Code Background">
+                <source media="(max-width: 800px) and (prefers-color-scheme: dark)" srcset="./dist/images/small/light-under-ocean.webp">
+                <source media="(min-width: 801px) and (prefers-color-scheme: dark)" srcset="./dist/images/large/light-under-ocean.webp">
+                <source media="(max-width: 800px) and (prefers-color-scheme: light)" srcset="./dist/images/small/wave.webp">
+                <source media="(min-width: 801px) and (prefers-color-scheme: light)" srcset="./dist/images/large/wave.webp">
+                <img sizes="100vw" fetchpriority="high" id="intro-background" src="./dist/images/large/light-under-ocean.webp"
+                alt="Portfolio Intro Background">
             </picture>
             <h1 id="welcome-callout" class="dark-background">Welcome to my Portfolio</h1>
         </section>

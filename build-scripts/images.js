@@ -17,8 +17,8 @@ import sharp from 'sharp';
 
 // Define the widths based on named sizing
 const width = {
-    small: 400,
-    large: 1280
+    small: 1280,
+    large: 1920,
 };
 
 const imgSrcDir = '../src/images';
@@ -69,7 +69,7 @@ for await (const image of imageFileGenerator(imgs)) {
 
         sharp(image.fullPath)
             .resize(width[size])
-            .webp()
+            .webp({ quality: 80 })
             .toFile(imgSizeDistPath);
     }
 }
