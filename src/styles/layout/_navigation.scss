@@ -1,7 +1,7 @@
 @use '../utils/variables' as *;
 
+// The navigation.
 header nav {
-  // The navigation.
   display: none; // TODO: Temporary until other pages exist
 
   ul {
@@ -29,8 +29,10 @@ header nav {
         position: absolute;
         top: $header-height;
         z-index: 1;
+
         > li.drop-down-item {
           width: 100%;
+
           > a {
             height: auto;
             width: 100%;
@@ -38,6 +40,7 @@ header nav {
           }
         }
       }
+
       // Display the dropdown list on hover.
       &:hover ul.drop-down {
         display: block;
