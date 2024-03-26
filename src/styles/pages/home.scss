@@ -36,9 +36,10 @@ main {
   grid-column: 1 / span 4;
 
   >section {
-    min-height: calc(100vh - $header-height);
+    min-height: 100vh;
 
     &:first-child {
+      min-height: calc(100vh - $header-height);
       background-color: initial;
 
       >h1#welcome-callout {
@@ -56,7 +57,7 @@ main {
     }
 
     &:last-child {
-      min-height: calc(100vh - $header-height - $footer-height);
+      min-height: calc(100vh - $footer-height);
     }
 
     &~section {
