@@ -43,19 +43,22 @@
     <header is="portfolio-header"></header>
     <main id="intro-page">
         <section id="intro">
-            <picture>
+            <!-- TODO: Make these custom elements in order to prevent both from being loaded on page load -->
+            <picture class="intro-background hidden-image dark">
                 <source media="(max-width: 800px) and (prefers-color-scheme: dark)" srcset="./dist/images/small/light-under-ocean.webp">
-                <source media="(min-width: 801px) and (prefers-color-scheme: dark)" srcset="./dist/images/large/light-under-ocean.webp">
-                <source media="(max-width: 800px) and (prefers-color-scheme: light)" srcset="./dist/images/small/wave.webp">
-                <source media="(min-width: 801px) and (prefers-color-scheme: light)" srcset="./dist/images/large/wave.webp">
-                <img sizes="100vw" fetchpriority="high" id="intro-background" src="./dist/images/large/light-under-ocean.webp"
-                alt="Portfolio Intro Background">
+                <img sizes="100vw" fetchpriority="high" src="./dist/images/large/light-under-ocean.webp"
+                alt="Portfolio Intro Dark Background">
             </picture>
-            <h1 id="welcome-callout" class="dark-background">Welcome to my Portfolio</h1>
+            <picture class="intro-background hidden-image light">
+                <source media="(max-width: 800px) and (prefers-color-scheme: light)" srcset="./dist/images/small/wave.webp">
+                <img sizes="100vw" fetchpriority="low" src="./dist/images/large/wave.webp"
+                alt="Portfolio Intro Dark Background">
+            </picture>
+            <h1 id="welcome-callout">Welcome to my Portfolio</h1>
         </section>
 
         <!-- As we scroll down we want the background image to fade and the header / footer to lose opacity.
-            The welcome call out should fade out as well
+            The welcome call out should fade out as well and have a parallax effect
         -->
 
         <!-- Experience Card Template -->

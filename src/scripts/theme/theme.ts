@@ -5,6 +5,7 @@ import { Theme, ThemeSwitch, ThemeTransition } from './interfaces/theme-switch-t
 
 const lightTheme: Theme = { name: ThemeConstants.LIGHT, switchIcon: ThemeIcons.MOON, css: ThemeCss.LIGHT, isLoaded: false };
 const darkTheme: Theme = { name: ThemeConstants.DARK, switchIcon: ThemeIcons.SUN, css:ThemeCss.DARK, isLoaded: false };
+const hiddenImageClass = 'hidden-image';
 
 // eslint-disable-next-line immutable/no-let
 let body: HTMLBodyElement;
@@ -44,24 +45,6 @@ export const getCurrentTheme = (): Theme => {
     }
 };
 
-const setTheme = (themes: ThemeSwitch, themeButton: HTMLElement) => {
-    const { newTheme, oldTheme } = themes;
-
-    if (!newTheme.isLoaded) {
-       loadTheme(newTheme); 
-    }
-
-    if (body) {
-        body.classList.add(newTheme.name);
-        oldTheme ? body.classList.remove(oldTheme.name) : undefined;
-    }
-
-    if (themeButton) {
-        themeButton.classList.add(newTheme.switchIcon);
-        oldTheme ? themeButton.classList.remove(oldTheme.switchIcon) : undefined;
-    }
-};
-
 // Should be called once in the page lifecycle to wire this event to the button that will toggle theme changes
 export const themeSwitchEvent = (themeButton: HTMLElement) => {
     const lightToDark: ThemeSwitch = { newTheme: darkTheme, oldTheme: lightTheme };
@@ -84,6 +67,36 @@ export const themeSwitchEvent = (themeButton: HTMLElement) => {
     prefersColorSchemeLight.addEventListener('change', e => e.matches ? setDarkToLight() : setLightToDark());
 
     return themeSwitch;
+};
+
+const setTheme = (themes: ThemeSwitch, themeButton: HTMLElement) => {
+    const { newTheme, oldTheme } = themes;
+
+    if (!newTheme.isLoaded) {
+       loadTheme(newTheme); 
+    }
+
+    if (body) {
+        body.classList.add(newTheme.name);
+        oldTheme ? body.classList.remove(oldTheme.name) : undefined;
+    }
+
+    if (themeButton) {
+        themeButton.classList.add(newTheme.switchIcon);
+        oldTheme ? themeButton.classList.remove(oldTheme.switchIcon) : undefined;
+    }
+
+    const backgrounds = document.querySelectorAll('.intro-background');
+
+    backgrounds.forEach(background => {
+        if (background.classList.contains(newTheme.name)) {
+            background.classList.remove(hiddenImageClass);
+        }
+
+        if (oldTheme && background.classList.contains(oldTheme.name)) {
+            background.classList.add(hiddenImageClass);
+        }
+    });
 };
 
 // We only want to load the stylesheet of a theme if the theme will be used

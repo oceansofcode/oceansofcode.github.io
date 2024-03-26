@@ -1,12 +1,15 @@
 @use "../utils/variables" as *;
 
-#intro-background {
+.intro-background {
   visibility: visible !important;
   z-index: -9999;
   top: 0;
   position: absolute;
   height: 100vh;
   width: 100%;
+
+  transition: opacity 1s;
+
 }
 
 @media screen and (max-width: 800px) {
@@ -14,7 +17,7 @@
     margin: 0;
     padding: 0;
 
-    #intro-background {
+    .intro-background {
       object-fit: cover;
     }
   }

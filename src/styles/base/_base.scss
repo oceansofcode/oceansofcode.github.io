@@ -42,6 +42,10 @@ img,
 picture {
   max-width: 100%;
   display: block;
+
+  &.hidden-image {
+    opacity: 0;
+  }
 }
 
 .hidden {
