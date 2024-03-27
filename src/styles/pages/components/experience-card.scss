@@ -1,8 +1,8 @@
-@use '../../base/reset';
-@use '../../utils/mixins' as *;
+@use "../../base/reset";
+@use "../../utils/mixins" as *;
 
 :host {
-    @include themeable-property('border-color', 'text');
+    @include themeable-property("border-color", "text");
 
     border-style: solid;
     border-width: 0.05rem;
@@ -17,6 +17,16 @@
 }
 
 article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     padding: 1rem;
+
+    .logo {
+        text-align: center;
+        margin-top: 10%;
+        height: 200px;
+        width: 200px;
+    }
 }

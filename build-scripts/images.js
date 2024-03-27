@@ -2,19 +2,6 @@
 import { promises as fs, existsSync, mkdirSync } from 'fs';
 import sharp from 'sharp';
 
-// TODO: Have this spit out multiple image sizes to use as src sets
-/*imagemin(['src/images/*.{jpg,png}'], {
-    destination: 'dist/images',
-    plugins: [
-        webp({
-            quality: 50,
-            method: 6,
-            resize: { width: 1280, height: 1080 }
-        })
-    ]
-});
-*/
-
 // Define the widths based on named sizing
 const width = {
     small: 1280,
