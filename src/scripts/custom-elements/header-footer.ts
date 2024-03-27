@@ -8,6 +8,9 @@ export class PortfolioHeader extends HTMLElement {
     private mobileMenuToggle: HTMLElement;
     private navMenu: HTMLUListElement;
 
+    // Fields to control scroll events
+    private previousScrollPosition = window.scrollY;
+
     constructor() {
         super();
     }
@@ -109,8 +112,15 @@ export class PortfolioHeader extends HTMLElement {
         themeSwitch.addEventListener('click', themeSwitchEvent(themeSwitch), false);
         themeSwitch.classList.add(getThemeFromPreference().switchIcon);
 
-        this.changeOnScroll();
+        this.previousScrollPosition = window.scrollY;
+        this.scrollEndEvent();
+
         this.setupMobileMenuEvents();
+        this.listenToThemeSwitch();
+
+        // Get initial background color
+
+        // Left for reference
         /*this.innerHTML = `
             <i id="mobile-menu-toggle" class="fas fa-bars"></i>
             <h1 id="title"><a href="./">Oceans of Code</a></h1>
@@ -132,7 +142,7 @@ export class PortfolioHeader extends HTMLElement {
         */
     }
 
-    private setupMobileMenuEvents() {
+    private setupMobileMenuEvents(): void {
         const toggleMenu = () => {
             // eslint-disable-next-line immutable/no-mutation
             this.navMenu.style.display === 'flex' ? this.navMenu.style.display = 'none' : this.navMenu.style.display = 'flex';
@@ -147,19 +157,41 @@ export class PortfolioHeader extends HTMLElement {
         window.addEventListener('resize', resetMenu, false);
     }
 
-    private changeOnScroll() {
-        window.addEventListener('scroll', () => this.setVisibility(), false);
+    private scrollEndEvent(): void {
+
+        const handleEvent = () => {
+            const previousPosition = this.previousScrollPosition;
+            const currentPosition = window.scrollY;
+
+            // Visibility
+            if (currentPosition > 500 && previousPosition < currentPosition) {
+                this.style.translate = '0 -70px';
+            } else {
+                this.style.translate = '0 0';
+            }
+
+            this.changeBackgroundColorOpacity();
+
+            this.previousScrollPosition = currentPosition;
+
+        };
+
+        window.addEventListener('scroll', handleEvent, false);
     }
 
-    private setVisibility() {
-        if (window.scrollY > 350) {
-            this.style.translate = '0 -70px';
-        } else {
-            this.style.translate = '0 0';
-        }
-        // console.log(getComputedStyle(this).getPropertyValue('background-color'));
+    private changeBackgroundColorOpacity() {
+        const opacity = window.scrollY > 300 ? 0.99 : 0.75;
+
+        const currentColor = getComputedStyle(this).getPropertyValue('background-color');
+
+        const newColor = currentColor.replace(/0?\.?\d+\)$/, `${opacity.toString()})`);
+
+        this.style.backgroundColor = newColor;
     }
 
+    private listenToThemeSwitch() {
+        window.addEventListener('themeSwitch', () => this.style.removeProperty('background-color'), false);
+    }
 }
 
 export class PortfolioFooter extends HTMLElement {

@@ -9,7 +9,7 @@ header {
 
   @include themeable-property('background-color', 'primary-background-transparent');
 
-  transition-property: opacity, translate;
+  transition-property: opacity, translate, background-color;
   transition-duration: 400ms;
   transition-timing-function: ease-out;
   transition-delay: 200ms;

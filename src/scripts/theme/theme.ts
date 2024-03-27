@@ -5,6 +5,12 @@ import { Theme, ThemeSwitch, ThemeTransition } from './interfaces/theme-switch-t
 
 const lightTheme: Theme = { name: ThemeConstants.LIGHT, switchIcon: ThemeIcons.MOON, css: ThemeCss.LIGHT, isLoaded: false };
 const darkTheme: Theme = { name: ThemeConstants.DARK, switchIcon: ThemeIcons.SUN, css:ThemeCss.DARK, isLoaded: false };
+
+const transition: ThemeTransition = { htmlClass: 'color-theme-in-transition', speed: 1500 };
+
+const lightToDark: ThemeSwitch = { newTheme: darkTheme, oldTheme: lightTheme };
+const darkToLight: ThemeSwitch = { newTheme: lightTheme, oldTheme: darkTheme };
+
 const hiddenImageClass = 'hidden-image';
 
 // eslint-disable-next-line immutable/no-let
@@ -47,26 +53,30 @@ export const getCurrentTheme = (): Theme => {
 
 // Should be called once in the page lifecycle to wire this event to the button that will toggle theme changes
 export const themeSwitchEvent = (themeButton: HTMLElement) => {
-    const lightToDark: ThemeSwitch = { newTheme: darkTheme, oldTheme: lightTheme };
-    const darkToLight: ThemeSwitch = { newTheme: lightTheme, oldTheme: darkTheme };
-    const transition: ThemeTransition = { htmlClass: 'color-theme-in-transition', speed: 1500 };
+
+    const themeSwitch: ThemeSwitch = body.classList.contains(lightTheme.name) ? lightToDark : darkToLight;
 
     const setLightToDark = () => setTheme(lightToDark, themeButton);
     const setDarkToLight = () => setTheme(darkToLight, themeButton);
-
-    // The actual event
-    const themeSwitch = () => {
-        body.classList.add(transition.htmlClass);
-        setTimeout(() => body.classList.remove(transition.htmlClass), transition.speed);
-
-        body.classList.contains(lightTheme.name) ? setLightToDark() : setDarkToLight();
-    };
 
     // Wire this to prefers-color-scheme media query, this ensure the themeButton can change at the same time.
     const prefersColorSchemeLight = window.matchMedia(`(prefers-color-scheme: ${lightTheme.name})`);
     prefersColorSchemeLight.addEventListener('change', e => e.matches ? setDarkToLight() : setLightToDark());
 
-    return themeSwitch;
+
+    // The event handler we are returning
+    const themeSwitchHandler = () => {
+        body.classList.add(transition.htmlClass);
+        setTimeout(() => body.classList.remove(transition.htmlClass), transition.speed);
+
+        body.classList.contains(lightTheme.name) ? setLightToDark() : setDarkToLight();
+
+        // Send out an event for other components to use
+        const customThemeSwitchEvent = new CustomEvent('themeSwitch', { detail: themeSwitch });
+        window.dispatchEvent(customThemeSwitchEvent);
+    };
+
+    return themeSwitchHandler;
 };
 
 const setTheme = (themes: ThemeSwitch, themeButton: HTMLElement) => {
