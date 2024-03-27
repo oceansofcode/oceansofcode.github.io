@@ -11,9 +11,16 @@
     width: 350px;
     height: 500px;
 
+    transition-property: translate, filter, transform;
+    transition-duration: 400ms;
+
     @media screen and (max-width: 800px) {
         width: 100%;
     }
+}
+
+:host(:hover) {
+    translate: 0px -2rem;
 }
 
 article {
@@ -28,5 +35,11 @@ article {
         margin-top: 10%;
         height: 150px;
         width: 150px;
+
+        transition-duration: 400ms;
+
+        &:hover {
+            transform: scale(1.1);
+        }
     }
 }
