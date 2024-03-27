@@ -59,10 +59,6 @@ export const themeSwitchEvent = (themeButton: HTMLElement) => {
     const setLightToDark = () => setTheme(lightToDark, themeButton);
     const setDarkToLight = () => setTheme(darkToLight, themeButton);
 
-    // Wire this to prefers-color-scheme media query, this ensure the themeButton can change at the same time.
-    const prefersColorSchemeLight = window.matchMedia(`(prefers-color-scheme: ${lightTheme.name})`);
-    prefersColorSchemeLight.addEventListener('change', e => e.matches ? setDarkToLight() : setLightToDark());
-
 
     // The event handler we are returning
     const themeSwitchHandler = () => {
@@ -71,10 +67,11 @@ export const themeSwitchEvent = (themeButton: HTMLElement) => {
 
         body.classList.contains(lightTheme.name) ? setLightToDark() : setDarkToLight();
 
-        // Send out an event for other components to use
-        const customThemeSwitchEvent = new CustomEvent('themeSwitch', { detail: themeSwitch });
-        window.dispatchEvent(customThemeSwitchEvent);
     };
+
+    // Wire this to prefers-color-scheme media query, this ensure the themeButton can change at the same time.
+    const prefersColorSchemeLight = window.matchMedia(`(prefers-color-scheme: ${lightTheme.name})`);
+    prefersColorSchemeLight.addEventListener('change', e => e.matches ? setDarkToLight() : setLightToDark());
 
     return themeSwitchHandler;
 };
@@ -107,6 +104,10 @@ const setTheme = (themes: ThemeSwitch, themeButton: HTMLElement) => {
             background.classList.add(hiddenImageClass);
         }
     });
+
+        // Send out an event for other components to use
+        const customThemeSwitchEvent = new CustomEvent('themeSwitch', { detail: themes });
+        window.dispatchEvent(customThemeSwitchEvent);
 };
 
 // We only want to load the stylesheet of a theme if the theme will be used
