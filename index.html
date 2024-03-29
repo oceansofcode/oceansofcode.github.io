@@ -12,8 +12,6 @@
     <title>Oceans of Code</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preload" href="dist/styles/main.css" as="style">
 
     <link rel="stylesheet" href="dist/styles/pages/themes/dark.css" id="dark-theme-css" disabled>
@@ -22,10 +20,10 @@
     <link rel="stylesheet" type="text/css" media="screen" href="dist/styles/main.css">
     <link rel="stylesheet" type="text/css" media="screen" href="dist/styles/pages/home.css">
 
-    <!-- <link rel="preload" href="dist/images/large/light-under-ocean.webp" as="image"> -->
-    <link rel="prefetch"
-        href="https://fonts.googleapis.com/css?family=Cinzel|Roboto|Lobster+Two|Source+Code+Pro&display=swap"
-        as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Cinzel|Roboto|Lobster+Two|Source+Code+Pro&display=swap" rel="stylesheet" > -->
 
     <script src="dist/scripts/custom-elements-polyfill.js"></script>
 
@@ -44,13 +42,13 @@
     <main id="intro-page">
         <section id="intro">
             <!-- TODO: Make these custom elements in order to prevent both from being loaded on page load -->
-            <picture class="intro-background hidden-image dark">
+            <picture class="theme-background hidden-image dark">
                 <source media="(max-width: 800px) and (prefers-color-scheme: dark)"
                     srcset="./dist/images/small/light-under-ocean.webp">
                 <img sizes="100vw" fetchpriority="high" src="./dist/images/large/light-under-ocean.webp"
                     alt="Portfolio Intro Dark Background">
             </picture>
-            <picture class="intro-background hidden-image light">
+            <picture class="theme-background hidden-image light">
                 <source media="(max-width: 800px) and (prefers-color-scheme: light)"
                     srcset="./dist/images/small/wave.webp">
                 <img sizes="100vw" fetchpriority="low" src="./dist/images/large/wave.webp"

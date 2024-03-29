@@ -190,7 +190,7 @@ export class PortfolioHeader extends HTMLElement {
     }
 
     private listenToThemeSwitch() {
-        window.addEventListener('themeSwitch', () => this.style.removeProperty('background-color'), false);
+        window.addEventListener('themeSwitched', () => this.style.removeProperty('background-color'), false);
     }
 }
 

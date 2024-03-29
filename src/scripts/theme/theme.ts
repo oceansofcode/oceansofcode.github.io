@@ -13,6 +13,8 @@ const darkToLight: ThemeSwitch = { newTheme: lightTheme, oldTheme: darkTheme };
 
 const hiddenImageClass = 'hidden-image';
 
+const prefersLight = window.matchMedia(`(prefers-color-scheme: ${lightTheme.name})`);
+
 // eslint-disable-next-line immutable/no-let
 let body: HTMLBodyElement;
 
@@ -52,35 +54,42 @@ export const getCurrentTheme = (): Theme => {
 };
 
 // Should be called once in the page lifecycle to wire this event to the button that will toggle theme changes
-export const themeSwitchEvent = (themeButton: HTMLElement) => {
+export const themeSwitchEvent = (themeButton: HTMLElement): () => void => {
 
-    const themeSwitch: ThemeSwitch = body.classList.contains(lightTheme.name) ? lightToDark : darkToLight;
-
-    const setLightToDark = () => setTheme(lightToDark, themeButton);
-    const setDarkToLight = () => setTheme(darkToLight, themeButton);
-
-
-    // The event handler we are returning
-    const themeSwitchHandler = () => {
+    // Sets our transition classes onto the body and then removes it once the transition time is done
+    const bodyTransition = () => {
         body.classList.add(transition.htmlClass);
         setTimeout(() => body.classList.remove(transition.htmlClass), transition.speed);
-
-        body.classList.contains(lightTheme.name) ? setLightToDark() : setDarkToLight();
-
     };
 
-    // Wire this to prefers-color-scheme media query, this ensure the themeButton can change at the same time.
-    const prefersColorSchemeLight = window.matchMedia(`(prefers-color-scheme: ${lightTheme.name})`);
-    prefersColorSchemeLight.addEventListener('change', e => e.matches ? setDarkToLight() : setLightToDark());
+    // Captures out themeButton for each changeThemeCall we are wiring
+    const switchTheme = (themeSwitch: ThemeSwitch) => changeTheme(themeSwitch, themeButton);
 
-    return themeSwitchHandler;
+    const prefersColorSchemeLightEventHandler = (e: MediaQueryListEvent) => {
+        bodyTransition();
+
+        if (e.matches) {
+            switchTheme(darkToLight);
+        } else {
+            switchTheme(lightToDark);
+        }
+    };
+
+    // Wire this to prefers-color-scheme media query, this ensures the themeButton can change at the same time.
+    prefersLight.addEventListener('change', prefersColorSchemeLightEventHandler);
+
+    return () => {
+        bodyTransition();
+
+        body.classList.contains(darkTheme.name) ? switchTheme(darkToLight) : switchTheme(lightToDark);
+    };
 };
 
-const setTheme = (themes: ThemeSwitch, themeButton: HTMLElement) => {
+const changeTheme = (themes: ThemeSwitch, themeButton: HTMLElement) => {
     const { newTheme, oldTheme } = themes;
 
     if (!newTheme.isLoaded) {
-       loadTheme(newTheme); 
+        loadTheme(newTheme);
     }
 
     if (body) {
@@ -93,7 +102,7 @@ const setTheme = (themes: ThemeSwitch, themeButton: HTMLElement) => {
         oldTheme ? themeButton.classList.remove(oldTheme.switchIcon) : undefined;
     }
 
-    const backgrounds = document.querySelectorAll('.intro-background');
+    const backgrounds = document.querySelectorAll('.theme-background');
 
     backgrounds.forEach(background => {
         if (background.classList.contains(newTheme.name)) {
@@ -105,9 +114,9 @@ const setTheme = (themes: ThemeSwitch, themeButton: HTMLElement) => {
         }
     });
 
-        // Send out an event for other components to use
-        const customThemeSwitchEvent = new CustomEvent('themeSwitch', { detail: themes });
-        window.dispatchEvent(customThemeSwitchEvent);
+    // Send out an event for other components to use
+    const customThemeSwitchEvent = new CustomEvent('themeSwitched', { detail: themes });
+    window.dispatchEvent(customThemeSwitchEvent);
 };
 
 // We only want to load the stylesheet of a theme if the theme will be used
@@ -119,12 +128,13 @@ const loadTheme = (theme: Theme) => {
     theme.isLoaded = true;
 };
 
+/**
+ * Sets the initial theme based on the users prefered color
+ */
 export const themeInit = async () => {
     body = await cacheDom();
 
-    const setInitialTheme = (newTheme: Theme) => setTheme({ newTheme }, undefined);
+    const setInitialTheme = (newTheme: Theme) => changeTheme({ newTheme }, undefined);
 
-    const prefersColorSchemeLight = window.matchMedia(`(prefers-color-scheme: ${lightTheme.name})`);
-        
-    prefersColorSchemeLight.matches ? setInitialTheme(lightTheme) : setInitialTheme(darkTheme);
+    prefersLight.matches ? setInitialTheme(lightTheme) : setInitialTheme(darkTheme);
 };
