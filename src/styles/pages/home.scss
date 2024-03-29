@@ -89,10 +89,10 @@ main {
     justify-self: start;
   }
 
-  @media screen and (min-width: 801px) {
+  @media screen and (min-width: 1205px) {
+    grid-template-rows: 10rem 1fr;
     grid-auto-flow: column;
-    justify-content: center;
-
+    grid-template-columns: repeat(3, 1fr);
 
     > :not(:first-child) {
       grid-row-start: 2;
