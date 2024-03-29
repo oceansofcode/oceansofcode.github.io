@@ -50,7 +50,6 @@ main {
       background-color: initial;
 
       >#welcome-callout {
-
         #{$light-theme} {
           color: white; // TODO: Find better color
         }
@@ -63,7 +62,7 @@ main {
         font-family: "Lobster Two", Helvetica, sans-serif;
         font-size: 3.2rem;
         animation: title-appear;
-        animation-duration: 1.5s;
+        animation-duration: 2s;
         animation-timing-function: ease-in-out;
       }
     }

@@ -1,2 +1,2 @@
-import{ExperienceCard as e}from"../custom-elements/experience-card.js";customElements.define("experience-card",e);
+import{ExperienceCard as e}from"../custom-elements/experience-card.js";customElements.define("experience-card",e);const t=document.getElementById("welcome-callout"),n={duration:0,fill:"forwards"};window.addEventListener("scroll",(()=>{const e=[{transform:`translateX(-50%) translateY(-50%) translateY(${window.scrollY/2.2}px)`}];t.animate(e,n).finished.then((e=>e.commitStyles())),t.style.translate="unset"}));
 //# sourceMappingURL=home.js.map
