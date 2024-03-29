@@ -81,7 +81,7 @@ main {
   }
 }
 
-#experience {
+#clients {
   grid-template-rows: 5rem 1fr;
   justify-items: center;
 
@@ -89,7 +89,7 @@ main {
     justify-self: start;
   }
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 801px) {
     grid-auto-flow: column;
     justify-content: center;
 

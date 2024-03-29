@@ -43,13 +43,13 @@
         <section id="intro">
             <!-- TODO: Make these custom elements in order to prevent both from being loaded on page load -->
             <picture class="theme-background hidden-image dark">
-                <source media="(max-width: 800px) and (prefers-color-scheme: dark)"
+                <source media="(max-width: 801px) and (prefers-color-scheme: dark)"
                     srcset="./dist/images/small/light-under-ocean.webp">
                 <img sizes="100vw" fetchpriority="high" src="./dist/images/large/light-under-ocean.webp"
                     alt="Portfolio Intro Dark Background">
             </picture>
             <picture class="theme-background hidden-image light">
-                <source media="(max-width: 800px) and (prefers-color-scheme: light)"
+                <source media="(max-width: 801px) and (prefers-color-scheme: light)"
                     srcset="./dist/images/small/wave.webp">
                 <img sizes="100vw" fetchpriority="low" src="./dist/images/large/wave.webp"
                     alt="Portfolio Intro Dark Background">
@@ -77,7 +77,7 @@
             </article>
         </template>
 
-        <section id="experience">
+        <section id="clients">
             <h2 class="section-title">Clients</h2>
             <experience-card>
                 <span slot="client">Volkswagen Group of America</span>

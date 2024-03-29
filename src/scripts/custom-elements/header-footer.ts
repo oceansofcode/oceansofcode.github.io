@@ -16,10 +16,12 @@ export class PortfolioHeader extends HTMLElement {
     }
 
     connectedCallback() {
+        const navLinks: HTMLLIElement[] = [];
+
         // Mobile menu
         const mobileMenuToggle = document.createElement('i');
         mobileMenuToggle.setAttribute('id', 'mobile-menu-toggle');
-        mobileMenuToggle.setAttribute('class', 'fas fa-bars hidden'); // Hidden for now        
+        mobileMenuToggle.setAttribute('class', 'fas fa-bars'); // Hidden for now        
         this.mobileMenuToggle = mobileMenuToggle;
         this.appendChild(mobileMenuToggle);
 
@@ -42,6 +44,21 @@ export class PortfolioHeader extends HTMLElement {
         this.navMenu = navMenu;
         nav.appendChild(navMenu);
 
+        const clients = document.createElement('li');
+        const clientsLink = document.createElement('a');
+        clientsLink.setAttribute('href', '/clients'); 
+        clientsLink.appendChild(document.createTextNode('Clients'));
+        clientsLink.addEventListener('click', e => {
+            e.preventDefault();
+
+            // Allows for smooth scrolling if we are on the same page
+            document.location.href = '/#clients';
+        });
+
+        clients.appendChild(clientsLink);
+        navLinks.push(clients);
+
+        /*
         // Web Apps
         const webApps = document.createElement('li');
         webApps.setAttribute('class', 'drop-down-item');
@@ -99,8 +116,8 @@ export class PortfolioHeader extends HTMLElement {
         sandLink.appendChild(document.createTextNode('Sandbox'));
         sandLink.setAttribute('href', './sandbox');
         sand.appendChild(sandLink);
+        */
 
-        const navLinks: HTMLLIElement[] = [webApps, webAssem, sand];
         navLinks.forEach(navLink => navMenu.appendChild(navLink));
 
         // Theme switch button and event handling
@@ -143,18 +160,25 @@ export class PortfolioHeader extends HTMLElement {
     }
 
     private setupMobileMenuEvents(): void {
-        const toggleMenu = () => {
-            // eslint-disable-next-line immutable/no-mutation
-            this.navMenu.style.display === 'flex' ? this.navMenu.style.display = 'none' : this.navMenu.style.display = 'flex';
-        };
 
         const resetMenu = () => {
             // eslint-disable-next-line immutable/no-mutation
-            window.innerWidth >= 800 ? this.navMenu.style.display = null : undefined;
+            window.innerWidth >= 801 ? this.navMenu.style.display = null : undefined;
         };
 
-        this.mobileMenuToggle.addEventListener('click', toggleMenu, false);
+        this.mobileMenuToggle.addEventListener('click', () => this.toggleMobileMenu(this.navMenu), false);
         window.addEventListener('resize', resetMenu, false);
+    }
+
+    private toggleMobileMenu(navMenu: HTMLUListElement): void {
+        // eslint-disable-next-line immutable/no-mutation
+        window.innerWidth <= 800 && navMenu.style.display === 'flex' ? navMenu.style.display = 'none' : navMenu.style.display = 'flex';
+    }
+
+    private closeMobileMenu(navMenu: HTMLUListElement): void {
+        if (window.innerWidth <= 800) {
+            navMenu.style.display = 'none';
+        }
     }
 
     private scrollEndEvent(): void {
@@ -166,6 +190,7 @@ export class PortfolioHeader extends HTMLElement {
             // Visibility
             if (currentPosition > 500 && previousPosition < currentPosition) {
                 this.style.translate = '0 -70px';
+                this.closeMobileMenu(this.navMenu);
             } else {
                 this.style.translate = '0 0';
             }

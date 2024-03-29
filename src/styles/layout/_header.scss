@@ -22,7 +22,6 @@ header {
     margin: {
       right: $side-gap;
       left: 1.6rem;
-      top: 7px; // Aligns it better with nav text
     }
 
     &:hover {
@@ -48,7 +47,7 @@ header {
     }
   }
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 801px) {
     nav {
       ul#nav-menu {
         background-color: transparent !important;
@@ -61,16 +60,15 @@ header {
   }
 
   @media screen and (max-width: 800px) {
-    justify-content: space-around;
     opacity: 1;
 
     > :not(.hidden):first-child,
     .hidden + :not(.hidden) {
-      margin-left: 5%;
+      margin-left: 3rem;
     }
 
     > :last-child {
-      margin-right: 5%;
+      margin-right: 3rem;
     }
 
     i {
@@ -79,11 +77,13 @@ header {
     }
 
     #mobile-menu-toggle {
-      display: none; // TODO: Temporary until nav exists
+      display: block;
     }
 
     nav {
       ul#nav-menu {
+        @include themeable-property('background-color', 'primary-background-transparent');
+
         display: none;
         flex-direction: column;
         justify-content: space-around;
