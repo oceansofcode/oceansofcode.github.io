@@ -1,5 +1,6 @@
 @use '../utils/variables' as *;
 
+
 // The navigation.
 header nav {
   ul {
@@ -8,11 +9,12 @@ header nav {
     list-style-type: none;
 
     // Each item  in the navigation and it's link.
-    > li {
+    >li {
       display: inline-block;
       flex: 0 1 auto;
       position: relative;
-      > a {
+
+      >a {
         // Sizing here is important for the dropdown list to render correctly on different screens.
         font-size: 1.6rem;
         padding: 2.3rem 1.6rem;
@@ -20,38 +22,39 @@ header nav {
 
       &::before {
         // This plus the left calc guarentees the line will always be centered no matter how wide
-        $line-width: 80%;
-      
-        content: '';
-        width: $line-width;
+        $nav-item-line-width: 80%;
 
-        max-width: 70px;
+        width: $nav-item-line-width;
+        content: '';
         height: 2px;
         position: absolute;
         bottom: 30%;
-        left: calc((100% - $line-width) / 2);
-       
+        left: calc((100% - $nav-item-line-width) / 2);
+
         background-color: white;
-        visibility: hidden;
+        opacity: 0;
+        transform: scaleX(0);
+        transition: all 1s ease-in-out
       }
 
       &:hover::before {
-        visibility: visible;
+        opacity: 1;
+        transform: scaleX(1);
       }
     }
 
     // List items that hold another list.
-    > li.drop-down {
-      > ul.drop-down {
+    >li.drop-down {
+      >ul.drop-down {
         display: none;
         position: absolute;
         top: $header-height;
         z-index: 1;
 
-        > li.drop-down-item {
+        >li.drop-down-item {
           width: 100%;
 
-          > a {
+          >a {
             height: auto;
             width: 100%;
             text-align: center;
