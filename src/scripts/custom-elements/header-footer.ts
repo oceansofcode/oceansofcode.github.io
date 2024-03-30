@@ -44,18 +44,8 @@ export class PortfolioHeader extends HTMLElement {
         this.navMenu = navMenu;
         nav.appendChild(navMenu);
 
-        const clients = document.createElement('li');
-        const clientsLink = document.createElement('a');
-        clientsLink.setAttribute('href', '/clients'); 
-        clientsLink.appendChild(document.createTextNode('Clients'));
-        clientsLink.addEventListener('click', e => {
-            e.preventDefault();
+        const clients = this.createNavigiationItem('Clients', '/clients', '/#clients');
 
-            // Allows for smooth scrolling if we are on the same page
-            document.location.href = '/#clients';
-        });
-
-        clients.appendChild(clientsLink);
         navLinks.push(clients);
 
         /*
@@ -130,14 +120,15 @@ export class PortfolioHeader extends HTMLElement {
         themeSwitch.classList.add(getThemeFromPreference().switchIcon);
 
         this.previousScrollPosition = window.scrollY;
-        this.scrollEndEvent();
+        this.handleScrollEvent();
 
-        this.setupMobileMenuEvents();
-        this.listenToThemeSwitch();
+        this.handleMobileMenuEvents();
+        this.handleThemeSwitchEvent();
 
         // Get initial background color
 
         // Left for reference
+
         /*this.innerHTML = `
             <i id="mobile-menu-toggle" class="fas fa-bars"></i>
             <h1 id="title"><a href="./">Oceans of Code</a></h1>
@@ -159,7 +150,33 @@ export class PortfolioHeader extends HTMLElement {
         */
     }
 
-    private setupMobileMenuEvents(): void {
+    /**
+     * Creates a navigation menu li item and link
+     * 
+     * anchor is the path that will show when hovering over the <a> elements
+     * linkOverride is an optional parameter that will be the actual destination, useful for links on the same page to have a smooth scroll effect
+     */
+    private createNavigiationItem(name: string, anchorLink: string, linkOverride?: string): HTMLLIElement {
+        const navItem = document.createElement('li');
+        const itemLink = document.createElement('a');
+        itemLink.setAttribute('href', anchorLink); 
+        itemLink.appendChild(document.createTextNode(name));
+
+        if (linkOverride) {
+            itemLink.addEventListener('click', e => {
+                e.preventDefault();
+
+                // Allows for smooth scrolling if we are on the same page
+                document.location.href = linkOverride;
+            });
+        }
+
+        navItem.appendChild(itemLink);
+
+        return navItem;
+    }
+
+    private handleMobileMenuEvents(): void {
 
         const resetMenu = () => {
             // eslint-disable-next-line immutable/no-mutation
@@ -181,7 +198,7 @@ export class PortfolioHeader extends HTMLElement {
         }
     }
 
-    private scrollEndEvent(): void {
+    private handleScrollEvent(): void {
 
         const handleEvent = () => {
             const previousPosition = this.previousScrollPosition;
@@ -214,7 +231,7 @@ export class PortfolioHeader extends HTMLElement {
         this.style.backgroundColor = newColor;
     }
 
-    private listenToThemeSwitch() {
+    private handleThemeSwitchEvent() {
         window.addEventListener('themeSwitched', () => this.style.removeProperty('background-color'), false);
     }
 }
@@ -231,13 +248,12 @@ export class PortfolioFooter extends HTMLElement {
         const paragraph = document.createElement('p');
         const copyright = document.createTextNode(String.fromCharCode(169) + ' ');
 
-        paragraph.appendChild(copyright);
-
         const time = document.createElement('time');
         time.setAttribute('id', 'footer-date');
         time.setAttribute('datetime', this.year);
         time.appendChild(document.createTextNode(this.year));
 
+        paragraph.appendChild(copyright);
         paragraph.appendChild(time);
         paragraph.appendChild(document.createTextNode(' Adam A'));
 
