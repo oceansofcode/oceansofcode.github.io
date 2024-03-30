@@ -29,6 +29,14 @@ header {
     }
   }
 
+  #theme-switch {
+    transition: transform 400ms ease-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
   // All links, including site title
   a {
     text-decoration: none;
