@@ -8,6 +8,9 @@ welcomeParallaxEffect();
  * Uses the Web Animations API to create a parallaxeffect onto the welcome callout without modifying CSS
  */
 function welcomeParallaxEffect() {
+    // eslint-disable-next-line immutable/no-let
+    let hasTranslate = true;
+
     const translateRatio = 2.2;
     const welcomeCallout = document.getElementById('welcome-callout');
 
@@ -22,9 +25,16 @@ function welcomeParallaxEffect() {
             { transform: `translateX(-50%) translateY(-50%) translateY(${top / translateRatio}px)` }
         ];
 
-        welcomeCallout.animate(parallaxKeyFrame, options);
-        // eslint-disable-next-line immutable/no-mutation
-        welcomeCallout.style.translate = 'unset'; // Remove the default translation to avoid a 'jump'
+        const parallax = welcomeCallout.animate(parallaxKeyFrame, options);
+
+        if (hasTranslate) {
+            parallax.finished.then(() => {
+                // eslint-disable-next-line immutable/no-mutation
+                welcomeCallout.style.translate = 'unset'; // Remove the default translation to avoid a 'jump'
+            });
+
+            hasTranslate = false;
+        }
     });
 }
 
