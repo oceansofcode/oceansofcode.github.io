@@ -4,6 +4,7 @@ customElements.define('experience-card', ExperienceCard);
 
 const welcomeCallout = document.getElementById('welcome-callout');
 
+// Set the initial translation as an animation first then perform the load effect.
 welcomeTranslateEffect().then(() => {
     welcomeLoadEffect();
 });
@@ -41,8 +42,6 @@ function welcomeLoadEffect() {
  * Uses the Web Animations API to create a parallaxeffect onto the welcome callout without modifying CSS
  */
 function welcomeParallaxEffect() {
-    // eslint-disable-next-line immutable/no-let
-    let hasTranslate = true;
     const translateRatio = 2.2;
 
     const options: KeyframeAnimationOptions = {
@@ -53,19 +52,10 @@ function welcomeParallaxEffect() {
         const top = window.scrollY;
 
         const parallaxKeyFrame: Keyframe[] = [
-            { transform: `translateY(${top / translateRatio}px)` }
+            { transform: `translateY(${top / translateRatio}px)`, opacity: `${1 - Math.max(top / (window.innerHeight * 1), 0)}`}
         ];
 
-        const parallax = welcomeCallout.animate(parallaxKeyFrame, options);
-
-        if (hasTranslate) {
-            parallax.finished.then(() => {
-                // eslint-disable-next-line immutable/no-mutation
-                //welcomeCallout.style.translate = 'unset'; // Remove the default translation to avoid a 'jump'
-            });
-
-            hasTranslate = false;
-        }
+        welcomeCallout.animate(parallaxKeyFrame, options);
     });
 }
 
