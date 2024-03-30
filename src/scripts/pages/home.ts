@@ -1,24 +1,30 @@
 import { ExperienceCard } from '../custom-elements/experience-card.js';
 
-const translateRatio = 2.2;
-
 customElements.define('experience-card', ExperienceCard);
 
-const welcomeCallout = document.getElementById('welcome-callout');
+welcomeParallaxEffect();
 
-const options: KeyframeAnimationOptions = {
-    duration: 0,
-    fill: 'forwards'
-};
+/**
+ * Uses the Web Animations API to create a parallaxeffect onto the welcome callout without modifying CSS
+ */
+function welcomeParallaxEffect() {
+    const translateRatio = 2.2;
+    const welcomeCallout = document.getElementById('welcome-callout');
 
-window.addEventListener('scroll', () => {
-    const top = window.scrollY;
+    const options: KeyframeAnimationOptions = {
+        fill: 'forwards'
+    };
 
-    const parallaxKeyFrame: Keyframe[] = [
-        { transform: `translateX(-50%) translateY(-50%) translateY(${top/translateRatio}px)`}
-    ];
+    window.addEventListener('scroll', () => {
+        const top = window.scrollY;
 
-    welcomeCallout.animate(parallaxKeyFrame, options).finished.then(animation => animation.commitStyles());
-    // eslint-disable-next-line immutable/no-mutation
-    welcomeCallout.style.translate = 'unset'; // Remove the default translation to avoid a 'jump'
-});
+        const parallaxKeyFrame: Keyframe[] = [
+            { transform: `translateX(-50%) translateY(-50%) translateY(${top / translateRatio}px)` }
+        ];
+
+        welcomeCallout.animate(parallaxKeyFrame, options);
+        // eslint-disable-next-line immutable/no-mutation
+        welcomeCallout.style.translate = 'unset'; // Remove the default translation to avoid a 'jump'
+    });
+}
+
