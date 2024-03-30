@@ -17,6 +17,27 @@ header nav {
         font-size: 1.6rem;
         padding: 2.3rem 1.6rem;
       }
+
+      &::before {
+        // This plus the left calc guarentees the line will always be centered no matter how wide
+        $line-width: 80%;
+      
+        content: '';
+        width: $line-width;
+
+        max-width: 70px;
+        height: 2px;
+        position: absolute;
+        bottom: 30%;
+        left: calc((100% - $line-width) / 2);
+       
+        background-color: white;
+        visibility: hidden;
+      }
+
+      &:hover::before {
+        visibility: visible;
+      }
     }
 
     // List items that hold another list.
