@@ -67,20 +67,14 @@ main {
 }
 
 #clients {
-  grid-template-rows: 5rem 1fr;
+  grid-template-rows: 8rem 1fr;
   justify-items: center;
 
   .section-title {
     justify-self: start;
-  }
 
-  @media screen and (min-width: 1205px) {
-    grid-template-rows: 10rem 1fr;
-    grid-auto-flow: column;
-    grid-template-columns: repeat(auto-fill, 1fr);
-
-    > :not(:first-child) {
-      grid-row-start: 2;
+    * {
+      gap: 2.4rem;
     }
   }
 }

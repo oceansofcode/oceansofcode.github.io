@@ -14,8 +14,8 @@
     transition-property: translate, filter, transform;
     transition-duration: 400ms;
 
-    @media screen and (max-width: 800px) {
-        width: 265px;
+    @media screen and (max-width: 500px) {
+         width: 100%;
     }
 }
 
