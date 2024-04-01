@@ -1,8 +1,20 @@
+@use '../utils/variables' as *;
+
 footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: {
+        left: $side-gap;
+        right: $side-gap;
+    }
+
     p {
-        font-size: 1.28rem;
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .link-icon {
+        font-size: 1.8em;
     }
 }

@@ -10,6 +10,7 @@
     padding: 12px;
     width: 350px;
     height: 500px;
+    transform-style: preserve-3d;
 
     transition-property: translate, filter, transform;
     transition-duration: 400ms;
@@ -33,9 +34,12 @@ article {
     text-align: center;
     padding: 1rem;
 
+    hgroup ~ *{
+        margin-top: 10%;
+    }
+
     .logo {
         text-align: center;
-        margin-top: 10%;
         height: 150px;
         width: 150px;
 

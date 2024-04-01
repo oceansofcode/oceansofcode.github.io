@@ -30,7 +30,7 @@
     <link rel="modulepreload" href="dist/scripts/theme/theme.js">
     <link rel="modulepreload" href="dist/scripts/custom-elements/header-footer.js">
 
-    <script src="https://kit.fontawesome.com/a2583045b3.js" async crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d6530b2944.js" crossorigin="anonymous" async></script>
 
     <script src="dist/scripts/main.js" type="module" async></script>
     <script src="dist/scripts/pages/home.js" type="module" defer></script>
@@ -74,13 +74,13 @@
                         </b></p>
                 </hgroup>
                 <p class="logo"><slot name="logo"></slot></p>
-                <p class="summary"><slot name="summary"></slot></p>
+                <!-- <button class="flip">Click</button> -->
             </article>
         </template>
 
         <section id="clients">
             <h2 class="section-title">Clients</h2>
-            <div class="flex wrap gap justify-center">
+            <div class="flex wrap gap justify-space-between">
                 <experience-card>
                     <span slot="client">Volkswagen Group of America</span>
                     <span slot="title">Lead Developer</span>
@@ -100,6 +100,7 @@
                             </switch>
                         </g>
                     </svg>
+                    <span slot="experience">Java, Angular</span>
                 </experience-card>
                 <experience-card>
                     <span slot="client">York University</span>

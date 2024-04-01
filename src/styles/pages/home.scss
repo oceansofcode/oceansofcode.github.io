@@ -68,7 +68,7 @@ main {
 
 #clients {
   grid-template-rows: 8rem 1fr;
-  justify-items: center;
+  justify-items: stretch;
 
   .section-title {
     justify-self: start;

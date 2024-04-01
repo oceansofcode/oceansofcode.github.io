@@ -245,7 +245,7 @@ export class PortfolioFooter extends HTMLElement {
     }
 
     connectedCallback() {
-        const paragraph = document.createElement('p');
+        const callout = document.createElement('p');
         const copyright = document.createTextNode(String.fromCharCode(169) + ' ');
 
         const time = document.createElement('time');
@@ -253,10 +253,27 @@ export class PortfolioFooter extends HTMLElement {
         time.setAttribute('datetime', this.year);
         time.appendChild(document.createTextNode(this.year));
 
-        paragraph.appendChild(copyright);
-        paragraph.appendChild(time);
-        paragraph.appendChild(document.createTextNode(' Adam A'));
+        callout.appendChild(copyright);
+        callout.appendChild(time);
+        callout.appendChild(document.createTextNode(' Adam A'));
 
-        this.appendChild(paragraph);
+        const githubLink = this.createSocialLink('fa-github', 'https://github.com/oceansofcode');
+        const linkedInLink = this.createSocialLink('fa-linkedin-in', 'https://www.linkedin.com/in/adam-a-085a31163');
+
+        this.appendChild(linkedInLink);
+        this.appendChild(callout);
+        this.appendChild(githubLink);
+    }
+
+    private createSocialLink(fasClass: string, linkRef: string) {
+        const link = document.createElement('a');
+        link.setAttribute('href', linkRef);
+        link.setAttribute('target', '_blank');
+        const logo = document.createElement('i');
+        logo.classList.add('fa-brands', 'link-icon', fasClass);
+
+        link.appendChild(logo);
+
+        return link;
     }
 }
