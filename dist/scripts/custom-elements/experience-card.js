@@ -1,2 +1,2 @@
-export class ExperienceCard extends HTMLElement{constructor(){super()}connectedCallback(){const e=document.getElementById("experience-card").content,t=this.attachShadow({mode:"open"});t.appendChild(e.cloneNode(!0));t.querySelector(".flip").onclick=()=>{this.style.transform="rotateY(180deg"}}}
+export class ExperienceCard extends HTMLElement{constructor(){super()}connectedCallback(){const e=document.getElementById("experience-card").content;this.attachShadow({mode:"open"}).appendChild(e.cloneNode(!0))}}
 //# sourceMappingURL=experience-card.js.map

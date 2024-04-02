@@ -12,10 +12,10 @@ export class ExperienceCard extends HTMLElement {
 
         shadowRoot.appendChild(templateContent.cloneNode(true));
 
-        const button: HTMLButtonElement = shadowRoot.querySelector('.flip');
+        /*const button: HTMLButtonElement = shadowRoot.querySelector('.flip');
 
         button.onclick = () => {
             this.style.transform = 'rotateY(180deg';
-        };
+        };*/
     }
 }
