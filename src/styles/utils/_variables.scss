@@ -8,7 +8,7 @@
 $default-opacity:  0.75;
 
 $header-height: 70px;
-$footer-height: math.div($header-height, 2);
+$footer-height: 60px; //math.div($header-height, 2);
 $side-gap: 15%; // Keeps site aligned better
 
 $dark-theme: "body.dark &";

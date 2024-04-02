@@ -257,18 +257,21 @@ export class PortfolioFooter extends HTMLElement {
         callout.appendChild(time);
         callout.appendChild(document.createTextNode(' Adam A'));
 
-        const githubLink = this.createSocialLink('fa-github', 'https://github.com/oceansofcode');
-        const linkedInLink = this.createSocialLink('fa-linkedin-in', 'https://www.linkedin.com/in/adam-a-085a31163');
+        const githubLink = this.createSocialLink('Github', 'fa-github', 'https://github.com/oceansofcode');
+        const linkedInLink = this.createSocialLink('Linkedin', 'fa-linkedin-in', 'https://www.linkedin.com/in/adam-a-085a31163');
 
         this.appendChild(linkedInLink);
         this.appendChild(callout);
         this.appendChild(githubLink);
     }
 
-    private createSocialLink(fasClass: string, linkRef: string) {
+    private createSocialLink(title: string, fasClass: string, linkRef: string) {
         const link = document.createElement('a');
         link.setAttribute('href', linkRef);
         link.setAttribute('target', '_blank');
+        link.setAttribute('title', title);
+        link.setAttribute('aria-label', `Link to my ${title}`);
+
         const logo = document.createElement('i');
         logo.classList.add('fa-brands', 'link-icon', fasClass);
 

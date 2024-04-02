@@ -5,8 +5,8 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: {
-        left: $side-gap;
-        right: $side-gap;
+        left: calc($side-gap - 1rem);
+        right: calc($side-gap - 1rem);
     }
 
     p {
@@ -16,5 +16,6 @@ footer {
 
     .link-icon {
         font-size: 1.8em;
+        padding: 1rem;
     }
 }
