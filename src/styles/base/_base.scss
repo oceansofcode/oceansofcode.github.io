@@ -74,3 +74,9 @@ picture {
     justify-content: space-between;
   }
 }
+
+.lazy {
+  opacity: 0;
+
+  transition: opacity 2s ease-out 400ms;
+}

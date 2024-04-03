@@ -1,32 +1,53 @@
-import { ExperienceCard } from '../custom-elements/experience-card.js';
+import { inViewPort, makeContainerVisible } from '../utils/lazy-loading.js';
 
-customElements.define('experience-card', ExperienceCard);
+// eslint-disable-next-line immutable/no-let
+const loadedSections = {
+    clients: false
+};
 
 const welcomeCallout = document.getElementById('welcome-callout');
+const clients = document.getElementById('clients');
 
-// Set the initial translation as an animation first then perform the load effect.
-welcomeTranslateEffect().then(() => {
-    welcomeLoadEffect();
-});
+(async function home() {
+    // Set the initial translation as an animation first then perform the load effect.
+    welcomeTranslateEffect().then(() => {
+        welcomeLoadEffect();
+    });
 
-welcomeParallaxEffect();
+    // Set the parallax effect
+    welcomeParallaxEffect();
 
+    // Load lazy loaded sections if they are in the viewport
+    loadClientsSection();
+
+    // Set a timeout for the load listener to prevent race conditions 
+    setTimeout(() => {
+        scrollLoadListener();
+    }, 500);
+})();
+
+/**
+ * Sets the translation effect needed due to absolute positioning of the callout (center of viewport) 
+ */
 async function welcomeTranslateEffect() {
     const translateEffect: Keyframe[] = [
-        { translate: '-50% -50%', opacity: 0}
+        { translate: '-50% -50%', opacity: 0 }
     ];
 
-    const timing : KeyframeAnimationOptions = {
+    const timing: KeyframeAnimationOptions = {
         fill: 'forwards'
     };
 
     return welcomeCallout.animate(translateEffect, timing).finished.then(animiation => animiation.commitStyles());
 }
 
+/**
+ * Performs the load effect of the welcome callout
+ */
 function welcomeLoadEffect() {
     const loadEffectKeyframe: Keyframe[] = [
-        { transform: 'translateY(7vh)', opacity: 0},
-        { opacity: 1}
+        { transform: 'translateY(7vh)', opacity: 0 },
+        { opacity: 1 }
     ];
 
     const timing: KeyframeAnimationOptions = {
@@ -39,7 +60,7 @@ function welcomeLoadEffect() {
 }
 
 /**
- * Uses the Web Animations API to create a parallaxeffect onto the welcome callout without modifying CSS
+ * Uses the Web Animations API to create a parallax effect onto the welcome callout without modifying CSS
  */
 function welcomeParallaxEffect() {
     const translateRatio = 2.2;
@@ -52,10 +73,35 @@ function welcomeParallaxEffect() {
         const top = window.scrollY;
 
         const parallaxKeyFrame: Keyframe[] = [
-            { transform: `translateY(${top / translateRatio}px)`, opacity: `${1 - Math.max(top / (window.innerHeight * 1), 0)}`}
+            { transform: `translateY(${top / translateRatio}px)`, opacity: `${1 - Math.max(top / (window.innerHeight * 1), 0)}` }
         ];
 
         welcomeCallout.animate(parallaxKeyFrame, options);
     });
 }
 
+/**
+ * Add dynamic load events to fire on scroll if they have not been loaded
+ */
+function scrollLoadListener() {
+    window.addEventListener('scroll', () => {
+        if (!loadedSections.clients) {
+            loadClientsSection();
+        }
+    });
+}
+
+/**
+ * Dynamically load the clients section if it is in the viewport.
+ */
+async function loadClientsSection() {
+    if (inViewPort(clients)) {
+        const { ExperienceCard } = await import('../custom-elements/experience-card.js');
+        customElements.define('experience-card', ExperienceCard);
+
+        makeContainerVisible(clients);
+
+        // eslint-disable-next-line immutable/no-mutation
+        loadedSections.clients = true;
+    }
+}

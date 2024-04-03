@@ -1,0 +1,2 @@
+export const inViewPort=o=>{const{top:e,bottom:n}=o.getBoundingClientRect();console.log(e,n);const t=e<=0&&n>=0,i=n>window.innerHeight&&e<window.innerHeight,s=e>=0&&n<=window.innerHeight;return console.debug("pastTop",t),console.debug("inBoundaries",i),console.debug("pastBottom",s),t||i||s};export const makeContainerVisible=o=>{const e=o.querySelector(".lazy.container");e.style.opacity="1",console.log(e)};
+//# sourceMappingURL=lazy-loading.js.map
