@@ -1,9 +1,4 @@
-import { inViewPort, makeContainerVisible } from '../utils/lazy-loading.js';
-
-// eslint-disable-next-line immutable/no-let
-const loadedSections = {
-    clients: false
-};
+import { transitionElementsContainer } from '../utils/lazy-loading.js';
 
 const welcomeCallout = document.getElementById('welcome-callout');
 const clients = document.getElementById('clients');
@@ -17,13 +12,7 @@ const clients = document.getElementById('clients');
     // Set the parallax effect
     welcomeParallaxEffect();
 
-    // Load lazy loaded sections if they are in the viewport
-    loadClientsSection();
-
-    // Set a timeout for the load listener to prevent race conditions 
-    setTimeout(() => {
-        scrollLoadListener();
-    }, 500);
+    observeIntersections();
 })();
 
 /**
@@ -80,28 +69,32 @@ function welcomeParallaxEffect() {
     });
 }
 
-/**
- * Add dynamic load events to fire on scroll if they have not been loaded
- */
-function scrollLoadListener() {
-    window.addEventListener('scroll', () => {
-        if (!loadedSections.clients) {
-            loadClientsSection();
-        }
-    });
+function observeIntersections() {
+    const options: IntersectionObserverInit = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.4
+    };
+
+    const observerCallback: IntersectionObserverCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                loadClientsSection().then((() => {
+                    transitionElementsContainer(entry.target);
+                    observer.unobserve(entry.target);
+                }));
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, options);
+    observer.observe(clients);
 }
 
 /**
  * Dynamically load the clients section if it is in the viewport.
  */
 async function loadClientsSection() {
-    if (inViewPort(clients)) {
-        const { ExperienceCard } = await import('../custom-elements/experience-card.js');
-        customElements.define('experience-card', ExperienceCard);
-
-        makeContainerVisible(clients);
-
-        // eslint-disable-next-line immutable/no-mutation
-        loadedSections.clients = true;
-    }
+    const { ExperienceCard } = await import('../custom-elements/experience-card.js');
+    customElements.define('experience-card', ExperienceCard);
 }

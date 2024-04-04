@@ -75,8 +75,16 @@ picture {
   }
 }
 
-.lazy {
+// Used to lazy load sections as part of lazy-loading.ts
+.container {
+  transition: all 2s ease-out;
   opacity: 0;
 
-  transition: opacity 2s ease-out 400ms;
+  &.lazy {
+    display: none;
+  }
+
+  &.loaded {
+    opacity: 1;
+  }
 }
