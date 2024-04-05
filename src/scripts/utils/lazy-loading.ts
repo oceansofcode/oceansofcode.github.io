@@ -46,5 +46,28 @@ export const lazyLoadSections = (loadElementMap: Map<Element, () => Promise<void
 };
 
 export const lazyLoadImages = () => {
+    const lazyImages = document.querySelectorAll('img.lazy');
 
+    console.debug(lazyImages);
+
+    const lazyLoadOptions: IntersectionObserverInit = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.2
+    };
+
+    const lazyLoadImagesFunction: IntersectionObserverCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target as HTMLImageElement;
+                // eslint-disable-next-line immutable/no-mutation
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                observer.unobserve(img);
+            }
+        });
+    };
+
+    const imageObserver = new IntersectionObserver(lazyLoadImagesFunction, lazyLoadOptions);
+    lazyImages.forEach(lazyImage => imageObserver.observe(lazyImage));
 };

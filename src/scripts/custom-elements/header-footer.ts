@@ -185,6 +185,7 @@ export class PortfolioHeader extends HTMLElement {
 
         this.mobileMenuToggle.addEventListener('click', () => this.toggleMobileMenu(this.navMenu), false);
         window.addEventListener('resize', resetMenu, false);
+        window.addEventListener('orientationChange', resetMenu, false);
     }
 
     private toggleMobileMenu(navMenu: HTMLUListElement): void {

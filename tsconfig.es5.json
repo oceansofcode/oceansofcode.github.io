@@ -2,6 +2,7 @@
     "extends": "./tsconfig.json",
     "compilerOptions": {
         "target": "ES5",
+        "downlevelIteration": true,
         "outFile": "build/scripts/es5/index.js",
         "module": "AMD",
         "moduleResolution": "Node",
