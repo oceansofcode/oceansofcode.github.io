@@ -1,2 +1,2 @@
-export const transitionElementsContainer=e=>{const t=e.querySelector(".lazy.container");t.classList.remove("lazy"),setTimeout((()=>{t.classList.add("loaded")}),400)};
+export const transitionElementsContainer=t=>{const e=t.querySelector(".lazy.container");e&&(e.classList.remove("lazy"),setTimeout((()=>{e.classList.add("loaded")}),400))};export const lazyLoadSections=t=>{const e=new IntersectionObserver(((e,o)=>{e.forEach((e=>{if(e.isIntersecting){t.get(e.target)().then((()=>{transitionElementsContainer(e.target),o.unobserve(e.target)}))}}))}),{root:null,rootMargin:"0px",threshold:.4});for(const o of t.keys())e.observe(o)};export const lazyLoadImages=()=>{};
 //# sourceMappingURL=lazy-loading.js.map

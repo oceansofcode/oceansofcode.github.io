@@ -1,18 +1,21 @@
-import { transitionElementsContainer } from '../utils/lazy-loading.js';
+import { lazyLoadSections } from '../utils/lazy-loading.js';
 
 const welcomeCallout = document.getElementById('welcome-callout');
 const clients = document.getElementById('clients');
+
+const lazyLoadMap = new Map<Element, () => Promise<void>>;
 
 (async function home() {
     // Set the initial translation as an animation first then perform the load effect.
     welcomeTranslateEffect().then(() => {
         welcomeLoadEffect();
+        // Set the parallax effect
+        welcomeParallaxEffect();
     });
 
-    // Set the parallax effect
-    welcomeParallaxEffect();
+    lazyLoadMap.set(clients, loadClientsSection);
 
-    observeIntersections();
+    lazyLoadSections(lazyLoadMap);
 })();
 
 /**
@@ -67,28 +70,6 @@ function welcomeParallaxEffect() {
 
         welcomeCallout.animate(parallaxKeyFrame, options);
     });
-}
-
-function observeIntersections() {
-    const options: IntersectionObserverInit = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.4
-    };
-
-    const observerCallback: IntersectionObserverCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                loadClientsSection().then((() => {
-                    transitionElementsContainer(entry.target);
-                    observer.unobserve(entry.target);
-                }));
-            }
-        });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, options);
-    observer.observe(clients);
 }
 
 /**
