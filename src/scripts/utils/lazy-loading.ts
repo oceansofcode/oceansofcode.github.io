@@ -1,3 +1,5 @@
+const lazyLoadDelay = 300;
+
 export const transitionElementsContainer = (el: Element) => {
     const lazyContainer: HTMLElement = el.querySelector('.lazy.container');
     
@@ -6,10 +8,9 @@ export const transitionElementsContainer = (el: Element) => {
 
         setTimeout(() => {
             lazyContainer.classList.add('loaded');
-        }, 400);
+        }, lazyLoadDelay);
     }
 };
-
 
 /**
  * Reusable methods to lazy load elements by taking in a map of the element and the function that will

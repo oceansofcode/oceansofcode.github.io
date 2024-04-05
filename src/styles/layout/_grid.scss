@@ -6,10 +6,10 @@ body {
   min-height: 100vh;
 
   grid:
-    [row1-start] "header header header header" $header-height [row1-end]
-    [row2-start] "left center-left center-right right" auto [row2-end]
-    [row3-start] "footer footer footer footer" $footer-height [row3-end]
-    / 1fr 1fr 1fr 1fr;
+    [row1-start] "header" $header-height [row1-end]
+    [row2-start] "center" auto [row2-end]
+    [row3-start] "footer" $footer-height [row3-end]
+    / 1fr;
 
   > header {
     grid-area: header;
