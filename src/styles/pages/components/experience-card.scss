@@ -16,14 +16,9 @@
     transition-duration: 400ms;
 
     @media screen and (max-width: 500px) {
-         width: 100%;
+        width: 100%;
     }
-}
 
-@media screen and (min-width: 801px) {
-    :host(:hover) {
-        translate: 0px -2rem;
-    }
 }
 
 article {
@@ -49,5 +44,24 @@ article {
         &:hover {
             transform: scale(1.1);
         }
+    }
+}
+
+// Landscape mode
+@media screen and (max-height: 500px) {
+    :host {
+        height: calc(100vh - $header-height);
+    }
+
+    article hgroup ~ * {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+// Desktop
+@media screen and (min-width: 801px) {
+    :host(:hover) {
+        translate: 0px -2rem;
     }
 }

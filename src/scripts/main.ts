@@ -1,8 +1,17 @@
 import { themeInit } from './theme/theme.js';
-import { PortfolioHeader, PortfolioFooter } from './custom-elements/header-footer.js';
+import { PortfolioHeader } from './custom-elements/header-footer.js';
+import { lazyLoadSections } from './utils/lazy-loading.js';
 
 themeInit().then(() => {
-    customElements.define('portfolio-header', PortfolioHeader, { extends: 'header'});
-    customElements.define('portfolio-footer', PortfolioFooter, { extends: 'footer'});
 
+    const pageLoadMap = new Map<Element, () => Promise<void>>;
+
+    customElements.define('portfolio-header', PortfolioHeader, { extends: 'header'});
+
+    pageLoadMap.set(document.querySelector('footer[is=portfolio-footer'), async () => {
+        const { PortfolioFooter } = await import('./custom-elements/header-footer.js');
+        customElements.define('portfolio-footer', PortfolioFooter, { extends: 'footer'});
+    });
+
+    lazyLoadSections(pageLoadMap, '50%');
 }).catch(err => document.write(err));

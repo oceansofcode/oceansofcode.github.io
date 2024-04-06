@@ -4,6 +4,8 @@
 import { getThemeFromPreference, themeSwitchEvent } from '../theme/theme.js';
 
 export class PortfolioHeader extends HTMLElement {
+    
+    private static mobileBreakpoint = 800;
 
     private mobileMenuToggle: HTMLElement;
     private navMenu: HTMLUListElement;
@@ -21,7 +23,7 @@ export class PortfolioHeader extends HTMLElement {
         // Mobile menu
         const mobileMenuToggle = document.createElement('i');
         mobileMenuToggle.setAttribute('id', 'mobile-menu-toggle');
-        mobileMenuToggle.setAttribute('class', 'fas fa-bars'); // Hidden for now        
+        mobileMenuToggle.setAttribute('class', 'fas fa-bars');    
         this.mobileMenuToggle = mobileMenuToggle;
         this.appendChild(mobileMenuToggle);
 
@@ -120,8 +122,8 @@ export class PortfolioHeader extends HTMLElement {
         themeSwitch.classList.add(getThemeFromPreference().switchIcon);
 
         this.previousScrollPosition = window.scrollY;
-        this.handleScrollEvent();
 
+        this.handleScrollEvent();
         this.handleMobileMenuEvents();
         this.handleThemeSwitchEvent();
 
@@ -190,11 +192,11 @@ export class PortfolioHeader extends HTMLElement {
 
     private toggleMobileMenu(navMenu: HTMLUListElement): void {
         // eslint-disable-next-line immutable/no-mutation
-        window.innerWidth <= 800 && navMenu.style.display === 'flex' ? navMenu.style.display = 'none' : navMenu.style.display = 'flex';
+        window.innerWidth <= PortfolioHeader.mobileBreakpoint && navMenu.style.display === 'flex' ? navMenu.style.display = 'none' : navMenu.style.display = 'flex';
     }
 
     private closeMobileMenu(navMenu: HTMLUListElement): void {
-        if (window.innerWidth <= 800) {
+        if (window.innerWidth <= PortfolioHeader.mobileBreakpoint) {
             navMenu.style.display = 'none';
         }
     }

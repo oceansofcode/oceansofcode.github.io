@@ -15,7 +15,7 @@ const lazyLoadMap = new Map<Element, () => Promise<void>>;
 
     lazyLoadMap.set(clients, loadClientsSection);
 
-    lazyLoadSections(lazyLoadMap);
+    lazyLoadSections(lazyLoadMap, '0px', true);
 })();
 
 /**

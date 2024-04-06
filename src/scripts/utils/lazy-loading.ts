@@ -1,6 +1,6 @@
 const lazyLoadDelay = 300;
 
-export const transitionElementsContainer = (el: Element) => {
+export const loadLazyContainer = (el: Element) => {
     const lazyContainer: HTMLElement = el.querySelector('.lazy.container');
     
     if (lazyContainer) {
@@ -12,29 +12,64 @@ export const transitionElementsContainer = (el: Element) => {
     }
 };
 
+export const showLoadedContainer = (el: Element) => {
+    const loadedContainer: HTMLElement = el.querySelector('.container:not(.lazy, .loaded)');
+
+    if (loadedContainer) {
+        loadedContainer.classList.add('loaded');
+    }
+};
+
+export const hideLoadedContainer = (el: Element) => {
+    const loadedContainer: HTMLElement = el.querySelector('.loaded.container');
+
+    if (loadedContainer) {
+        loadedContainer.classList.remove('loaded');
+    }
+};
+
 /**
  * Reusable methods to lazy load elements by taking in a map of the element and the function that will
  * load it's required javscript. Mostly used for custom elements.
  * 
  * @param loadElementMap 
  */
-export const lazyLoadSections = (loadElementMap: Map<Element, () => Promise<void>>) => {
+export const lazyLoadSections = (loadElementMap: Map<Element, () => Promise<void>>, rootMargin = '0px', autoHide = false) => {
+
+    const ratios = {
+        hide: 0.3,
+        show: 0.5
+    };
 
     const lazyLoadOptions: IntersectionObserverInit = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.4
+        rootMargin,
+        threshold: autoHide ? [0, 0.2, 0.3, 0.4, 0.5] : 0.5
     };
-
+   
     const lazyLoad: IntersectionObserverCallback = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const lazyLoadEntry = loadElementMap.get(entry.target);
+                const { target, intersectionRatio } = entry;
+                const lazyLoadEntry = loadElementMap.get(target);
 
-                lazyLoadEntry().then((() => {
-                    transitionElementsContainer(entry.target);
-                    observer.unobserve(entry.target);
-                }));
+                if (loadElementMap.has(target) && intersectionRatio >= ratios.show) {
+                    lazyLoadEntry().then((() => {
+                        loadLazyContainer(target);
+
+                        // Delete the element from the map for garbage collection
+                        if (!autoHide) {
+                            observer.unobserve(target);
+                        }
+
+                        loadElementMap.delete(target);
+                    }));
+                } else if (autoHide && intersectionRatio <= ratios.hide && intersectionRatio < ratios.show) {
+                    hideLoadedContainer(target);
+                } else if (autoHide && intersectionRatio >= ratios.show) {
+                    showLoadedContainer(target);
+                }
+                
             }
         });
     };
