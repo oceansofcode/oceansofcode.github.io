@@ -1,2 +1,0 @@
-export const inViewPort=o=>{const{top:n,bottom:e}=o.getBoundingClientRect();console.log(n,e);const t=n<=0&&e>=0,i=e>window.innerHeight&&n<window.innerHeight,s=n>=0&&e<=window.innerHeight;return console.debug("pastTop",t),console.debug("inBoundaries",i),console.debug("pastBottom",s),t||i||s};
-//# sourceMappingURL=viewport.js.map
