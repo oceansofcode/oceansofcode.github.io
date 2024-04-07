@@ -1,26 +1,24 @@
-# [Oceans of Code](https://oceansofcode.com)
+# [Oceans of Code](https://oceansofcode.github.io)
 
 ## My Github Pages portfolio
 
 ### Requirements
 
-The goal of this portfolio is to showcase my skills as a web developer, my projects, and who I am.
+The goal of this portfolio is to showcase my professional skills as a developer and work / project contributions.
 
 ### Design
 
 #### *Architecture*
 
-The JavaScript and CSS are initially written in TypeScript and Sass (SCSS) respectively. A modular approach for both are taken, splitting functionality into different files.
+The code
 
 The JavaScript remains modular using the type="module" attribute, whereas the core Sass is compiled into one large main.css file.
 
 NPM Scripts are used to develop and build. Gulp was initially used and the gulpfile.js remains as a legacy reference.
 
-There are folders for TypeScript and Sass files unique to each page, where page dependant logic and styles are placed respectively. This helps reduce the chance that styles and behaviours intended for one page do not affect another.
-
 #### *Decisions*
 
-This portfolio uses the latest CSS and JavaScript (ESnext) features without any fallback for older browsers. There are no libraries or frameworks used in the overall implementation of the website (except for icons and web-fonts). Any projects made with a framework or library will be noted as such.
+This portfolio uses the latest CSS and JavaScript (ESnext) features with minimal fallback for older browsers. There are no libraries or frameworks used in the overall implementation of the website (except for icons, web-fonts, and necessary polyfills for Safari).
 
 These design decisions were made because:
 

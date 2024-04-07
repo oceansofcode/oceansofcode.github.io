@@ -1,5 +1,4 @@
-@use '../utils/variables' as *;
-
+@use '../utils/mixins' as *;
 
 // The navigation.
 header nav {
@@ -65,6 +64,29 @@ header nav {
       // Display the dropdown list on hover.
       &:hover ul.drop-down {
         display: block;
+      }
+    }
+  }
+
+  @media screen and (min-width: 801px) {
+    ul#nav-menu {
+      background-color: transparent !important;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    ul#nav-menu {
+      @include themeable-property('background-color', 'primary-background-transparent');
+
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      position: absolute;
+      top: $header-height;
+      left: 0;
+
+      li.drop-down:hover ul.drop-down {
+        display: none;
       }
     }
   }

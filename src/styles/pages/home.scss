@@ -2,7 +2,6 @@
 
 .theme-background {
   visibility: visible !important;
-  // z-index: -9999;
   top: 0;
   position: absolute;
   height: 100vh;
@@ -28,8 +27,7 @@
 }
 
 main {
-  grid-row: row2-start;
-  grid-column: 1 / span 4;
+  grid-area: "main";
 
   >section {
     min-height: 100vh;
@@ -48,7 +46,9 @@ main {
         left: 50%;
         translate: -50% -50%;
         white-space: nowrap;
-        font-family: "Lobster Two", Helvetica, sans-serif;
+        font-family: "Lobster Two",
+        Helvetica,
+        sans-serif;
         font-size: 3.2rem;
       }
     }
@@ -57,6 +57,7 @@ main {
       min-height: calc(100vh - $footer-height);
     }
 
+    // Content sections after the first should be grids for a consistent UX
     &~section {
       display: grid;
       gap: 2.4rem;
@@ -73,8 +74,8 @@ main {
   .section-title {
     justify-self: start;
   }
-}
 
-.rounded-image {
-  border-radius: 100rem;
+  @media screen and (max-width: 850px) {
+    grid-template-rows: 5rem 1fr; // Improves mobile experience reducing the gap
+  }
 }

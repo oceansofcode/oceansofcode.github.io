@@ -37,8 +37,8 @@ export const hideLoadedContainer = (el: Element) => {
 export const lazyLoadSections = (loadElementMap: Map<Element, () => Promise<void>>, rootMargin = '0px', autoHide = false) => {
 
     const ratios = {
-        hide: 0.3,
-        show: 0.5
+        hide: 0.1,
+        show: 0.3
     };
 
     const lazyLoadOptions: IntersectionObserverInit = {
@@ -64,7 +64,7 @@ export const lazyLoadSections = (loadElementMap: Map<Element, () => Promise<void
 
                         loadElementMap.delete(target);
                     }));
-                } else if (autoHide && intersectionRatio <= ratios.hide && intersectionRatio < ratios.show) {
+                } else if (autoHide && intersectionRatio <= ratios.hide) {
                     hideLoadedContainer(target);
                 } else if (autoHide && intersectionRatio >= ratios.show) {
                     showLoadedContainer(target);

@@ -1,4 +1,4 @@
-// This is for the layout / grid of each body.
+// Main site layout
 @use '../utils/variables' as *;
 
 body {
@@ -7,7 +7,7 @@ body {
 
   grid:
     [row1-start] "header" $header-height [row1-end]
-    [row2-start] "center" auto [row2-end]
+    [row2-start] "main" auto [row2-end]
     [row3-start] "footer" $footer-height [row3-end]
     / 1fr;
 

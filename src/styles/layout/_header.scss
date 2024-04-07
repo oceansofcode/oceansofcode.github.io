@@ -56,12 +56,6 @@ header {
   }
 
   @media screen and (min-width: 801px) {
-    nav {
-      ul#nav-menu {
-        background-color: transparent !important;
-      }
-    }
-
     #mobile-menu-toggle {
       display: none;
     }
@@ -86,23 +80,6 @@ header {
 
     #mobile-menu-toggle {
       display: block;
-    }
-
-    nav {
-      ul#nav-menu {
-        @include themeable-property('background-color', 'primary-background-transparent');
-
-        display: none;
-        flex-direction: column;
-        justify-content: space-around;
-        position: absolute;
-        top: $header-height;
-        left: 0;
-
-        li.drop-down:hover ul.drop-down {
-          display: none;
-        }
-      }
     }
 
     h1 {
