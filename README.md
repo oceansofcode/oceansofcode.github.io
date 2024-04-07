@@ -10,11 +10,25 @@ The goal of this portfolio is to showcase my professional skills as a developer 
 
 #### *Architecture*
 
-The code
+HTML, TypeScript, and SCSS are used as the languages with no frameworks except on specific pages.
 
-The JavaScript remains modular using the type="module" attribute, whereas the core Sass is compiled into one large main.css file.
+There is one HTML file per page, a main.ts and main.scss that is included on every page, and a page specific TS and SCSS.
+
+This allows the code to be modular and performant by only loading and processing what is needed with the goal of leveraging the current best practices of vanilla web development.
+
+##### Web Components
+
+Web components are used to avoid duplicate code across and within the page HTML, provide encapsulation of styling and scripting, and facilitate lazy loading.
+
+Common elements such as the header / footer are customized versions of the base `<header>` and `<footer>` elements (which unfortunately requires a polyfill due to Safari refusing to implement this functionality).
+
+Autonomous custom elements faciltiate code reuse and consist of core web component functionality such as the Shadow DOM and HTML Templates and Slots
+
+##### Build process
 
 NPM Scripts are used to develop and build. Gulp was initially used and the gulpfile.js remains as a legacy reference.
+
+Custom node.js build scripts exist to process the TS, SCSS, and images.
 
 #### *Decisions*
 
