@@ -167,6 +167,7 @@ export class PortfolioHeader extends HTMLElement {
         if (linkOverride) {
             itemLink.addEventListener('click', e => {
                 e.preventDefault();
+                this.closeMobileMenu(this.navMenu);
 
                 // Allows for smooth scrolling if we are on the same page
                 document.location.href = linkOverride;

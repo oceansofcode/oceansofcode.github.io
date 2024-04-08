@@ -8,6 +8,7 @@
     "test": "tests"
   },
   "scripts": {
+    "deploy:local": "npm run build && npm run watch",
     "watch": "concurrently \"npm run serve\" \"npm run watch:sass\" \"npm run watch:ts\" ",
     "build:images": "cd build-scripts && node \"images.js\"",
     "build:sass": "cd build-scripts && node \"sass-compile.js\"",
@@ -19,7 +20,6 @@
     "watch:sass": "onchange \"src/styles/**/*.scss\" -- npm run build:sass",
     "watch:ts": "onchange \"src/scripts/**/*.ts\" -- npm run build:ts",
     "serve": "browser-sync start --server --browser \"C:\\Program Files\\Firefox Developer Edition\\firefox.exe\" --browser \"chrome\" --files \"dist/styles/**/*.css, dist/scripts/**/*.js, **/*.html\"",
-    "deploy:local": "npm run build && npm run watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
