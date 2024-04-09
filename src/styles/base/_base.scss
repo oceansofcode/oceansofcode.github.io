@@ -1,11 +1,13 @@
+@use "../utils/mixins" as *;
+@use "../utils/placeholders" as *;
+
 // Transition styles when changing themes 
 body {
   &.color-theme-in-transition,
   &.color-theme-in-transition *,
   &.color-theme-in-transition *:before,
   &.color-theme-in-transition *:after {
-    transition: all 750ms;
-    transition-delay: 0;
+    @extend %theme-transition;
   }
 }
 
@@ -93,4 +95,11 @@ picture {
 
 .rounded-image {
   border-radius: 100rem;
+}
+
+// Background colors are integral to 3D card transformations but they are often contained in a Web Component's Shadow DOM
+// This allows us to apply our theme's background color to the shadow dom and theme transition styling as well.
+::part(card-side) {
+  @include themeable-property('background-color', 'primary-background');
+  @extend %theme-transition;
 }

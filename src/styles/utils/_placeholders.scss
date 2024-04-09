@@ -11,3 +11,8 @@
     color: map-get($themes, $theme, 'text');
   }
 }
+
+%theme-transition {
+  transition: all 750ms;
+  transition-delay: 0ms;
+}

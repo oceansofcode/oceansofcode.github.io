@@ -1,6 +1,10 @@
 /* eslint-disable immutable/no-mutation */
 /* eslint-disable immutable/no-this */
 export class ExperienceCard extends HTMLElement {
+
+    private flipped = false;
+    private container: HTMLElement;
+
     constructor() {
         super();        
     }
@@ -12,10 +16,20 @@ export class ExperienceCard extends HTMLElement {
 
         shadowRoot.appendChild(templateContent.cloneNode(true));
 
-        /*const button: HTMLButtonElement = shadowRoot.querySelector('.flip');
+        this.container = shadowRoot.querySelector('.container');
 
-        button.onclick = () => {
-            this.style.transform = 'rotateY(180deg';
-        };*/
+        // We always want our details tab open
+        shadowRoot.querySelectorAll('details').forEach(detail => detail.onclick = e => e.preventDefault());
+        this.onclick = this.flipCard;
+    }
+
+    private flipCard() {
+        if (this.flipped) {
+            this.container.classList.remove('is-flipped');
+            this.flipped = false;
+        } else {
+            this.container.classList.add('is-flipped');
+            this.flipped = true;
+        }
     }
 }
