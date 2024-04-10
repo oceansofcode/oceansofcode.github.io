@@ -262,24 +262,37 @@ export class PortfolioFooter extends HTMLElement {
         callout.appendChild(document.createTextNode(' Adam A'));
 
         const githubLink = this.createSocialLink('Github', 'fa-github', 'https://github.com/oceansofcode');
-        const linkedInLink = this.createSocialLink('Linkedin', 'fa-linkedin-in', 'https://www.linkedin.com/in/adam-a-085a31163');
+        const linkedInLink = this.createSocialLink('Linkedin', 'fa-linkedin-in', 'https://linkedin.com/in/adam-a-085a31163');
+
+        const anchors = [githubLink, linkedInLink];
+
+        anchors.forEach(anchor => this.appendChild(this.createDnsPrefetches(anchor)));
 
         this.appendChild(linkedInLink);
         this.appendChild(callout);
         this.appendChild(githubLink);
     }
 
-    private createSocialLink(title: string, fasClass: string, linkRef: string) {
-        const link = document.createElement('a');
-        link.setAttribute('href', linkRef);
-        link.setAttribute('target', '_blank');
-        link.setAttribute('title', title);
-        link.setAttribute('aria-label', `Link to my ${title}`);
+    private createSocialLink(title: string, fasClass: string, linkRef: string): HTMLAnchorElement {
+        const anchor = document.createElement('a');
+        anchor.setAttribute('href', linkRef);
+        anchor.setAttribute('target', '_blank');
+        anchor.setAttribute('title', title);
+        anchor.setAttribute('aria-label', `Link to my ${title}`);
 
         const logo = document.createElement('i');
         logo.classList.add('fa-brands', 'link-icon', fasClass);
 
-        link.appendChild(logo);
+        anchor.appendChild(logo);
+
+        return anchor;
+    }
+
+    private createDnsPrefetches(anchor: HTMLAnchorElement) {
+        const uri = anchor.getAttribute('href');
+        const link = document.createElement('link');
+        link.setAttribute('href', uri);
+        link.setAttribute('rel', 'dns-prefetch');
 
         return link;
     }
