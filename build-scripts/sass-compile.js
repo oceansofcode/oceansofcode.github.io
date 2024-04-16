@@ -5,7 +5,7 @@ import * as sass from 'sass';
 const styleSrcDir = '../src/styles';
 const styleDistDir = '../dist/styles';
 
-const pagesDistDir = `${styleDistDir}/pages`;
+const sheetsDistDir = `${styleDistDir}/sheets`;
 
 const mainSrcName = 'main.scss';
 const mainDistName = 'main.css';
@@ -13,7 +13,7 @@ const sourceMapUrl = '/*# sourceMappingURL=main.css.map */';
 
 const getSourceMapUrl = mapName => `/*# sourceMappingURL=${mapName} */`;
 
-const pagesDir = `${styleSrcDir}/pages`;
+const sheetsSrcDir = `${styleSrcDir}/sheets`;
 
 const scssOptions = { style: 'compressed', sourceMap: true, sourceMapIncludeSources: true };
 
@@ -21,8 +21,8 @@ if (!existsSync(styleDistDir)) {
     mkdirSync(styleDistDir);
 }
 
-if (!existsSync(pagesDistDir)) {
-    mkdirSync(pagesDistDir);
+if (!existsSync(sheetsDistDir)) {
+    mkdirSync(sheetsDistDir);
 }
 
 const mainCompiledScss = sass.compile(`${styleSrcDir}/${mainSrcName}`, scssOptions);
@@ -33,7 +33,7 @@ Promise.all([
     fs.writeFile(`${styleDistDir}/${mainDistName}.map`, JSON.stringify(mainCompiledScss.sourceMap))
 ]).then(() => console.log('Wrote main.css and main.css.map'));
 
-const pageScssFiles = (await fs.readdir(pagesDir, { withFileTypes: true, recursive: true }))
+const sheetFiles = (await fs.readdir(sheetsSrcDir, { withFileTypes: true, recursive: true }))
     .filter(dir => !dir.isDirectory())
     .map(file => {
         const srcFileName = file.name;
@@ -54,21 +54,21 @@ const pageScssFiles = (await fs.readdir(pagesDir, { withFileTypes: true, recursi
         };
     });
 
-pageScssFiles.forEach(pageScssFile => {
-    const distDir = pageScssFile.fileDistPath.substring(0, pageScssFile.fileDistPath.lastIndexOf('/'));
+sheetFiles.forEach(sheetFile => {
+    const distDir = sheetFile.fileDistPath.substring(0, sheetFile.fileDistPath.lastIndexOf('/'));
 
     if (!existsSync(distDir)) {
         mkdirSync(distDir);
     }
 });  
 
-const compiledPagesCss = pageScssFiles.map(scss => { return { ...scss, compiledCss: (sass.compile(scss.filePath, scssOptions)) }; });
+const compiledCssFiles = sheetFiles.map(scss => { return { ...scss, compiledCss: (sass.compile(scss.filePath, scssOptions)) }; });
 
-compiledPagesCss.forEach(compiledPageCss => compiledPageCss.compiledCss.css += `\n\n${getSourceMapUrl(compiledPageCss.mapName)}`);
+compiledCssFiles.forEach(compiledCssFile => compiledCssFile.compiledCss.css += `\n\n${getSourceMapUrl(compiledCssFile.mapName)}`);
 
-const writePagesCssFunctions = compiledPagesCss
-    .map(compiledPage => [() => fs.writeFile(compiledPage.fileDistPath, compiledPage.compiledCss.css), () => fs.writeFile(compiledPage.mapPath, JSON.stringify(compiledPage.compiledCss.sourceMap))])
+const writeSheetFunctions = compiledCssFiles
+    .map(compiledSheet => [() => fs.writeFile(compiledSheet.fileDistPath, compiledSheet.compiledCss.css), () => fs.writeFile(compiledSheet.mapPath, JSON.stringify(compiledSheet.compiledCss.sourceMap))])
     .flat();
 
-Promise.all(writePagesCssFunctions.map(writePagesCssFunction => writePagesCssFunction()))
-    .then(() => console.log('Wrote pages CSS'));
+Promise.all(writeSheetFunctions.map(writeCss => writeCss()))
+    .then(() => console.log('Wrote style sheet'));
