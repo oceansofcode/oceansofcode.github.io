@@ -291,7 +291,10 @@ export class PortfolioFooter extends HTMLElement {
     private createDnsPrefetches(anchor: HTMLAnchorElement) {
         const uri = anchor.getAttribute('href');
         const link = document.createElement('link');
-        link.setAttribute('href', uri);
+
+        const url: URL = new URL(uri);
+
+        link.setAttribute('href', url.origin);
         link.setAttribute('rel', 'dns-prefetch');
 
         return link;
