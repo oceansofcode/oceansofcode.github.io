@@ -67,6 +67,7 @@
                         <p><b><slot name="title"></slot></b></p>
                     </hgroup>
                     <p class="logo"><slot name="logo"></slot></p>
+                    <!-- TODO: Project Description -->
                 </article>
                 <details class="back" part="card-side" open>
                         <summary><h3>Project Highlights</h3></summary>
@@ -75,6 +76,7 @@
                             <li><slot name="highlight-2"></slot></li>
                             <li><slot name="highlight-3"></slot></li>
                         </ul>
+                        <!-- TODO: Link to site / Veriday highlight -->
                 </details>
             </div>
         </template>
@@ -108,7 +110,7 @@
                 <experience-card>
                     <span slot="client">York University</span>
                     <span slot="title">Web Architect</span>
-                    <img slot="logo" class="rounded-image" loading="lazy" src="./dist/images/large/yorku-logo.webp" alt="York University Logo">
+                    <img slot="logo" class="rounded" loading="lazy" src="./dist/images/large/yorku-logo.webp" alt="York University Logo">
                     <span slot="highlight-1">Created UML / Flow diagrams on business requirements</span>
                     <span slot="highlight-2">Wrote a suite of full coverage HTTP E2E tests</span>
                     <span slot="highlight-3">Provisioned and manged the server and applications</span>
@@ -116,7 +118,7 @@
                 <experience-card>
                     <span slot="client">Toronto Hydro</span>
                     <span slot="title">Java Developer</span>
-                    <img slot="logo" class="rounded-image" loading="lazy" src="./dist/images/large/toronto-hydro-logo.webp" alt="Toronto Hydro Logo">
+                    <img slot="logo" class="rounded" loading="lazy" src="./dist/images/large/toronto-hydro-logo.webp" alt="Toronto Hydro Logo">
                     <span slot="highlight-1">Provided constructive feedback in code reviews</span>
                     <span slot="highlight-2">Wrote robust automated site UAT tests</span>
                     <span slot="highlight-3">Leveraged appropriate design patterns</span>

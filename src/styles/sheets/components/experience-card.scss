@@ -91,6 +91,10 @@ details {
     }
 }
 
+::slotted(img.rounded) {
+    border-radius: 100rem;
+}
+
 
 // Landscape mode
 @media screen and (max-height: 500px) {
