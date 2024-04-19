@@ -75,7 +75,7 @@ article {
     }
 }
 
-details {
+.back details {
     summary {
         margin-bottom: 1rem;
         list-style: none;
@@ -89,9 +89,13 @@ details {
     ul {
         margin-left: 2rem;
     }
+
+    &:not(:first-child) {
+        margin-top: 2rem;
+    }
 }
 
-::slotted(img.rounded) {
+::slotted([slot=logo]) {
     border-radius: 100rem;
 }
 
