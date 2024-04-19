@@ -202,6 +202,7 @@ export class PortfolioHeader extends HTMLElement {
         }
     }
 
+    // TODO: Change to use CSSOM
     private handleScrollEvent(): void {
 
         const handleEvent = () => {
@@ -225,6 +226,7 @@ export class PortfolioHeader extends HTMLElement {
         window.addEventListener('scroll', handleEvent, false);
     }
 
+    // TODO: Change to use CSSOM
     private changeBackgroundColorOpacity() {
         const opacity = window.scrollY > 300 ? 0.99 : 0.75;
 

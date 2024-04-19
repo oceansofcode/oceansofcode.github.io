@@ -11,10 +11,16 @@ const width = {
 const imgSrcDir = '../src/images';
 const imgDistDir = '../dist/images';
 
+const svgSrcDir = '../src/svg';
+const svgDistDir = '../dist/svg';
+
 // Ensure the main image dist directory and size subfolders exist
 if (!existsSync(imgDistDir)) {
     mkdirSync(imgDistDir);
 }
+
+// Copy the SVG folder as is
+fs.cp(svgSrcDir, svgDistDir, { recursive: true });
 
 for (const size in width) {
     const sizeDistDir = `${imgDistDir}/${size}`;
