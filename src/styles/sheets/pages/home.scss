@@ -62,7 +62,7 @@ main {
       display: grid;
       gap: 2.4rem;
       justify-items: stretch;
-      padding: 1rem $side-gap;
+      padding: $header-height $side-gap 1rem;
     }
   }
 }

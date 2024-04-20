@@ -17,10 +17,10 @@ $light-theme: "body.light &";
 $themes: (
     "dark": (
         "primary-background": hsl(210, 22%, 4%),
-        "text": #fff
+        "text": rgb(232, 230, 227)
     ),
     "light": (
-        "primary-background": #fff,
+        "primary-background": rgb(232, 230, 227),
         "text": #313441
     )
 );
