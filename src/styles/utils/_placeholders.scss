@@ -16,3 +16,9 @@
   transition: all 750ms;
   transition-delay: 0ms;
 }
+
+%site-border {
+  border-style: solid;
+  border-width: 0.05rem;
+  border-radius: $site-radius;
+}

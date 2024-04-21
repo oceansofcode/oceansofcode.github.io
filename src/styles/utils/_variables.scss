@@ -6,7 +6,6 @@
 @use "sass:color";
 
 $default-opacity:  0.75;
-
 $header-height: 70px;
 
 :root {
@@ -14,6 +13,7 @@ $header-height: 70px;
 }
 
 $side-gap: 15%; // Keeps site aligned better
+$site-radius: 1.2rem;
 
 $dark-theme: "body.dark &";
 $light-theme: "body.light &";

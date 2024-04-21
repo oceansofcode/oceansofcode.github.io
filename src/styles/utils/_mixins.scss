@@ -2,6 +2,7 @@
 @use 'placeholders' as *;
 
 @forward 'variables';
+@forward 'placeholders';
 
 // Transition rules when switching from light to dark mode.
 @mixin theme($theme-name) {
@@ -36,4 +37,20 @@
   #{$dark-theme} {
     #{$property-name}: map-get($themes, 'dark', $theme-key);
   }
+}
+
+// Mixin
+
+@mixin button($width, $height) {
+  font-family: inherit;
+  font-size: inherit;
+  width: $width;
+  height: $height;
+  cursor: pointer;
+
+  @extend %site-border;
+  
+  @include themeable-property('border-color', 'text');
+  @include themeable-property('color', 'text');
+  @include themeable-property('background-color', 'primary-background');
 }

@@ -99,3 +99,8 @@ picture {
   @include themeable-property('background-color', 'primary-background');
   @extend %theme-transition;
 }
+
+::part(component-button) {
+  @include button(75%, 3.5rem);
+  @extend %theme-transition;
+}
