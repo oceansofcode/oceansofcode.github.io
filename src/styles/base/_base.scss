@@ -2,11 +2,8 @@
 @use "../utils/placeholders" as *;
 
 // Transition styles when changing themes 
-body {
-  &.color-theme-in-transition,
-  &.color-theme-in-transition *,
-  &.color-theme-in-transition *:before,
-  &.color-theme-in-transition *:after {
+body.color-theme-in-transition {
+  *, *::before, *::after {
     @extend %theme-transition;
   }
 }
