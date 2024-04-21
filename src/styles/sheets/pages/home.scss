@@ -54,7 +54,7 @@ main {
     }
 
     &:last-child {
-      min-height: calc(100vh - $footer-height);
+      min-height: calc(100vh - var(--footer-height));
     }
 
     // Content sections after the first should be grids for a consistent UX

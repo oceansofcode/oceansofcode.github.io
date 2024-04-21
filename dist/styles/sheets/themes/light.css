@@ -1,3 +1,3 @@
-body.light,body.light header,body.light section,body.light footer,body.light header ul{background-color:#e8e6e3}body.light h1,body.light h2,body.light h3,body.light h4,body.light h5,body.light h6,body.light details,body.light summary,body.light p,body.light a,body.light span,body.light header,body.light section,body.light footer{color:#313441}
+:root{--footer-height: 80px}body.light,body.light header,body.light section,body.light footer,body.light header ul{background-color:#e8e6e3}body.light h1,body.light h2,body.light h3,body.light h4,body.light h5,body.light h6,body.light details,body.light summary,body.light p,body.light a,body.light span,body.light header,body.light section,body.light footer{color:#313441}
 
 /*# sourceMappingURL=light.css.map */
