@@ -22,7 +22,7 @@
     cursor: pointer;
 }
 
-.container:has(button) {
+button {
     margin-top: auto;
     margin-bottom: 20px;
 }
@@ -53,7 +53,7 @@
     }
 }
 
-article {
+article.front {
     display: flex;
     height: 100%;
     width: 100%;
@@ -78,6 +78,10 @@ article {
         }
     }
 
+    button {
+        margin-top: auto;
+        margin-bottom: 2rem;
+    }
 }
 
 .back details {
