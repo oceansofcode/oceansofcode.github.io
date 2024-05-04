@@ -15,7 +15,7 @@ const getSourceMapUrl = mapName => `/*# sourceMappingURL=${mapName} */`;
 
 const sheetsSrcDir = `${styleSrcDir}/sheets`;
 
-const scssOptions = { style: 'compressed', sourceMap: true, sourceMapIncludeSources: true };
+const scssOptions: sass.Options<'sync'> = { style: 'compressed', sourceMap: true, sourceMapIncludeSources: true };
 
 if (!existsSync(styleDistDir)) {
     mkdirSync(styleDistDir);

@@ -1,6 +1,6 @@
 /* eslint-disable immutable/no-mutation */
 import { promises as fs, existsSync, mkdirSync } from 'fs';
-import { minify } from 'terser';
+import { MinifyOutput, minify } from 'terser';
 
 // Assumes tsc has already been run and the compiled TS is in the ./build directory
 // TODO: Move JS from src -> dist
@@ -76,11 +76,11 @@ for await (const buildFile of fileContents(buildDirFiles)) {
         }
     };
 
-    const minifiedContent = await minify(buildFile.fileContent, minifyOptions);
+    const minifiedContent: MinifyOutput = await minify(buildFile.fileContent, minifyOptions);
 
     await Promise.all([
-        fs.writeFile(buildFile.fileDistPath, minifiedContent.code),
-        fs.writeFile(buildFile.mapDistPath, minifiedContent.map)
+        fs.writeFile(buildFile.fileDistPath, minifiedContent.code as string),
+        fs.writeFile(buildFile.mapDistPath, minifiedContent.map as string)
     ]);
 
     // Outputs the compression ratio
@@ -92,5 +92,7 @@ for await (const buildFile of fileContents(buildDirFiles)) {
     const buildSize = stats[0].size;
     const distSize = stats[1].size;
 
-    console.log(`${buildFile.fileName} - ${buildSize} => ${distSize} Reduction of ${(((distSize / buildSize) * 100).toFixed(0) - 100) * -1}%\n`);
+    const reduction = ((((distSize / buildSize) * 100) - 100) * -1).toFixed(0);
+
+    console.log(`${buildFile.fileName} - ${buildSize} => ${distSize} Reduction of ${reduction}%\n`);
 }

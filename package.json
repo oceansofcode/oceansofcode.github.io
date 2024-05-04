@@ -10,9 +10,9 @@
   "scripts": {
     "deploy:local": "npm run build && npm run watch",
     "watch": "concurrently \"npm run serve\" \"npm run watch:sass\" \"npm run watch:ts\" ",
-    "build:images": "cd build-scripts && node \"images.js\"",
-    "build:sass": "cd build-scripts && node \"sass-compile.js\"",
-    "build:ts": "tsc && cd build-scripts && node \"es6-compile.js\" && npm run build:es5",
+    "build:images": "cd build-scripts && npx tsx \"images.ts\"",
+    "build:sass": "cd build-scripts && npx tsx \"sass-compile.ts\"",
+    "build:ts": "tsc && cd build-scripts && npx tsx \"es6-compile.ts\" && npm run build:es5",
     "build:es5": "tsc -p tsconfig.es5.json && terser build/scripts/es5/index.js --mangle --compress --source-map \"content='build/scripts/es5/index.js.map'\" -o dist/scripts/index.js",
     "build": "concurrently \"npm run build:sass\" \"npm run build:ts\" \"npm run build:images\"",
     "clean": "rm -rf ./build && rm -rf ./dist && mkdir dist",
@@ -56,6 +56,7 @@
     "sass": "^1.72.0",
     "sharp": "^0.33.3",
     "terser": "^5.30.0",
+    "tsx": "^4.9.0",
     "typescript": "^5.4.3"
   }
 }
