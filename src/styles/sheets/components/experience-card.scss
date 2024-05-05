@@ -48,11 +48,11 @@
     }
 
     .back {
-        transform: rotateY(180deg);
+        transform: rotateY(-180deg);
     }
 
     &.is-flipped {
-        transform: rotateY(180deg);
+        transform: rotateY(-180deg);
     }
 }
 
