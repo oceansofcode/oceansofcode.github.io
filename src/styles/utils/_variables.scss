@@ -1,9 +1,9 @@
-@use "functions" as *;
-@forward "functions";
+@use 'functions' as *;
+@forward 'functions';
 
-@use "sass:map";
-@use "sass:math";
-@use "sass:color";
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:color';
 
 $default-opacity:  0.75;
 $header-height: 70px;
@@ -15,17 +15,19 @@ $header-height: 70px;
 $side-gap: 15%; // Keeps site aligned better
 $site-radius: 1.2rem;
 
-$dark-theme: "body.dark &";
-$light-theme: "body.light &";
+$dark-theme: 'body.dark &';
+$light-theme: 'body.light &';
 
 $themes: (
-    "dark": (
-        "primary-background": hsl(210, 22%, 4%),
-        "text": rgb(232, 230, 227)
+    'dark': (
+        'primary-background': hsl(210, 22%, 4%),
+        'secondary-background': hsl(220, 5%, 13%),
+        'primary-text': rgb(232, 230, 227)
     ),
-    "light": (
-        "primary-background": rgb(232, 230, 227),
-        "text": #313441
+    'light': (
+        'primary-background': rgb(232, 230, 227),
+        'secondary-background': rgb(205, 202, 198),
+        'primary-text': #313441
     )
 );
 

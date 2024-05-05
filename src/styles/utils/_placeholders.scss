@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 @use 'variables' as *;
 
 // Create a placeholder for each theme to be used by the theme mixin
@@ -8,7 +8,7 @@
   }
 
   %text-#{$theme} {
-    color: map-get($themes, $theme, 'text');
+    color: map-get($themes, $theme, 'primary-text');
   }
 }
 

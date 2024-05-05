@@ -12,7 +12,7 @@ export class ExperienceCard extends HTMLElement {
     connectedCallback() {
         const template = document.getElementById('experience-card') as HTMLTemplateElement;
         const templateContent = template.content;
-        const shadowRoot = this.attachShadow({ mode: 'open'});
+        const shadowRoot = this.attachShadow({ mode: 'open' });
 
         shadowRoot.appendChild(templateContent.cloneNode(true));
 

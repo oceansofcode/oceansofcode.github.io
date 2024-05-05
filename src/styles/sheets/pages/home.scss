@@ -1,4 +1,4 @@
-@use "../../utils/variables" as *;
+@use '../../utils/variables' as *;
 
 .theme-background {
   visibility: visible !important;
@@ -27,7 +27,7 @@
 }
 
 main {
-  grid-area: "main";
+  grid-area: 'main';
 
   >section {
     min-height: 100vh;
@@ -46,7 +46,7 @@ main {
         left: 50%;
         translate: -50% -50%;
         white-space: nowrap;
-        font-family: "Lobster Two",
+        font-family: 'Lobster Two',
         Helvetica,
         sans-serif;
         font-size: 3.2rem;

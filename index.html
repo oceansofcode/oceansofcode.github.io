@@ -62,15 +62,19 @@
             <link rel="stylesheet" type="text/css" href="dist/styles/sheets/components/experience-card.css">
             <div class="container" aria-hidden="true">
                 <article class="front" part="card-side">
-                    <hgroup>
-                        <h3><slot name="client"></slot></h3>
-                        <p><b><slot name="title"></slot></b></p>
+                    <hgroup class="client-title">
+                        <h3><slot name="front-client"></slot></h3>
+                        <p><b><slot name="front-title"></slot></b></p>
                     </hgroup>
                     <p class="logo"><slot name="logo"></slot></p>
                     <p><slot name="project-overview"></slot></p>
-                    <button part="component-button">More Info</button>
+                    <button part="component-button">See More</button>
                 </article>
                 <section class="back" part="card-side">
+                    <hgroup class="client-title">
+                        <h3><slot name="back-client"></slot></h3>
+                        <p><b><slot name="back-title"></slot></b></p>
+                    </hgroup>
                     <details open>
                         <summary><h3>Highlights</h3></summary>
                         <ul>
@@ -78,7 +82,6 @@
                             <li><slot name="highlight-2"></slot></li>
                             <li><slot name="highlight-3"></slot></li>
                         </ul>
-                        <!-- TODO: Link to site / Veriday highlight -->
                     </details>
                     <details open>
                         <summary><h3>Responsibilities</h3></summary>
@@ -89,6 +92,8 @@
                         </ul>
                         <!-- TODO: Link to site / Veriday highlight -->
                     </details>
+                    <button part="component-button"><slot name="external-project-site"><span>Coming Soon</span></slot></button>
+                    <button part="component-button">See Less</button>
                 </section>
             </div>
         </template>
@@ -97,8 +102,10 @@
             <h2 class="section-title">Clients</h2>
             <div class="lazy container flex wrap gap justify-center" aria-hidden="true">
                 <experience-card>
-                    <span slot="client">Volkswagen Group of America</span>
-                    <span slot="title">Lead Developer</span>
+                    <span slot="front-client">Volkswagen Group of America</span>
+                    <span slot="back-client">Volkswagen Group of America</span>
+                    <span slot="front-title">Lead Developer</span>
+                    <span slot="back-title">Lead Developer</span>
                     <img slot="logo" loading="lazy" src="./dist/svg/Volkswagen_logo_2019.svg" alt="Volkswagen Logo">
                     <span slot="project-overview">Lead Developer on a B2B commerce portal which modernizes the vehicle allocation process critical to corporate and dealer success</span>
                     <span slot="highlight-1">Wrote robust automation scripts for merges, deployments, and workflow</span>
@@ -109,8 +116,10 @@
                     <span slot="responsibility-3">Worked directly with the corporation on architecting new functionality</span>
                 </experience-card>
                 <experience-card>
-                    <span slot="client">York University</span>
-                    <span slot="title">Web Architect</span>
+                    <span slot="front-client">York University</span>
+                    <span slot="back-client">York University</span>
+                    <span slot="front-title">Web Architect</span>
+                    <span slot="back-title">Web Architect</span>
                     <img slot="logo" loading="lazy" src="./dist/images/large/yorku-logo.webp" alt="York University Logo">
                     <span slot="project-overview">Developed an Angular and Node.js application that enhances at-home physiotherapy exercises utilizing virtual reality devices</span>
                     <span slot="highlight-1">Created UML / Flow diagrams on business requirements and application logic</span>
@@ -121,8 +130,10 @@
                     <span slot="responsibility-3">Leveraged RxJS and Angular Material forms</span>
                 </experience-card>
                 <experience-card>
-                    <span slot="client">Toronto Hydro</span>
-                    <span slot="title">Java Developer</span>
+                    <span slot="front-client">Toronto Hydro</span>
+                    <span slot="back-client">Toronto Hydro</span>
+                    <span slot="front-title">Java Developer</span>
+                    <span slot="back-title">Java Developer</span>
                     <img slot="logo" loading="lazy" src="./dist/images/large/toronto-hydro-logo.webp" alt="Toronto Hydro Logo">
                     <span slot="project-overview">Supported the development of Toronto Hydro's customer and business facing public website</span>
                     <span slot="highlight-1">Provided constructive feedback in code reviews</span>

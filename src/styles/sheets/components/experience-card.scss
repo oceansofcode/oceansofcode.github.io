@@ -1,11 +1,11 @@
-@use "../../base/reset";
-@use "../../utils/mixins" as *;
+@use '../../base/reset';
+@use '../../utils/mixins' as *;
 
 :host {
-    @include themeable-property("border-color", "text");
+    @include themeable-property('border-color', 'primary-text');
     padding: 12px;
     width: 350px;
-    min-height: 600px;
+    min-height: 650px;
     max-height: 50%;
     perspective: 1000px;
 
@@ -20,11 +20,6 @@
 
 :host(:hover) {
     cursor: pointer;
-}
-
-button {
-    margin-top: auto;
-    margin-bottom: 20px;
 }
 
 // The class name container is used in the base.scss file, but since this is a Shadow DOM style there is no overlap.
@@ -42,6 +37,14 @@ button {
         backface-visibility: hidden;
         padding: 1rem;
         @extend %site-border;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        button {
+            margin-top: auto;
+            margin-bottom: 2rem;
+        }
     }
 
     .back {
@@ -53,17 +56,16 @@ button {
     }
 }
 
-article.front {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+hgroup~* {
+    margin-top: 10%;
 
-    hgroup~* {
-        margin-top: 10%;
+    &:last-child {
+        margin-top: auto;
     }
+}
+
+.front {
+    text-align: center;
 
     .logo {
         text-align: center;
@@ -77,30 +79,31 @@ article.front {
             transform: scale(1.1);
         }
     }
-
-    button {
-        margin-top: auto;
-        margin-bottom: 2rem;
-    }
 }
 
-.back details {
-    summary {
-        margin-bottom: 1rem;
-        list-style: none;
+.back {
+    hgroup {
         text-align: center;
+    }
 
-        &::-webkit-details-marker {
-            display: none;
+    details {
+        summary {
+            margin-bottom: 1rem;
+            list-style: none;
+            text-align: center;
+
+            &::-webkit-details-marker {
+                display: none;
+            }
         }
-    }
 
-    ul {
-        margin-left: 2rem;
-    }
+        ul {
+            margin-left: 2rem;
+        }
 
-    &:not(:first-child) {
-        margin-top: 2rem;
+        &:not(:first-child) {
+            margin-top: 2rem;
+        }
     }
 }
 

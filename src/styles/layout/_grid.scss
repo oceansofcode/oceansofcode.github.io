@@ -6,9 +6,9 @@ body {
   min-height: 100vh;
 
   grid:
-    [row1-start] "header" $header-height [row1-end]
-    [row2-start] "main" auto [row2-end]
-    [row3-start] "footer" var(--footer-height) [row3-end]
+    [row1-start] 'header' $header-height [row1-end]
+    [row2-start] 'main' auto [row2-end]
+    [row3-start] 'footer' var(--footer-height) [row3-end]
     / 1fr;
 
   > header {

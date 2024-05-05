@@ -1,9 +1,9 @@
-@use "sass:string";
-@use "sass:color";
-@use "sass:map";
+@use 'sass:string';
+@use 'sass:color';
+@use 'sass:map';
 
 /**
- * Function to automatically add a corresponding "transparent" property to the theme maps which avoids duplication
+ * Function to automatically add a corresponding 'transparent' property to the theme maps which avoids duplication
  * and keeps the main map in variables.scss simple.
  *
  * @return - The $themes map with an extra map entry per property with the alpha channel adjusted by 0.25.
@@ -15,7 +15,7 @@
         $keys: map-keys(map-get($themes, $theme-name));
 
         @each $key in $keys {
-            $transparent-key: $key + "-transparent";
+            $transparent-key: $key + '-transparent';
             $transparent-value: transparentize(map-get($themes, $theme-name, $key), $transparent-ratio);
 
             //@debug $transparent-key $transparent-value;

@@ -50,7 +50,7 @@
 
   @extend %site-border;
   
-  @include themeable-property('border-color', 'text');
-  @include themeable-property('color', 'text');
-  @include themeable-property('background-color', 'primary-background');
+  @include themeable-property('border-color', 'primary-text');
+  @include themeable-property('color', 'primary-text');
+  @include themeable-property('background-color', 'secondary-background');
 }

@@ -1,5 +1,5 @@
 @use '../../utils/mixins' as mixin;
 
 body.light {
-  @include mixin.theme("light");
+  @include mixin.theme('light');
 }
