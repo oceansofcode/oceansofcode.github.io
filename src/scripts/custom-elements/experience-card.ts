@@ -1,4 +1,6 @@
 /* eslint-disable immutable/no-mutation */
+import { getFontAwesome } from '../utils/shadow-fa.js';
+
 /* eslint-disable immutable/no-this */
 export class ExperienceCard extends HTMLElement {
 
@@ -17,6 +19,8 @@ export class ExperienceCard extends HTMLElement {
         shadowRoot.appendChild(templateContent.cloneNode(true));
 
         this.container = shadowRoot.querySelector('.container');
+
+        getFontAwesome(shadowRoot);
 
         // We always want our details tab open
         shadowRoot.querySelectorAll('details').forEach(detail => detail.onclick = e => e.preventDefault());

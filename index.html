@@ -68,7 +68,7 @@
                     </hgroup>
                     <p class="logo"><slot name="logo"></slot></p>
                     <p><slot name="project-overview"></slot></p>
-                    <button part="component-button">See More</button>
+                    <button part="component-button">See More&nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
                 </article>
                 <section class="back" part="card-side">
                     <hgroup class="client-title">
@@ -92,8 +92,8 @@
                         </ul>
                         <!-- TODO: Link to site / Veriday highlight -->
                     </details>
-                    <button part="component-button"><slot name="external-project-site"><span>Coming Soon</span></slot></button>
-                    <button part="component-button">See Less</button>
+                    <button part="component-button"><slot name="external-project-site"><span>Coming Soon</span></slot>&nbsp;&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                    <button part="component-button"><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;See Less</button>
                 </section>
             </div>
         </template>

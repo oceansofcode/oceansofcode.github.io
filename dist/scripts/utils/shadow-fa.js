@@ -1,0 +1,2 @@
+export const getFontAwesome=async e=>{new Promise(((e,o)=>{let t=25;const n=setInterval((()=>{const c=document.querySelectorAll('style[id^=fa], script[src*="fontawesome');c?(clearInterval(n),e(c)):--t<=0&&(clearInterval(n),o("Could not load font awesome"))}),200)})).then((o=>o.forEach((o=>e.appendChild(o.cloneNode(!0)))))).catch(console.error)};
+//# sourceMappingURL=shadow-fa.js.map
