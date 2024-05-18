@@ -31,8 +31,10 @@ export const hideLoadedContainer = (el: Element) => {
 /**
  * Reusable methods to lazy load elements by taking in a map of the element and the function that will
  * load it's required javscript. Mostly used for custom elements.
- * 
- * @param loadElementMap 
+ *
+ * @param loadElementMap
+ * @param rootMargin
+ * @param autoHide
  */
 export const lazyLoadSections = (loadElementMap: Map<Element, () => Promise<void>>, rootMargin = '0px', autoHide = false) => {
 

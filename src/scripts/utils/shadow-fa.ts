@@ -3,7 +3,7 @@ export const getFontAwesome = async (shadowRoot: ShadowRoot): Promise<void> => {
         // eslint-disable-next-line immutable/no-let
         let attempts = 25;
         const interval = setInterval(() => {
-            const fontAwesome = document.querySelectorAll('style[id^=fa], script[src*="fontawesome');
+            const fontAwesome = document.querySelectorAll('style[id^=fa], script[src*=fontawesome]');
 
             if (fontAwesome) {
                 clearInterval(interval);

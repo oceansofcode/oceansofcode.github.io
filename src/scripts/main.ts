@@ -8,7 +8,7 @@ themeInit().then(() => {
 
     customElements.define('portfolio-header', PortfolioHeader, { extends: 'header'});
 
-    pageLoadMap.set(document.querySelector('footer[is=portfolio-footer'), async () => {
+    pageLoadMap.set(document.querySelector('footer[is=portfolio-footer]'), async () => {
         const { PortfolioFooter } = await import('./custom-elements/header-footer.js');
         customElements.define('portfolio-footer', PortfolioFooter, { extends: 'footer'});
     });

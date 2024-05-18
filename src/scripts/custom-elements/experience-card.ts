@@ -20,7 +20,7 @@ export class ExperienceCard extends HTMLElement {
 
         this.container = shadowRoot.querySelector('.container');
 
-        getFontAwesome(shadowRoot);
+        getFontAwesome(shadowRoot).then();
 
         // We always want our details tab open
         shadowRoot.querySelectorAll('details').forEach(detail => detail.onclick = e => e.preventDefault());

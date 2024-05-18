@@ -20,7 +20,7 @@ header nav {
       }
 
       &::before {
-        // This plus the left calc guarentees the line will always be centered no matter how wide
+        // This plus the left calc guarantees the line will always be centered no matter how wide
         $nav-item-line-width: 80%;
 
         width: $nav-item-line-width;

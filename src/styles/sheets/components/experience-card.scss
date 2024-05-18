@@ -18,10 +18,6 @@
     }
 }
 
-:host(:hover) {
-    cursor: pointer;
-}
-
 // The class name container is used in the base.scss file, but since this is a Shadow DOM style there is no overlap.
 .container {
     width: 100%;
@@ -105,6 +101,10 @@ hgroup~* {
             margin-top: 2rem;
         }
     }
+}
+
+.inactive {
+    color: grey;
 }
 
 ::slotted([slot=logo]) {

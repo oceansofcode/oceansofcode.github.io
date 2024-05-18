@@ -28,7 +28,7 @@
   }
 }
 
-// Provides both light and dark themeing for a property based on the theme-key provided
+// Provides both light and dark theming for a property based on the theme-key provided
 @mixin themeable-property($property-name, $theme-key) {
   #{$light-theme} {
     #{$property-name}: map-get($themes, 'light', $theme-key);

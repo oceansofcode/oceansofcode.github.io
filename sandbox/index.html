@@ -8,16 +8,30 @@
     <meta name="keywords" content="Javascript, testing, code">
     <title>Sandbox</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preload" href="/dist/styles/main.css" as="style">
+
+    <link rel="stylesheet" href="/dist/styles/sheets/themes/dark.css" id="dark-theme-css" disabled>
+    <link rel="stylesheet" href="/dist/styles/sheets/themes/light.css" id="light-theme-css" disabled>
+
     <link rel="stylesheet" type="text/css" media="screen" href="/dist/styles/main.css">
-    <link rel="preload"
-        href="https://fonts.googleapis.com/css?family=Cinzel|Roboto|Lobster+Two|Source+Code+Pro&display=swap"
-        as="style">
-    <link rel="modulepreload" href="/dist/scripts/init/mobile-menu.js">
-    <link rel="modulepreload" href="/dist/scripts/theme/theme-switch.js">
+    <link rel="stylesheet" type="text/css" media="screen" href="/dist/styles/sheets/pages/home.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+
+    <script src="/dist/scripts/custom-elements-polyfill.js"></script>
+
+    <link rel="modulepreload" href="/dist/scripts/theme/theme.js">
+    <link rel="modulepreload" href="/dist/scripts/custom-elements/header-footer.js">
+
+    <script src="https://kit.fontawesome.com/d6530b2944.js" crossorigin="anonymous" async></script>
 
     <script src="/dist/scripts/main.js" type="module" async></script>
-    <script src="https://kit.fontawesome.com/a2583045b3.js" async ></script>
+    <script src="/dist/scripts/pages/home.js" type="module" defer></script>
+
 </head>
 
 <body>

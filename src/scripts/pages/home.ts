@@ -30,7 +30,7 @@ async function welcomeTranslateEffect() {
         fill: 'forwards'
     };
 
-    return welcomeCallout.animate(translateEffect, timing).finished.then(animiation => animiation.commitStyles());
+    return welcomeCallout.animate(translateEffect, timing).finished.then(animation => animation.commitStyles());
 }
 
 /**
@@ -65,7 +65,7 @@ function welcomeParallaxEffect() {
         const top = window.scrollY;
 
         const parallaxKeyFrame: Keyframe[] = [
-            { transform: `translateY(${top / translateRatio}px)`, opacity: `${1 - Math.max(top / (window.innerHeight * 1), 0)}` }
+            { transform: `translateY(${top / translateRatio}px)`, opacity: `${1 - Math.max(top / (window.innerHeight), 0)}` }
         ];
 
         welcomeCallout.animate(parallaxKeyFrame, options);

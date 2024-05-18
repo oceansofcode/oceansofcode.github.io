@@ -1,5 +1,6 @@
 @use '../utils/mixins' as *;
 
+//noinspection SassScssResolvedByNameOnly
 header {
   display: flex;
   justify-content: flex-end;

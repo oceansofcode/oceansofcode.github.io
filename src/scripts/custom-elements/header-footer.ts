@@ -2,6 +2,7 @@
 /* eslint-disable immutable/no-this */
 
 import { getThemeFromPreference, themeSwitchEvent } from '../theme/theme.js';
+import Constants from '../constants.js';
 
 export class PortfolioHeader extends HTMLElement {
     
@@ -46,7 +47,7 @@ export class PortfolioHeader extends HTMLElement {
         this.navMenu = navMenu;
         nav.appendChild(navMenu);
 
-        const clients = this.createNavigiationItem('Clients', '/clients', '/#clients');
+        const clients = this.createNavItem('Clients', '/clients', '/#clients');
 
         navLinks.push(clients);
 
@@ -158,7 +159,7 @@ export class PortfolioHeader extends HTMLElement {
      * anchor is the path that will show when hovering over the <a> elements
      * linkOverride is an optional parameter that will be the actual destination, useful for links on the same page to have a smooth scroll effect
      */
-    private createNavigiationItem(name: string, anchorLink: string, linkOverride?: string): HTMLLIElement {
+    private createNavItem(name: string, anchorLink: string, linkOverride?: string): HTMLLIElement {
         const navItem = document.createElement('li');
         const itemLink = document.createElement('a');
         itemLink.setAttribute('href', anchorLink); 
@@ -232,13 +233,11 @@ export class PortfolioHeader extends HTMLElement {
 
         const currentColor = getComputedStyle(this).getPropertyValue('background-color');
 
-        const newColor = currentColor.replace(/0?\.?\d+\)$/, `${opacity.toString()})`);
-
-        this.style.backgroundColor = newColor;
+        this.style.backgroundColor = currentColor.replace(/0?\.?\d+\)$/, `${opacity.toString()})`);
     }
 
     private handleThemeSwitchEvent() {
-        window.addEventListener('themeSwitched', () => this.style.removeProperty('background-color'), false);
+        window.addEventListener(Constants.THEME_SWITCH_EVENT, () => this.style.removeProperty('background-color'), false);
     }
 }
 

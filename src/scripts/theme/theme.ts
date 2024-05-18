@@ -1,7 +1,6 @@
 import { ThemeConstants, ThemeCss, ThemeIcons } from './interfaces/theme-enums.js';
 import { Theme, ThemeSwitch, ThemeTransition } from './interfaces/theme-switch-types.js';
-
-// TODO: Dynamically load theme CSS based on user preference.
+import Constants from '../constants.js';
 
 const lightTheme: Theme = { name: ThemeConstants.LIGHT, switchIcon: ThemeIcons.MOON, css: ThemeCss.LIGHT, isLoaded: false };
 const darkTheme: Theme = { name: ThemeConstants.DARK, switchIcon: ThemeIcons.SUN, css:ThemeCss.DARK, isLoaded: false };
@@ -19,7 +18,7 @@ const prefersLight = window.matchMedia(`(prefers-color-scheme: ${lightTheme.name
 let body: HTMLBodyElement;
 
 // Cache these elements to avoid repeated query selector calls
-const cacheDom = () => {
+const cacheDom = (): Promise<HTMLBodyElement> => {
     // eslint-disable-next-line immutable/no-let
     let attempts = 100;
     return new Promise<HTMLBodyElement>((resolve, reject) => {
@@ -29,8 +28,7 @@ const cacheDom = () => {
                 resolve(body);
                 clearInterval(bodyInterval);
             } else {
-                attempts--;
-                if (attempts < 0) {
+                if (--attempts < 0) {
                     reject('Could not query select body element');
                     clearInterval(bodyInterval);
                 }
@@ -68,11 +66,7 @@ export const themeSwitchEvent = (themeButton: HTMLElement): () => void => {
     const prefersColorSchemeLightEventHandler = (e: MediaQueryListEvent) => {
         bodyTransition();
 
-        if (e.matches) {
-            switchTheme(darkToLight);
-        } else {
-            switchTheme(lightToDark);
-        }
+        e.matches ? switchTheme(darkToLight) : switchTheme(lightToDark);
     };
 
     // Wire this to prefers-color-scheme media query, this ensures the themeButton can change at the same time.
@@ -115,7 +109,7 @@ const changeTheme = (themes: ThemeSwitch, themeButton: HTMLElement) => {
     });
 
     // Send out an event for other components to use
-    const customThemeSwitchEvent = new CustomEvent('themeSwitched', { detail: themes });
+    const customThemeSwitchEvent = new CustomEvent(Constants.THEME_SWITCH_EVENT, { detail: themes });
     window.dispatchEvent(customThemeSwitchEvent);
 };
 
@@ -129,7 +123,7 @@ const loadTheme = (theme: Theme) => {
 };
 
 /**
- * Sets the initial theme based on the users prefered color
+ * Sets the initial theme based on the users preferred color
  */
 export const themeInit = async () => {
     body = await cacheDom();
