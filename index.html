@@ -63,17 +63,17 @@
             <div class="container" aria-hidden="true">
                 <article class="front" part="card-side">
                     <hgroup class="client-title">
-                        <h3><slot name="front-client"></slot></h3>
-                        <p><b><slot name="front-title"></slot></b></p>
+                        <h3><slot name="client"></slot></h3>
+                        <p><b><slot name="title"></slot></b></p>
                     </hgroup>
                     <p class="logo"><slot name="logo"></slot></p>
                     <p><slot name="project-overview"></slot></p>
-                    <button part="component-button">See More&nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="flip-card" part="component-button">See More&nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></button>
                 </article>
                 <section class="back" part="card-side">
                     <hgroup class="client-title">
-                        <h3><slot name="back-client"></slot></h3>
-                        <p><b><slot name="back-title"></slot></b></p>
+                        <h3 class="duplicate-client"></h3>
+                        <p><b class="duplicate-title"></b></p>
                     </hgroup>
                     <details open>
                         <summary><h4>Highlights</h4></summary>
@@ -92,8 +92,8 @@
                         </ul>
                         <!-- TODO: Link to site / Veriday highlight -->
                     </details>
-                    <button part="component-button"><slot name="external-project-site"><span class="inactive">Coming Soon</span></slot>&nbsp;&nbsp;<i class="inactive fa-solid fa-arrow-up-right-from-square"></i></button>
-                    <button part="component-button"><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;See Less</button>
+                    <button part="component-button" class="inactive"><slot name="external-project-site"><span>Coming Soon</span></slot>&nbsp;&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                    <button class="flip-card" part="component-button"><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;See Less</button>
                 </section>
             </div>
         </template>
@@ -102,13 +102,11 @@
             <h2 class="section-title">Clients</h2>
             <div class="lazy container flex wrap gap justify-center" aria-hidden="true">
                 <experience-card>
-                    <span slot="front-client">Volkswagen Group of America</span>
-                    <span slot="back-client">Volkswagen Group of America</span>
-                    <span slot="front-title">Lead Developer</span>
-                    <span slot="back-title">Lead Developer</span>
+                    <span slot="client">Volkswagen Group of America</span>
+                    <span slot="title">Lead Developer</span>
                     <img slot="logo" loading="lazy" src="./dist/svg/Volkswagen_logo_2019.svg" alt="Volkswagen Logo">
                     <span slot="project-overview">Lead Developer on a B2B commerce portal which modernizes the vehicle allocation process critical to corporate and dealer success</span>
-                    <span slot="highlight-1">Wrote robust automation scripts for merges, deployments, and workflow</span>
+                    <span slot="highlight-1">Wrote automation scripts for merges, deployments, and workflow</span>
                     <span slot="highlight-2">Advocated for team and corporation appropriate agile</span>
                     <span slot="highlight-3">Rewrote key portal logic to support multiple applications, brands, and countries</span>
                     <span slot="responsibility-1">Mentored fellow developers on language best practices and business logic</span>
@@ -116,10 +114,8 @@
                     <span slot="responsibility-3">Worked directly with the corporation on architecting new functionality</span>
                 </experience-card>
                 <experience-card>
-                    <span slot="front-client">York University</span>
-                    <span slot="back-client">York University</span>
-                    <span slot="front-title">Web Architect</span>
-                    <span slot="back-title">Web Architect</span>
+                    <span slot="client">York University</span>
+                    <span slot="title">Web Architect</span>
                     <img slot="logo" loading="lazy" src="./dist/images/large/yorku-logo.webp" alt="York University Logo">
                     <span slot="project-overview">Developed an Angular and Node.js application that enhances at-home physiotherapy exercises utilizing virtual reality devices</span>
                     <span slot="highlight-1">Created UML / Flow diagrams on business requirements and application logic</span>
@@ -130,18 +126,17 @@
                     <span slot="responsibility-3">Leveraged RxJS and Angular Material forms</span>
                 </experience-card>
                 <experience-card>
-                    <span slot="front-client">Toronto Hydro</span>
-                    <span slot="back-client">Toronto Hydro</span>
-                    <span slot="front-title">Java Developer</span>
-                    <span slot="back-title">Java Developer</span>
+                    <span slot="client">Toronto Hydro</span>
+                    <span slot="title">Java Developer</span>
                     <img slot="logo" loading="lazy" src="./dist/images/large/toronto-hydro-logo.webp" alt="Toronto Hydro Logo">
                     <span slot="project-overview">Supported the development of Toronto Hydro's customer and business facing public website</span>
                     <span slot="highlight-1">Provided constructive feedback in code reviews</span>
-                    <span slot="highlight-2">Wrote robust automated site UAT tests</span>
+                    <span slot="highlight-2">Wrote automated site UAT tests</span>
                     <span slot="highlight-3">Trained junior developers on E2E testing in HP QTP</span>
                     <span slot="responsibility-1">Wrote custom SQL queries in addition to generated finder queries</span>
                     <span slot="responsibility-2">Developed robust back end services and SOAP invokers</span>
                     <span slot="responsibility-3">Refactored platform configurations to improve client usage</span>
+                    <a slot="external-project-site" target="_blank" href="https://torontohydro.com">Public Website</a>
                 </experience-card>
             </div>
         </section>

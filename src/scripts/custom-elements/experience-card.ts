@@ -14,17 +14,49 @@ export class ExperienceCard extends HTMLElement {
     connectedCallback() {
         const template = document.getElementById('experience-card') as HTMLTemplateElement;
         const templateContent = template.content;
-        const shadowRoot = this.attachShadow({ mode: 'open' });
+        const shadowRoot = this.attachShadow({ mode: 'open'});
 
         shadowRoot.appendChild(templateContent.cloneNode(true));
 
         this.container = shadowRoot.querySelector('.container');
 
-        getFontAwesome(shadowRoot).then();
-
         // We always want our details tab open
         shadowRoot.querySelectorAll('details').forEach(detail => detail.onclick = e => e.preventDefault());
-        this.onclick = this.flipCard;
+        shadowRoot.querySelectorAll('button.flip-card').forEach(button => button.addEventListener('click', this.flipCard.bind(this)));
+
+        this.duplicateClientTitle();
+        this.handleExternalLink();
+
+        getFontAwesome(shadowRoot).finally();
+    }
+
+    private duplicateClientTitle() {
+        const title: HTMLSlotElement = this.shadowRoot.querySelector('slot[name=title]');
+        const client: HTMLSlotElement = this.shadowRoot.querySelector('slot[name=client]');
+
+        const duplicateSlotContent = (slot: HTMLSlotElement) => {
+            const nodes = slot.assignedNodes();
+            const duplicateSlot = this.shadowRoot.querySelector(`.duplicate-${slot.name}`);
+            duplicateSlot.textContent = '';
+
+            nodes.forEach(node => duplicateSlot.appendChild(node.cloneNode(true)));
+        };
+
+        [title, client].forEach(duplicateSlotContent);
+    }
+
+    private handleExternalLink() {
+
+        const slotSelector = 'slot[name=external-project-site]';
+
+        const externalSiteSlot: HTMLSlotElement = this.shadowRoot.querySelector(slotSelector);
+        const externalButton = this.shadowRoot.querySelector(`button:has(${slotSelector})`);
+
+        if (externalSiteSlot?.assignedNodes().length) {
+            externalButton.classList.remove('inactive');
+        }
+
+        externalButton.addEventListener('click', e => e.preventDefault());
     }
 
     private flipCard() {

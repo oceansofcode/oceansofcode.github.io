@@ -104,7 +104,11 @@ hgroup~* {
 }
 
 .inactive {
-    color: grey;
+    cursor: default !important;
+    * {
+        cursor: inherit;
+        color: grey;
+    }
 }
 
 ::slotted([slot=logo]) {
