@@ -92,7 +92,7 @@
                         </ul>
                         <!-- TODO: Link to site / Veriday highlight -->
                     </details>
-                    <button part="component-button" class="inactive"><slot name="external-project-site"><span>Coming Soon</span></slot>&nbsp;&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+                    <slot name="external-project-site"><a part="component-button" class="inactive button">Coming Soon</a></slot>
                     <button class="flip-card" part="component-button"><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;See Less</button>
                 </section>
             </div>
@@ -136,7 +136,7 @@
                     <span slot="responsibility-1">Wrote custom SQL queries in addition to generated finder queries</span>
                     <span slot="responsibility-2">Developed robust back end services and SOAP invokers</span>
                     <span slot="responsibility-3">Refactored platform configurations to improve client usage</span>
-                    <a slot="external-project-site" target="_blank" href="https://torontohydro.com">Public Website</a>
+                    <a class="button" slot="external-project-site" target="_blank" href="https://torontohydro.com">Public Website</a>
                 </experience-card>
             </div>
         </section>

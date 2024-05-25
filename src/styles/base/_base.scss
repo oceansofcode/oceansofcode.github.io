@@ -97,7 +97,9 @@ picture {
   @extend %theme-transition;
 }
 
-::part(component-button) {
+.button, ::part(component-button) {
   @include button(75%, 3.5rem);
   @extend %theme-transition;
+  margin-top: auto;
+  margin-bottom: 2rem;
 }

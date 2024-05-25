@@ -45,18 +45,30 @@ export class ExperienceCard extends HTMLElement {
         [title, client].forEach(duplicateSlotContent);
     }
 
+    // Since links are slotted in we need to handle them in order to avoid duplicate code
     private handleExternalLink() {
 
         const slotSelector = 'slot[name=external-project-site]';
 
         const externalSiteSlot: HTMLSlotElement = this.shadowRoot.querySelector(slotSelector);
-        const externalButton = this.shadowRoot.querySelector(`button:has(${slotSelector})`);
 
+        const icon = document.createElement('i');
+        icon.classList.add('fa-solid', 'fa-arrow-up-right-from-square');
+
+        const insertIcon = (a: HTMLAnchorElement) => {
+            a.insertAdjacentHTML('beforeend', '&nbsp');
+            a.insertAdjacentHTML('beforeend', '&nbsp');
+            a.appendChild(icon);
+        };
+
+        // Dynamically insert the font awesome external link icon to both slotted <a> and the placeholder <a>
         if (externalSiteSlot?.assignedNodes().length) {
-            externalButton.classList.remove('inactive');
+            externalSiteSlot.assignedElements().forEach(insertIcon);
+        } else {
+          insertIcon(externalSiteSlot.querySelector('a'));
         }
 
-        externalButton.addEventListener('click', e => e.preventDefault());
+        // externalButton.addEventListener('click', e => e.preventDefault());
     }
 
     private flipCard() {

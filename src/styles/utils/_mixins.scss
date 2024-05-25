@@ -42,11 +42,14 @@
 // Mixin
 
 @mixin button($width, $height) {
+  display: block;
   font-family: inherit;
   font-size: inherit;
   width: $width;
   height: $height;
   cursor: pointer;
+  text-align: center;
+  line-height: 2;
 
   @extend %site-border;
   
@@ -54,5 +57,8 @@
   @include themeable-property('color', 'primary-text');
   @include themeable-property('background-color', 'secondary-background');
 
+  &:hover {
+    @include themeable-property('background-color', 'primary-background');
+  }
 
 }
