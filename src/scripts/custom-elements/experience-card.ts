@@ -63,7 +63,11 @@ export class ExperienceCard extends HTMLElement {
 
         // Dynamically insert the font awesome external link icon to both slotted <a> and the placeholder <a>
         if (externalSiteSlot?.assignedNodes().length) {
-            externalSiteSlot.assignedElements().forEach(insertIcon);
+            externalSiteSlot.assignedElements().filter(a => a instanceof HTMLAnchorElement).forEach((a: HTMLAnchorElement) => {
+                a.classList.add('button');
+                a.setAttribute('target', '_blank');
+                insertIcon(a);
+            });
         } else {
           insertIcon(externalSiteSlot.querySelector('a'));
         }
