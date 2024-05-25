@@ -1,0 +1,1 @@
+{"version":3,"names":["createDNSPrefetch","anchor","uri","getAttribute","link","document","createElement","url","URL","setAttribute","origin"],"sources":["../../../src/scripts/utils/links.ts"],"mappings":"OAMO,MAAMA,kBAAqBC,IAE9B,MAAMC,EAAMD,EAAOE,aAAa,QAC1BC,EAAOC,SAASC,cAAc,QAE9BC,EAAW,IAAIC,IAAIN,GAKzB,OAHAE,EAAKK,aAAa,OAAQF,EAAIG,QAC9BN,EAAKK,aAAa,MAAO,gBAElBL,CAAI"}

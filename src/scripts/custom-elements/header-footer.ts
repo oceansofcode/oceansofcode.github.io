@@ -3,6 +3,7 @@
 
 import { getThemeFromPreference, themeSwitchEvent } from '../theme/theme.js';
 import Constants from '../constants.js';
+import { createDNSPrefetch } from '../utils/links.js';
 
 export class PortfolioHeader extends HTMLElement {
     
@@ -267,7 +268,7 @@ export class PortfolioFooter extends HTMLElement {
 
         const anchors = [githubLink, linkedInLink];
 
-        anchors.forEach(anchor => this.appendChild(this.createDnsPrefetches(anchor)));
+        anchors.forEach(anchor => this.appendChild(createDNSPrefetch(anchor)));
 
         this.appendChild(linkedInLink);
         this.appendChild(callout);
@@ -287,17 +288,5 @@ export class PortfolioFooter extends HTMLElement {
         anchor.appendChild(logo);
 
         return anchor;
-    }
-
-    private createDnsPrefetches(anchor: HTMLAnchorElement) {
-        const uri = anchor.getAttribute('href');
-        const link = document.createElement('link');
-
-        const url: URL = new URL(uri);
-
-        link.setAttribute('href', url.origin);
-        link.setAttribute('rel', 'dns-prefetch');
-
-        return link;
     }
 }

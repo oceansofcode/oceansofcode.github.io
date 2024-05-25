@@ -1,9 +1,12 @@
 /* eslint-disable immutable/no-mutation */
 import { getFontAwesome } from '../utils/shadow-fa.js';
+import { createDNSPrefetch } from '../utils/links.js';
 
 /* eslint-disable immutable/no-this */
 export class ExperienceCard extends HTMLElement {
 
+    private readonly externalSelector = 'slot[name=external-project-site]';
+    private flippedOnce = false;
     private flipped = false;
     private container: HTMLElement;
 
@@ -45,12 +48,14 @@ export class ExperienceCard extends HTMLElement {
         [title, client].forEach(duplicateSlotContent);
     }
 
+    private getExternalSiteSlot():HTMLSlotElement {
+        return this.shadowRoot.querySelector(this.externalSelector);
+    }
+
     // Since links are slotted in we need to handle them in order to avoid duplicate code
     private handleExternalLink() {
 
-        const slotSelector = 'slot[name=external-project-site]';
-
-        const externalSiteSlot: HTMLSlotElement = this.shadowRoot.querySelector(slotSelector);
+        const externalSiteSlot = this.getExternalSiteSlot();
 
         const icon = document.createElement('i');
         icon.classList.add('fa-solid', 'fa-arrow-up-right-from-square');
@@ -71,8 +76,6 @@ export class ExperienceCard extends HTMLElement {
         } else {
           insertIcon(externalSiteSlot.querySelector('a'));
         }
-
-        // externalButton.addEventListener('click', e => e.preventDefault());
     }
 
     private flipCard() {
@@ -82,6 +85,16 @@ export class ExperienceCard extends HTMLElement {
         } else {
             this.container.classList.add('is-flipped');
             this.flipped = true;
+
+            // Prefetch the DNS for the link if the card has been flipped at least once
+            if (!this.flippedOnce) {
+                const externalSlot = this.getExternalSiteSlot();
+                if (externalSlot?.assignedElements() && externalSlot.assignedElements()[0] instanceof HTMLAnchorElement) {
+                    const externalAnchor = externalSlot?.assignedElements()[0] as HTMLAnchorElement;
+                    this.appendChild(createDNSPrefetch(externalAnchor));
+                }
+                this.flippedOnce = true;
+            }
         }
     }
 }

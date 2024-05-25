@@ -1,0 +1,2 @@
+export const createDNSPrefetch=e=>{const t=e.getAttribute("href"),r=document.createElement("link"),n=new URL(t);return r.setAttribute("href",n.origin),r.setAttribute("rel","dns-prefetch"),r};
+//# sourceMappingURL=links.js.map
