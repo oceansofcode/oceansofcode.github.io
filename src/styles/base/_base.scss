@@ -103,3 +103,9 @@ picture {
   margin-top: auto;
   margin-bottom: 2rem;
 }
+
+a:focus {
+  border-width: 1px;
+  border-style: dashed;
+  @include themeable-property('border-color', 'primary-text');
+}

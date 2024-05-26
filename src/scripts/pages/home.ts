@@ -64,9 +64,19 @@ function welcomeParallaxEffect() {
     window.addEventListener('scroll', () => {
         const top = window.scrollY;
 
+        const opacityLevel = Math.max(top / (window.innerHeight), 0);
+
+        const opacity = `${1 - opacityLevel}`;
+
         const parallaxKeyFrame: Keyframe[] = [
-            { transform: `translateY(${top / translateRatio}px)`, opacity: `${1 - Math.max(top / (window.innerHeight), 0)}` }
+            { transform: `translateY(${top / translateRatio}px)`, opacity }
         ];
+
+        if (opacityLevel >= 1) {
+            welcomeCallout.setAttribute('aria-hidden', 'true');
+        } else {
+            welcomeCallout.setAttribute('aria-hidden', 'false');
+        }
 
         welcomeCallout.animate(parallaxKeyFrame, options);
     });

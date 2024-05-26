@@ -34,6 +34,7 @@ export class PortfolioHeader extends HTMLElement {
         title.setAttribute('id', 'title');
         const titleLink = document.createElement('a');
         titleLink.setAttribute('href', '/');
+        titleLink.setAttribute('aria-label', 'Portfolio title');
         titleLink.appendChild(document.createTextNode('Oceans of Code'));
         title.appendChild(titleLink);
         this.appendChild(title);
@@ -163,6 +164,7 @@ export class PortfolioHeader extends HTMLElement {
     private createNavItem(name: string, anchorLink: string, linkOverride?: string): HTMLLIElement {
         const navItem = document.createElement('li');
         const itemLink = document.createElement('a');
+        itemLink.setAttribute('aria-label', `${name} section`);
         itemLink.setAttribute('href', anchorLink); 
         itemLink.appendChild(document.createTextNode(name));
 

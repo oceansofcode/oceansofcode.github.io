@@ -38,8 +38,8 @@
 
 <body>
     <!-- Can add a page title here as a template/slot -->
-    <header is="portfolio-header"></header>
-    <main id="intro-page">
+    <header is="portfolio-header" role="banner"></header>
+    <main id="intro-page" role="main">
         <section id="intro">
             <!-- TODO: Make these custom elements in order to prevent both from being loaded on page load -->
             <picture class="theme-background hidden-image dark">
@@ -92,7 +92,7 @@
                         </ul>
                         <!-- TODO: Link to site / Veriday highlight -->
                     </details>
-                    <slot name="external-project-site"><a part="component-button" class="inactive button">Coming Soon</a></slot>
+                    <slot name="external-project-site"><a role="button" part="component-button" class="inactive button">Coming Soon</a></slot>
                     <button class="flip-card" part="component-button"><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;See Less</button>
                 </section>
             </div>
@@ -141,6 +141,9 @@
                     <a slot="external-project-site" href="https://torontohydro.com">Public Website</a>
                 </experience-card>
             </div>
+        </section>
+        <section id="technologies">
+
         </section>
     </main>
 
