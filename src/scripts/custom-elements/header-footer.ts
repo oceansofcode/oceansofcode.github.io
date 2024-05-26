@@ -14,6 +14,7 @@ export class PortfolioHeader extends HTMLElement {
 
     // Fields to control scroll events
     private previousScrollPosition = window.scrollY;
+    private linkClicked: boolean;
 
     constructor() {
         super();
@@ -50,8 +51,10 @@ export class PortfolioHeader extends HTMLElement {
         nav.appendChild(navMenu);
 
         const clients = this.createNavItem('Clients', '/clients', '/#clients');
+        const technologies = this.createNavItem('Technologies', '/technologies', '/#technologies');
 
         navLinks.push(clients);
+        navLinks.push(technologies);
 
         /*
         // Web Apps
@@ -175,6 +178,9 @@ export class PortfolioHeader extends HTMLElement {
 
                 // Allows for smooth scrolling if we are on the same page
                 document.location.href = linkOverride;
+                this.linkClicked = true;
+
+                setTimeout(() => this.linkClicked = false, 1000);
             });
         }
 
@@ -214,7 +220,7 @@ export class PortfolioHeader extends HTMLElement {
             const currentPosition = window.scrollY;
 
             // Visibility
-            if (currentPosition > 500 && previousPosition < currentPosition) {
+            if (!this.linkClicked && currentPosition > 500 && previousPosition < currentPosition) {
                 this.style.translate = '0 -70px';
                 this.closeMobileMenu(this.navMenu);
             } else {

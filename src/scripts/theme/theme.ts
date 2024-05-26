@@ -51,6 +51,24 @@ export const getCurrentTheme = (): Theme => {
     }
 };
 
+/**
+ * Allows a custom HTML Element to have a class with the current theme in order to utilize themeable styles in
+ * it's Shadow DOM
+ *
+ * @param customElement
+ */
+export const setCustomElementThemeClass = (customElement: HTMLElement) => {
+    const theme = getCurrentTheme();
+    customElement.classList.add(theme.name);
+
+    window.addEventListener(Constants.THEME_SWITCH_EVENT, (e: CustomEvent<ThemeSwitch>) => {
+        const { newTheme, oldTheme } = e.detail;
+
+        customElement.classList.add(newTheme?.name);
+        customElement.classList.remove(oldTheme?.name);
+    });
+};
+
 // Should be called once in the page lifecycle to wire this event to the button that will toggle theme changes
 export const themeSwitchEvent = (themeButton: HTMLElement): () => void => {
 

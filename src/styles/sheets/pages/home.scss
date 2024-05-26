@@ -67,7 +67,13 @@ main {
   }
 }
 
-#clients {
+#clients, #technologies {
+  align-items: center;
+
+  .container {
+    height: fit-content;
+  }
+
   grid-template-rows: 8rem 1fr;
   justify-items: stretch;
 

@@ -39,7 +39,16 @@
   }
 }
 
-// Mixin
+// Mixin for the ShadowDOM to be themeable in conjunction with setCustomElementThemeClass
+@mixin shadow-themeable-property($property-name, $theme-key) {
+  #{$shadow-light-theme} {
+    #{$property-name}: map-get($themes, 'light', $theme-key);
+  }
+
+  #{$shadow-dark-theme} {
+    #{$property-name}: map-get($themes, 'dark', $theme-key);
+  }
+}
 
 @mixin button($width, $height) {
   display: block;

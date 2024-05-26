@@ -17,6 +17,8 @@ $site-radius: 1.2rem;
 
 $dark-theme: 'body.dark &';
 $light-theme: 'body.light &';
+$shadow-dark-theme: ':host(.dark) &';
+$shadow-light-theme: ':host(.light) &';
 
 $themes: (
     'dark': (

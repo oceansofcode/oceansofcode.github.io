@@ -2,7 +2,10 @@ import { lazyLoadSections } from '../utils/lazy-loading.js';
 
 const welcomeCallout = document.getElementById('welcome-callout');
 const clients = document.getElementById('clients');
+const technologies = document.getElementById('technologies');
 
+// Holds an element in the page (usually a main > section) and an asynchronous function that dynamically imports
+// and registers any custom elements required for it. Also adds a fade-in effect once it is loaded.
 const lazyLoadMap = new Map<Element, () => Promise<void>>;
 
 (async function home() {
@@ -14,6 +17,7 @@ const lazyLoadMap = new Map<Element, () => Promise<void>>;
     });
 
     lazyLoadMap.set(clients, loadClientsSection);
+    lazyLoadMap.set(technologies, loadTechnologiesSection);
 
     lazyLoadSections(lazyLoadMap, '0px', false);
 })();
@@ -88,4 +92,9 @@ function welcomeParallaxEffect() {
 async function loadClientsSection() {
     const { ExperienceCard } = await import('../custom-elements/experience-card.js');
     customElements.define('experience-card', ExperienceCard);
+}
+
+async function loadTechnologiesSection() {
+    const { TechnologyCard } = await import('../custom-elements/technology-card.js');
+    customElements.define('technology-card', TechnologyCard);
 }

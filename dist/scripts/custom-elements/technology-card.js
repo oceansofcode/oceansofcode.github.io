@@ -1,0 +1,2 @@
+import{setCustomElementThemeClass as e}from"../theme/theme.js";export class TechnologyCard extends HTMLElement{constructor(){super()}connectedCallback(){const t=this.attachShadow({mode:"open"}),o=document.getElementById("technology-card");t.appendChild(o.content.cloneNode(!0)),e(this)}}
+//# sourceMappingURL=technology-card.js.map
