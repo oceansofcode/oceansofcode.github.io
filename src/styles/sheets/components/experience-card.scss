@@ -98,8 +98,12 @@ hgroup~* {
         }
 
         &:not(:first-child) {
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
+    }
+
+    button.flip-card {
+        margin-top: 0 !important;
     }
 }
 
@@ -123,6 +127,6 @@ hgroup~* {
     }
 
     .back details {
-        height: 40%;
+        //height: 40%;
     }
 }

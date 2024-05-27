@@ -19,26 +19,29 @@ header nav {
         padding: 2.3rem 1.6rem;
       }
 
-      &::before {
-        // This plus the left calc guarantees the line will always be centered no matter how wide
-        $nav-item-line-width: 80%;
+      //Underline effect
+      @media screen and (min-width: 801px) {
+        &::before {
+          // This plus the left calc guarantees the line will always be centered no matter how wide
+          $nav-item-line-width: 80%;
 
-        width: $nav-item-line-width;
-        content: '';
-        height: 2px;
-        position: absolute;
-        bottom: 30%;
-        left: calc((100% - $nav-item-line-width) / 2);
+          width: $nav-item-line-width;
+          content: '';
+          height: 2px;
+          position: absolute;
+          bottom: 30%;
+          left: calc((100% - $nav-item-line-width) / 2);
 
-        @include themeable-property('background-color', 'primary-text');
-        opacity: 0;
-        transform: scaleX(0);
-        transition: all 1s ease-in-out
-      }
+          @include themeable-property('background-color', 'primary-text');
+          opacity: 0;
+          transform: scaleX(0);
+          transition: all 1s ease-in-out
+        }
 
-      &:hover::before {
-        opacity: 1;
-        transform: scaleX(1);
+        &:hover::before {
+          opacity: 1;
+          transform: scaleX(1);
+        }
       }
     }
 
@@ -76,17 +79,29 @@ header nav {
 
   @media screen and (max-width: 800px) {
     ul#nav-menu {
-      @include themeable-property('background-color', 'primary-background-transparent');
+      @include themeable-property('background-color', 'primary-background');
 
+      width: 100vw;
       display: none;
       flex-direction: column;
       justify-content: space-around;
       position: absolute;
       top: $header-height;
       left: 0;
+      border: 1px solid grey;
+
+      li:not(:last-child) {
+        border-bottom: 1px solid grey;
+      }
 
       li.drop-down:hover ul.drop-down {
         display: none;
+      }
+
+      a {
+        width: 100%;
+        padding: 3rem;
+        font-size: 2rem;
       }
     }
   }

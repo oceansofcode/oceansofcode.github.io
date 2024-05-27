@@ -60,7 +60,7 @@ main {
     // Content sections after the first should be grids for a consistent UX
     &~section {
       display: grid;
-      gap: 2.4rem;
+      //gap: 2.4rem;
       justify-items: stretch;
       padding: $header-height $side-gap 1rem;
     }
