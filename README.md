@@ -4,13 +4,15 @@
 
 ### Requirements
 
-The goal of this portfolio is to showcase my professional skills as a developer and work / project contributions.
+The goal of this portfolio is to showcase my professional skills as a developer and project contributions.
 
 ### Design
 
 #### *Architecture*
 
-HTML, TypeScript, and SCSS are used as the languages with no frameworks except on specific pages.
+HTML, TypeScript, and SCSS are used as the core languages, with no frameworks except on noted pages.
+
+SVG based images are used when available and some have been modified for an enriched experience such as changing colors with the site theme.
 
 There is one HTML file per page, a main.ts and main.scss that is included on every page, and a page specific TS and SCSS.
 
@@ -20,13 +22,13 @@ This allows the code to be modular and performant by only loading and processing
 
 Semantic HTML and accessibility tags (ARIA) are used when appropriate to provide as equal an experience as possible.
 
-`prefers-reduced-motion` being set to true through the visitor's operating system, animations and transitions are disabled.
+`prefers-reduced-motion` being set to true through the visitor's operating system prevents all animations from occuring.
 
 ##### Web Components
 
 Web components are used to avoid duplicate code across and within the page HTML, provide encapsulation of styling and scripting, and facilitate lazy loading.
 
-Common elements such as the header / footer are customized versions of the base `<header>` and `<footer>` elements (which unfortunately requires a polyfill due to Safari refusing to implement this functionality).
+Common elements such as the header / footer are customized versions of the base `<header>` and `<footer>` elements.
 
 Autonomous custom elements facilitate code reuse and consist of core web component functionality such as the Shadow DOM and HTML Templates and Slots
 
@@ -38,13 +40,13 @@ Custom node.js build scripts exist to process the TS, SCSS, and images.
 
 The build process is extremely fast and efficient on memory, taking ~5 seconds to run a clean build of the entire site and only relying on the packages defined in the package.json and multithreading is leveraged to build the TS, SCSS, and images separately.
 
-The build scripts leverage asynchronous generators to build on demand. Minification and maps for the TS and SCSS are manually added in order to preserve the source code in the browser for improved debugging and for site visitors to inspect the full source code if desired.
+The build scripts utilize asynchronous generators to efficiently load and process each file. Minification and maps for the TS and SCSS are manually added in order to preserve the source code in the browser for improved debugging and for site visitors to inspect the full source code if desired.
 
 Image minification is done to reduce the images as much as possible and provide different sized images based on media queries.
 
 ##### Development process
 
-Browser-sync and on-change are used for local development. Whenever a file is changed the appropriate build script runs instantly and the browser is refreshed instantly.
+Browser-sync and on-change npm libaries are used for local development. Whenever a file is changed the appropriate build script runs instantly and the browser is refreshed instantly.
 
 #### *Decisions*
 
