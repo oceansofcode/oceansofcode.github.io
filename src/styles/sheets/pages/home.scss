@@ -30,6 +30,7 @@ main {
   grid-area: main;
 
   >section {
+    contain: content;
     min-height: 100vh;
 
     &:first-child {
@@ -37,6 +38,7 @@ main {
       background-color: initial;
 
       >#welcome-callout {
+        will-change: transform;
         #{$light-theme} {
           color: white; // TODO: Find better color
         }
