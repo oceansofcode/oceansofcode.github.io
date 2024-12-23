@@ -1,0 +1,9 @@
+node_modules
+build
+dist
+.github
+.idea
+.vscode
+.gitignore
+README.md
+.eslintrc.json
