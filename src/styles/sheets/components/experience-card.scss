@@ -9,13 +9,17 @@
     max-height: 50%;
     perspective: 1000px;
 
-    transition-property: translate, filter, transform;
+    transition-property: translate, filter, transform, width, height;
     transition-duration: 400ms;
 
     @media screen and (max-width: 500px) {
         width: 100%;
         // min-height: 90%;
     }
+}
+
+:host(.is-flipped) {
+    width: 100%;
 }
 
 // The class name container is used in the base.scss file, but since this is a Shadow DOM style there is no overlap.
