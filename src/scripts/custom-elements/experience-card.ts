@@ -81,9 +81,18 @@ export class ExperienceCard extends HTMLElement {
     private flipCard() {
         if (this.flipped) {
             this.container.classList.remove('is-flipped');
+            this.shadowRoot.host.classList.remove('is-flipped');
             this.flipped = false;
         } else {
             this.container.classList.add('is-flipped');
+            this.shadowRoot.host.classList.add('is-flipped');
+            this.shadowRoot.host.dispatchEvent(
+                new CustomEvent('flip-card', {
+                    detail: {
+                        flipped: false
+                    }
+                })
+            );
             this.flipped = true;
 
             // Prefetch the DNS for the link if the card has been flipped at least once
