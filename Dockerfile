@@ -1,5 +1,8 @@
-FROM nginx:latest
+FROM nginx
+EXPOSE 80
+
 ENV NODE_VERSION=23.3.0
+LABEL org.opencontainers.image.source=https://github.com/oceansofcode/oceansofcode.github.io
 
 RUN apt install -y curl
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
@@ -13,10 +16,11 @@ RUN npm --version
 
 WORKDIR portfolio
 
+RUN mkdir dist
+
 COPY . .
 
 RUN npm i
-RUN mkdir dist
 RUN npm run build
 
 RUN mv index.html /usr/share/nginx/html
