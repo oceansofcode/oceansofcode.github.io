@@ -11,6 +11,7 @@ const lightToDark: ThemeSwitch = { newTheme: darkTheme, oldTheme: lightTheme };
 const darkToLight: ThemeSwitch = { newTheme: lightTheme, oldTheme: darkTheme };
 
 const hiddenImageClass = 'hidden-image';
+const selectedTheme = 'selected-theme';
 
 const prefersLight = window.matchMedia(`(prefers-color-scheme: ${lightTheme.name})`);
 
@@ -40,6 +41,18 @@ const cacheDom = (): Promise<HTMLBodyElement> => {
 export const getThemeFromPreference = (): Theme => {
     return window.matchMedia(`(prefers-color-scheme: ${lightTheme.name})`).matches ? lightTheme : darkTheme;
 };
+
+export const saveSelectedTheme = (theme: Theme): void => {
+    window.sessionStorage.setItem(selectedTheme, JSON.stringify(theme));
+}
+
+export const getSavedSelectedTheme = (): Theme => {
+    const savedTheme: Theme = JSON.parse(window.sessionStorage.getItem(selectedTheme));
+    if (savedTheme) {
+        savedTheme.isLoaded = false; // Required to ensure the CSS for the theme gets loaded on switch
+    }
+    return savedTheme;
+}
 
 export const getCurrentTheme = (): Theme => {
     if (body?.classList.contains(lightTheme.name)) {
@@ -84,6 +97,9 @@ export const themeSwitchEvent = (themeButton: HTMLElement): () => void => {
     const prefersColorSchemeLightEventHandler = (e: MediaQueryListEvent) => {
         bodyTransition();
 
+        // Remove the saved theme if this event fires
+        window.localStorage.removeItem(selectedTheme);
+
         e.matches ? switchTheme(darkToLight) : switchTheme(lightToDark);
     };
 
@@ -99,6 +115,8 @@ export const themeSwitchEvent = (themeButton: HTMLElement): () => void => {
 
 const changeTheme = (themes: ThemeSwitch, themeButton: HTMLElement) => {
     const { newTheme, oldTheme } = themes;
+
+    saveSelectedTheme(newTheme);
 
     if (!newTheme.isLoaded) {
         loadTheme(newTheme);
@@ -148,5 +166,7 @@ export const themeInit = async () => {
 
     const setInitialTheme = (newTheme: Theme) => changeTheme({ newTheme }, undefined);
 
-    prefersLight.matches ? setInitialTheme(lightTheme) : setInitialTheme(darkTheme);
+    const savedTheme: Theme = getSavedSelectedTheme();
+
+    savedTheme ? setInitialTheme(savedTheme) : (prefersLight.matches ? setInitialTheme(lightTheme) : setInitialTheme(darkTheme));
 };
