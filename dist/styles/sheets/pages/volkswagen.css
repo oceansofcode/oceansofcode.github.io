@@ -1,0 +1,3 @@
+:root{--footer-height: 80px}main{grid-area:main}main>section{display:grid;contain:content;min-height:100vh;justify-items:stretch;padding:70px 15% 1rem}main>section .section-title{justify-self:start}
+
+/*# sourceMappingURL=volkswagen.css.map */

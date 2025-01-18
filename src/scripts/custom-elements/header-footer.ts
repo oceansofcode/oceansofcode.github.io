@@ -50,11 +50,10 @@ export class PortfolioHeader extends HTMLElement {
         this.navMenu = navMenu;
         nav.appendChild(navMenu);
 
-        const clients = this.createNavItem('Clients', '/clients', '/#clients');
-        const technologies = this.createNavItem('Technologies', '/technologies', '/#technologies');
-
-        navLinks.push(clients);
-        navLinks.push(technologies);
+        // CREATE LINKS HERE
+        navLinks.push(this.createNavItem('Clients', '/clients', '/#clients'));
+        navLinks.push(this.createNavItem('Volkswagen', '/volkswagen'));
+        navLinks.push(this.createNavItem('Technologies', '/technologies', '/#technologies'));
 
         /*
         // Web Apps

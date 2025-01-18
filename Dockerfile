@@ -24,4 +24,5 @@ RUN npm i
 RUN npm run build
 
 RUN mv index.html /usr/share/nginx/html
+RUN mv volkswagen /usr/share/nginx/html
 RUN mv dist /usr/share/nginx/html
