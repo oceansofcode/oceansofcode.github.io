@@ -3,16 +3,30 @@
 main {
   grid-area: main;
 
-  >section {
+  > section {
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    gap: 2.4rem;
+
     contain: content;
     min-height: 100vh;
-    //gap: 2.4rem;
-    justify-items: stretch;
-    padding: $header-height $side-gap 1rem;
+    justify-items: center;
+    align-items: center;
+    padding: $header-height 20%;
 
     .section-title {
       justify-self: start;
     }
+
+    picture img {
+      width: 375px;
+      height: 375px;
+    }
   }
+
+  #intro {
+    padding-top: 0;
+  }
+
 }

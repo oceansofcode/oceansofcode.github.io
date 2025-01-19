@@ -2,8 +2,13 @@
 @use '../../utils/mixins' as *;
 
 :host {
-  width: 22rem;
-  height: 22rem;
+  --card-size: 15rem;
+  width: var(--card-size);
+  height: var(--card-size);
+
+  @media screen and (max-width: 500px) {
+    --card-size: 10rem;
+  }
 }
 
 .container {
@@ -22,13 +27,21 @@
   &:hover {
     transform: scale(1.1);
   }
+
 }
 
 .logo {
-  height: 128px;
-  width: 128px;
+  $card-size: calc(var(--card-size) * 0.45);
+  height: $card-size;
+  width: $card-size;
 }
 
 ::slotted(svg.theme[slot=logo]) {
   @include shadow-themeable-property('fill', 'primary-text');
+}
+
+@media screen and (max-width: 500px) {
+  ::slotted(span) {
+    font-size: 1.5rem;
+  }
 }

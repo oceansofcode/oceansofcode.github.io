@@ -64,13 +64,13 @@ main {
       display: grid;
       //gap: 2.4rem;
       justify-items: stretch;
-      padding: $header-height $side-gap 1rem;
+      padding: calc($header-height + 5px) $side-gap 1rem;
     }
   }
 }
 
 #clients, #technologies {
-  align-items: center;
+  align-items: start;
 
   .container {
     height: fit-content;

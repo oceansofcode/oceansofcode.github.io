@@ -128,7 +128,7 @@ export class PortfolioHeader extends HTMLElement {
 
         this.previousScrollPosition = window.scrollY;
 
-        this.handleScrollEvent();
+        // this.handleScrollEvent();
         this.handleMobileMenuEvents();
         this.handleThemeSwitchEvent();
 

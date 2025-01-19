@@ -8,7 +8,10 @@ header {
   height: $header-height; // The header should be 70px, this is important for rendering drop down menus.
   z-index: 2; // Stops welcome text from going over
 
-  @include themeable-property('background-color', 'primary-background-transparent');
+  border-bottom-width: 0.05rem;
+  border-bottom-style: solid;
+  @include themeable-property('border-bottom-color', 'primary-text-transparent');
+  @include themeable-property('background-color', 'primary-background');
 
   transition-property: opacity, translate, background-color;
   transition-duration: 400ms;

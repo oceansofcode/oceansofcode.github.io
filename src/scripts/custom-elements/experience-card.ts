@@ -28,6 +28,7 @@ export class ExperienceCard extends HTMLElement {
         shadowRoot.querySelectorAll('button.flip-card').forEach(button => button.addEventListener('click', this.flipCard.bind(this)));
 
         this.duplicateClientTitle();
+
         this.handleExternalLink();
 
         getFontAwesome(shadowRoot).finally();
@@ -48,7 +49,7 @@ export class ExperienceCard extends HTMLElement {
         [title, client].forEach(duplicateSlotContent);
     }
 
-    private getExternalSiteSlot():HTMLSlotElement {
+    private getExternalSiteSlot(): HTMLSlotElement {
         return this.shadowRoot.querySelector(this.externalSelector);
     }
 
@@ -70,7 +71,9 @@ export class ExperienceCard extends HTMLElement {
         if (externalSiteSlot?.assignedNodes().length) {
             externalSiteSlot.assignedElements().filter(a => a instanceof HTMLAnchorElement).forEach((a: HTMLAnchorElement) => {
                 a.classList.add('button');
-                a.setAttribute('target', '_blank');
+                if (!a.href.startsWith(location.origin)) {
+                    a.setAttribute('target', '_blank');
+                }
                 insertIcon(a);
             });
         } else {
@@ -86,12 +89,14 @@ export class ExperienceCard extends HTMLElement {
             this.container.classList.add('is-flipped');
             this.flipped = true;
 
+            const externalSlot = this.getExternalSiteSlot();
             // Prefetch the DNS for the link if the card has been flipped at least once
-            if (!this.flippedOnce) {
-                const externalSlot = this.getExternalSiteSlot();
+            if (!this.flippedOnce && externalSlot) {
                 if (externalSlot?.assignedElements() && externalSlot.assignedElements()[0] instanceof HTMLAnchorElement) {
                     const externalAnchor = externalSlot?.assignedElements()[0] as HTMLAnchorElement;
-                    this.appendChild(createDNSPrefetch(externalAnchor));
+                    if (!externalAnchor.href.startsWith(location.origin)) {
+                        this.appendChild(createDNSPrefetch(externalAnchor));
+                    }
                 }
                 this.flippedOnce = true;
             }

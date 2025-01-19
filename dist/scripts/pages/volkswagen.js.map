@@ -1,1 +1,1 @@
-{"version":3,"names":[],"sources":[],"mappings":""}
+{"version":3,"names":["lazyLoadSections","intro","document","getElementById","lazyLoadMap","Map","async","loadIntro","set"],"sources":["../../../src/scripts/pages/volkswagen.ts"],"mappings":"2BAASA,MAAwB,2BAEjC,MAAMC,EAAQC,SAASC,eAAe,cAEhCC,EAAc,IAAIC,IAOxBC,eAAeC,IAEf,EAPA,iBACIH,EAAYI,IAAIP,EAAOM,GACvBP,EAAiBI,EAAa,OAAO,EACxC,CAHD"}

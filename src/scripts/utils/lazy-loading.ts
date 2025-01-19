@@ -1,4 +1,4 @@
-const lazyLoadDelay = 300;
+const lazyLoadDelay = 150;
 
 export const loadLazyContainer = (el: Element) => {
     const lazyContainer: HTMLElement = el.querySelector('.lazy.container');
