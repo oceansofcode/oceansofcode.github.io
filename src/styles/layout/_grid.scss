@@ -3,7 +3,7 @@
 
 body {
   display: grid;
-  min-height: 100vh;
+  min-height: 100dvh;
 
   grid:
     [row1-start] 'header' $header-height [row1-end]

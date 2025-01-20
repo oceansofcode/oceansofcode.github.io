@@ -4,11 +4,11 @@
   visibility: visible !important;
   top: 0;
   position: absolute;
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
 
   img {
-    height: 100vh;
+    height: 100dvh;
     width: 100%;
   }
 
@@ -31,10 +31,10 @@ main {
 
   >section {
     contain: content;
-    min-height: 100vh;
+    min-height: 100dvh;
 
     &:first-child {
-      min-height: calc(100vh - $header-height);
+      min-height: calc(100dvh - $header-height);
       background-color: initial;
 
       >#welcome-callout {
@@ -56,7 +56,7 @@ main {
     }
 
     &:last-child {
-      min-height: calc(100vh - var(--footer-height));
+      min-height: calc(100dvh - $header-height - var(--footer-height));
     }
 
     // Content sections after the first should be grids for a consistent UX
